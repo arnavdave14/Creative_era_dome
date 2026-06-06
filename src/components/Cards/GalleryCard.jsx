@@ -69,10 +69,10 @@ export default function GalleryCard() {
       <div className="w-full h-screen pointer-events-none" />
 
       {/* Actual Content - Hardcoded vh to prevent overflowing screen */}
-      <div className="w-full h-screen bg-[#D0D1CC] text-[#1a1a1a] p-4 md:px-12 md:pt-16 md:pb-6 flex flex-col relative shadow-[0_-30px_60px_rgba(0,0,0,0.5)] z-30 overflow-hidden">
+      <div className="w-full h-screen bg-brand-cream text-brand-black transition-colors duration-300 p-4 md:px-12 md:pt-16 md:pb-6 flex flex-col relative shadow-[0_-30px_60px_rgba(0,0,0,0.5)] z-30 overflow-hidden">
 
-        {/* Top Split Area - 60vh fixed to leave room for bottom cards */}
-        <div className="w-full h-[60vh] flex flex-col md:flex-row mb-6 relative">
+        {/* Top Split Area - flexible height on mobile to leave room for bottom cards */}
+        <div className="w-full flex-1 min-h-0 md:h-[60vh] flex flex-col md:flex-row mb-2 md:mb-6 relative">
           
           {/* Left Text Content */}
           <div className="w-full md:w-[45%] h-full relative z-30 pointer-events-none">
@@ -88,19 +88,19 @@ export default function GalleryCard() {
                  >
                    <div className="flex flex-col w-full relative z-30">
                      <h2 
-                       className="font-sans font-black text-[12vw] md:text-[6vw] leading-[0.95] uppercase text-[#1a1a1a]" 
+                       className="font-sans font-black text-[12vw] md:text-[6vw] leading-[0.95] uppercase text-brand-black transition-colors duration-300" 
                        style={{ transform: 'scaleX(1.15)', transformOrigin: 'left', letterSpacing: '-0.03em' }}
                      >
                        {prod.heading[0]}
                      </h2>
                      <h2 
-                       className="font-sans font-black text-[12vw] md:text-[6vw] leading-[0.95] uppercase text-[#1a1a1a]" 
+                       className="font-sans font-black text-[12vw] md:text-[6vw] leading-[0.95] uppercase text-brand-black transition-colors duration-300" 
                        style={{ transform: 'scaleX(1.15)', transformOrigin: 'left', letterSpacing: '-0.03em' }}
                      >
                        {prod.heading[1]}
                      </h2>
                      <h2 
-                       className="font-sans font-black text-[12vw] md:text-[6vw] leading-[0.95] uppercase text-[#1a1a1a]" 
+                       className="font-sans font-black text-[12vw] md:text-[6vw] leading-[0.95] uppercase text-brand-black transition-colors duration-300" 
                        style={{ transform: 'scaleX(1.15)', transformOrigin: 'left', letterSpacing: '-0.03em' }}
                      >
                        {prod.heading[2]}
@@ -108,7 +108,7 @@ export default function GalleryCard() {
                    </div>
                    
                    <div className="pb-8">
-                     <p className="font-inter text-sm md:text-base leading-relaxed text-[#1a1a1a]/80 max-w-sm font-medium mb-8">
+                     <p className="font-inter text-sm md:text-base leading-relaxed text-brand-black/80 transition-colors duration-300 max-w-sm font-medium mb-8">
                        {prod.desc}
                      </p>
                    </div>
@@ -121,7 +121,7 @@ export default function GalleryCard() {
           <div className="w-full md:w-[55%] h-full relative z-10 hidden md:block">
              
              {/* Main Image Base - TRUE CROSSFADE */}
-             <div className="w-full h-full bg-[#E3E1DB] rounded-[2.5rem] overflow-hidden relative shadow-lg">
+             <div className="w-full h-full bg-brand-cream rounded-[2.5rem] overflow-hidden relative shadow-lg transition-colors duration-300">
                {products.map((prod, idx) => (
                  <img 
                    key={`img-${idx}`}
@@ -135,33 +135,33 @@ export default function GalleryCard() {
              </div>
 
              {/* === TOP LEFT CUTOUT === */}
-             <div className="absolute top-0 left-0 w-32 h-24 bg-[#D0D1CC] rounded-br-[2rem] z-20" />
-             <div className="absolute top-[96px] left-0 w-8 h-8 bg-transparent rounded-tl-full shadow-[-15px_-15px_0_15px_#D0D1CC] z-20" />
-             <div className="absolute top-0 left-[128px] w-8 h-8 bg-transparent rounded-tl-full shadow-[-15px_-15px_0_15px_#D0D1CC] z-20" />
+             <div className="absolute top-0 left-0 w-32 h-24 bg-brand-cream rounded-br-[2rem] z-20 transition-colors duration-300" />
+             <div className="absolute top-[96px] left-0 w-8 h-8 bg-transparent rounded-tl-full shadow-[-15px_-15px_0_15px_var(--color-brand-cream)] z-20 transition-colors duration-300" />
+             <div className="absolute top-0 left-[128px] w-8 h-8 bg-transparent rounded-tl-full shadow-[-15px_-15px_0_15px_var(--color-brand-cream)] z-20 transition-colors duration-300" />
 
              {/* === BOTTOM RIGHT CUTOUT === */}
-             <div className="absolute bottom-0 right-0 w-56 h-20 bg-[#D0D1CC] rounded-tl-[2rem] z-20 flex items-center justify-center pl-4 pt-4">
-               <div className="bg-[#EAE8E2] rounded-full py-2 px-4 flex items-center gap-3 shadow-md border border-black/5 hover:scale-105 transition-transform cursor-pointer pointer-events-auto">
+             <div className="absolute bottom-0 right-0 w-56 h-20 bg-brand-cream rounded-tl-[2rem] z-20 flex items-center justify-center pl-4 pt-4 transition-colors duration-300">
+               <div className="bg-brand-cream rounded-full py-2 px-4 flex items-center gap-3 shadow-md border border-brand-black/5 hover:scale-105 transition-all duration-300 cursor-pointer pointer-events-auto">
                  <div className="flex -space-x-3">
-                   <img src="https://i.pravatar.cc/100?img=1" className="w-8 h-8 rounded-full border-2 border-[#EAE8E2] object-cover" alt="User 1"/>
-                   <img src="https://i.pravatar.cc/100?img=2" className="w-8 h-8 rounded-full border-2 border-[#EAE8E2] object-cover" alt="User 2"/>
-                   <img src="https://i.pravatar.cc/100?img=3" className="w-8 h-8 rounded-full border-2 border-[#EAE8E2] object-cover" alt="User 3"/>
+                   <img src="https://i.pravatar.cc/100?img=1" className="w-8 h-8 rounded-full border-2 border-brand-cream object-cover" alt="User 1"/>
+                   <img src="https://i.pravatar.cc/100?img=2" className="w-8 h-8 rounded-full border-2 border-brand-cream object-cover" alt="User 2"/>
+                   <img src="https://i.pravatar.cc/100?img=3" className="w-8 h-8 rounded-full border-2 border-brand-cream object-cover" alt="User 3"/>
                  </div>
                  <div className="flex flex-col pr-2">
-                   <span className="text-xs font-bold leading-tight text-black">100k+</span>
-                   <span className="text-[10px] leading-tight text-black/70">Happy homes</span>
+                   <span className="text-xs font-bold leading-tight text-brand-black transition-colors duration-300">100k+</span>
+                   <span className="text-[10px] leading-tight text-brand-black/70 transition-colors duration-300">Happy homes</span>
                  </div>
                </div>
              </div>
-             <div className="absolute bottom-[80px] right-0 w-8 h-8 bg-transparent rounded-br-full shadow-[15px_15px_0_15px_#D0D1CC] z-20" />
-             <div className="absolute bottom-0 right-[224px] w-8 h-8 bg-transparent rounded-br-full shadow-[15px_15px_0_15px_#D0D1CC] z-20" />
+             <div className="absolute bottom-[80px] right-0 w-8 h-8 bg-transparent rounded-br-full shadow-[15px_15px_0_15px_var(--color-brand-cream)] z-20 transition-colors duration-300" />
+             <div className="absolute bottom-0 right-[224px] w-8 h-8 bg-transparent rounded-br-full shadow-[15px_15px_0_15px_var(--color-brand-cream)] z-20 transition-colors duration-300" />
 
           </div>
         </div>
 
         {/* Bottom Horizontal Scrolling Gallery Cards */}
         {/* Added visible custom scrollbar tracking by removing 'no-scrollbar' and added explicit padding */}
-        <div className="w-full h-[22vh] flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 relative z-30 pb-4 pt-2 items-center" style={{ scrollbarWidth: 'thin' }}>
+        <div className="w-full shrink-0 h-[26vh] md:h-[22vh] flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 relative z-30 pb-4 pt-2 items-center" style={{ scrollbarWidth: 'thin' }}>
           {products.map((prod, idx) => {
             const isActive = activeIdx === idx;
             return (
@@ -169,18 +169,18 @@ export default function GalleryCard() {
                 key={idx} 
                 onClick={() => setActiveIdx(idx)}
                 // Fixed minimum width ensures the cards peek out, inviting the user to scroll
-                className={`min-w-[85vw] md:min-w-[320px] shrink-0 h-full bg-[#EAE8E2] rounded-3xl p-3 flex gap-4 transition-all duration-500 cursor-pointer group snap-start
-                  ${isActive ? 'border-2 border-[#384A32] shadow-xl -translate-y-2' : 'border border-black/5 hover:shadow-lg hover:-translate-y-1'}`}
+                className={`min-w-[85vw] md:min-w-[320px] shrink-0 h-full bg-brand-cream transition-colors duration-300 rounded-3xl p-3 flex gap-4 cursor-pointer group snap-start
+                  ${isActive ? 'border-2 border-brand-orange shadow-xl -translate-y-2' : 'border border-brand-black/5 hover:shadow-lg hover:-translate-y-1'}`}
               >
                 {/* Card Image */}
-                <div className="w-[40%] h-full bg-[#D4D3CD] rounded-2xl overflow-hidden relative shadow-inner">
+                <div className="w-[40%] h-full bg-brand-cream rounded-2xl overflow-hidden relative shadow-inner">
                   <img src={prod.img} className="w-full h-full object-cover mix-blend-multiply opacity-90 group-hover:scale-110 transition-transform duration-700" alt={prod.name} />
                   
                   {/* Active Indicator Overlay */}
                   {isActive && (
-                    <div className="absolute inset-0 bg-black/10 flex items-center justify-center transition-opacity duration-500">
-                      <div className="w-8 h-8 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center">
-                        <div className="w-2 h-2 bg-white rounded-full"></div>
+                    <div className="absolute inset-0 bg-brand-black/10 flex items-center justify-center transition-opacity duration-500">
+                      <div className="w-8 h-8 bg-brand-cream/30 backdrop-blur-md rounded-full flex items-center justify-center">
+                        <div className="w-2 h-2 bg-brand-cream rounded-full"></div>
                       </div>
                     </div>
                   )}
@@ -188,13 +188,13 @@ export default function GalleryCard() {
                 
                 {/* Card Info */}
                 <div className="flex-1 py-2 pr-4 flex flex-col justify-center relative">
-                   <h4 className="font-sans font-bold text-sm md:text-base text-[#1a1a1a] leading-tight">{prod.name}</h4>
-                   <p className="text-[10px] md:text-xs text-[#1a1a1a]/50 font-medium mt-1 uppercase tracking-widest">{prod.type}</p>
-                   <p className="text-[10px] md:text-[11px] text-[#1a1a1a]/70 font-medium mt-2 line-clamp-2 leading-relaxed">
+                   <h4 className="font-sans font-bold text-sm md:text-base text-brand-black leading-tight transition-colors duration-300">{prod.name}</h4>
+                   <p className="text-[10px] md:text-xs text-brand-black/50 font-medium mt-1 uppercase tracking-widest transition-colors duration-300">{prod.type}</p>
+                   <p className="text-[10px] md:text-[11px] text-brand-black/70 font-medium mt-2 line-clamp-2 leading-relaxed transition-colors duration-300">
                      {prod.desc}
                    </p>
                    
-                   <div className={`absolute top-2 right-2 transition-colors duration-500 ${isActive ? 'text-[#384A32]' : 'text-[#1a1a1a]/30 group-hover:text-[#1a1a1a]'}`}>
+                   <div className={`absolute top-2 right-2 transition-colors duration-500 ${isActive ? 'text-brand-orange' : 'text-brand-black/30 group-hover:text-brand-black'}`}>
                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                        <path d="M5 12h14M12 5l7 7-7 7" className={`transform origin-center transition-transform duration-500 ${isActive ? 'rotate-0' : '-rotate-45'}`}/>
                      </svg>

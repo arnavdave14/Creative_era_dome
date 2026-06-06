@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import CinematicIntro from '../components/CinematicIntro';
@@ -57,6 +57,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const containerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -137,9 +144,9 @@ export default function Home() {
 
           currentTime += 2;
         } else {
-          // Subsequent cards pan in from 45vw spacing
+          // Subsequent cards pan in from dynamic spacing
           masterTl.to(cards, {
-            x: "-=45vw",
+            x: isMobile ? "-=95vw" : "-=45vw",
             ease: "power2.inOut",
             duration: 1.5
           }, currentTime);
@@ -238,21 +245,21 @@ export default function Home() {
 
         currentTime += 1.5;
       });
+      
+    }, containerRef); // Scope everything to the container
 
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
+    return () => ctx.revert(); // Cleanup GSAP instances on unmount
+  }, [isMobile]);
 
   return (
-    <div className="w-full bg-[#0d0d0d]">
+    <div className="w-full bg-brand-black transition-colors duration-300">
       <CinematicIntro 
         preTitle="P A R A D I S E"
         title="CARIBE"
         descTitle="ENDLESS BLUE HORIZONS"
         descText="Turquoise waters, white sand beaches and warm tropical skies create the perfect destination for unforgettable luxury experiences and relaxation."
         indexStr="01_05"
-        bgImage="https://images.unsplash.com/photo-1544257121-72f10d210519?q=80&w=2574&auto=format&fit=crop"
+        bgImage="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=2670&auto=format&fit=crop"
       />
       <div ref={containerRef} className="w-full relative">
       
@@ -318,7 +325,7 @@ export default function Home() {
             
             {/* Massive Background Scrolling Text */}
             <div className="absolute inset-0 z-0 flex items-center overflow-hidden opacity-[0.03] pointer-events-none mix-blend-screen">
-              <div className="bg-marquee-text whitespace-nowrap font-drose text-[35vw] leading-none text-white absolute left-0" style={{ transform: 'translateX(10vw)' }}>
+              <div className="bg-marquee-text whitespace-nowrap font-drose text-[35vw] leading-none text-brand-cream absolute left-0" style={{ transform: 'translateX(10vw)' }}>
                 CREATIVE ERA — LUXURY EVENTS — UNFORGETTABLE EXPERIENCES — 
               </div>
             </div>
@@ -328,21 +335,21 @@ export default function Home() {
                 key={sec.id} 
                 className="story-card absolute top-1/2 left-1/2 overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.8)] border border-white/5 flex items-center justify-center bg-brand-black pointer-events-auto will-change-transform transform-gpu"
                 style={{ 
-                  width: '35vw', 
-                  height: '60vh', 
+                  width: isMobile ? '85vw' : '35vw', 
+                  height: isMobile ? '70vh' : '60vh', 
                   borderRadius: '2rem',
                   transform: `translate(-50%, -50%)`, 
-                  marginLeft: `${100 + (45 * i)}vw` // Card 0 starts at 100vw, subsequent cards follow tightly
+                  marginLeft: `${100 + ((isMobile ? 95 : 45) * i)}vw` // Card 0 starts at 100vw, subsequent cards follow tightly
                 }}
               >
                 {/* Parallax Background Wrapper */}
                 <div className="card-bg-wrapper absolute top-0 left-0 w-full h-screen overflow-hidden pointer-events-none z-0">
                   <img src={sec.bg} className="card-bg absolute top-0 w-[140%] h-full object-cover" style={{ left: '-20%' }} alt={sec.id} />
-                  <div className="absolute inset-0 bg-black/30" />
+                  <div className="absolute inset-0 bg-brand-black/30 transition-colors duration-300" />
                 </div>
                 
                 {/* Horizontal State Title (Cinematic Poster Layout) */}
-                <div className="absolute inset-0 z-10 flex flex-col p-6 md:p-12 text-white overflow-hidden pointer-events-none">
+                <div className="absolute inset-0 z-10 flex flex-col p-6 md:p-12 text-brand-cream overflow-hidden pointer-events-none">
                   
                   {/* Top center subtitle */}
                   <div className="w-full flex justify-center mt-2 md:mt-4">
@@ -352,8 +359,7 @@ export default function Home() {
                   {/* Center massive title */}
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none mt-8">
                     <h2 
-                      className="card-title font-drose text-[8vw] md:text-[6vw] leading-none text-white opacity-100 uppercase will-change-transform transform-gpu"
-                      style={{ textShadow: '0 10px 30px rgba(0,0,0,0.8)' }}
+                      className="card-title font-drose text-[8vw] md:text-[6vw] leading-none text-brand-cream opacity-100 uppercase will-change-transform transform-gpu drop-shadow-2xl"
                     >
                       {sec.title}
                     </h2>
@@ -371,8 +377,8 @@ export default function Home() {
 
                     {/* Center Scroll Indication */}
                     <div className="flex flex-col items-center opacity-60 absolute left-1/2 -translate-x-1/2 bottom-0">
-                      <span className="font-inter text-[8px] md:text-[10px] tracking-widest uppercase mb-3">Scroll</span>
-                      <div className="w-[1px] h-8 md:h-12 bg-white/50" />
+                      <span className="font-inter text-[8px] md:text-[10px] tracking-widest uppercase mb-3 text-brand-cream">Scroll</span>
+                      <div className="w-[1px] h-8 md:h-12 bg-brand-cream/50" />
                     </div>
 
                     {/* Right Number */}
