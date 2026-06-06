@@ -182,6 +182,8 @@ function ScrollToTop() {
 
 // Navigation Component
 function Navigation({ isDarkMode, toggleTheme }) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const handleNavClick = (e, label) => {
     e.preventDefault();
     const trigger = ScrollTrigger.getById('masterScroll');
@@ -197,12 +199,14 @@ function Navigation({ isDarkMode, toggleTheme }) {
         }
       }
     }
+    setMobileMenuOpen(false);
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 p-8 flex justify-between items-center text-white pointer-events-auto mix-blend-difference transition-colors duration-300">
-      
-      {/* Logo */}
+    <>
+      <nav className="fixed top-0 left-0 w-full z-50 p-6 md:px-8 md:py-6 flex justify-between items-center pointer-events-auto transition-colors duration-300 backdrop-blur-lg bg-brand-black/60 text-brand-cream border-b border-brand-cream/5 shadow-sm">
+        
+        {/* Logo */}
       <MagneticButton>
         <a href="/" onClick={(e) => handleNavClick(e, 'home')} className="flex items-center gap-2">
           <div className="w-10 h-10 relative flex items-center justify-center font-drose text-3xl">
@@ -241,8 +245,30 @@ function Navigation({ isDarkMode, toggleTheme }) {
             )}
           </button>
         </MagneticButton>
+        
+        {/* Hamburger Icon for Mobile */}
+        <button 
+          className="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 z-50"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          <span className={`block w-6 h-0.5 bg-brand-cream transition-transform duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+          <span className={`block w-6 h-0.5 bg-brand-cream transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
+          <span className={`block w-6 h-0.5 bg-brand-cream transition-transform duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+        </button>
       </div>
-    </nav>
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`fixed inset-0 z-40 bg-brand-black/95 backdrop-blur-xl flex flex-col items-center justify-center transition-all duration-500 lg:hidden ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+        <div className="flex flex-col items-center space-y-8 font-drose text-3xl text-brand-cream tracking-widest uppercase mt-12">
+          <a href="#" onClick={(e) => handleNavClick(e, 'home')} className="hover:text-brand-orange transition-colors">Home</a>
+          <a href="#" onClick={(e) => handleNavClick(e, 'expand-about')} className="hover:text-brand-orange transition-colors">About</a>
+          <a href="#" onClick={(e) => handleNavClick(e, 'expand-gallery')} className="hover:text-brand-orange transition-colors">Gallery</a>
+          <a href="#" onClick={(e) => handleNavClick(e, 'expand-products')} className="hover:text-brand-orange transition-colors">Services</a>
+          <a href="#" onClick={(e) => handleNavClick(e, 'expand-contact')} className="hover:text-brand-orange transition-colors">Contact</a>
+        </div>
+      </div>
+    </>
   );
 }
 
