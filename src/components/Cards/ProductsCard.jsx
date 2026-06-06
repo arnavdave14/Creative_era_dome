@@ -49,49 +49,6 @@ export default function ProductsCard() {
   const [activeIdx, setActiveIdx] = useState(0);
   const throttleRef = useRef(false);
 
-  // Intercept scroll wheel to change products smoothly
-  const handleWheel = (e) => {
-    // Only hijack scroll if we are actively wheeling vertically over the card
-    if (Math.abs(e.deltaY) > 20 && !throttleRef.current) {
-      if (e.deltaY > 0 && activeIdx < products.length - 1) {
-        e.stopPropagation();
-        setActiveIdx(p => p + 1);
-        throttleRef.current = true;
-        setTimeout(() => throttleRef.current = false, 1200);
-      } else if (e.deltaY < 0 && activeIdx > 0) {
-        e.stopPropagation();
-        setActiveIdx(p => p - 1);
-        throttleRef.current = true;
-        setTimeout(() => throttleRef.current = false, 1200);
-      }
-    }
-  };
-
-  const [touchStart, setTouchStart] = useState(null);
-
-  const handleTouchStart = (e) => {
-    setTouchStart(e.targetTouches[0].clientY);
-  };
-
-  const handleTouchEnd = (e) => {
-    if (!touchStart) return;
-    const touchEnd = e.changedTouches[0].clientY;
-    const distance = touchStart - touchEnd;
-    
-    if (Math.abs(distance) > 50 && !throttleRef.current) {
-      if (distance > 0 && activeIdx < products.length - 1) { // Swipe up
-        setActiveIdx(p => p + 1);
-        throttleRef.current = true;
-        setTimeout(() => throttleRef.current = false, 1200);
-      } else if (distance < 0 && activeIdx > 0) { // Swipe down
-        setActiveIdx(p => p - 1);
-        throttleRef.current = true;
-        setTimeout(() => throttleRef.current = false, 1200);
-      }
-    }
-    setTouchStart(null);
-  };
-
   return (
     <div className="card-scroll-wrapper absolute top-0 left-0 w-full opacity-0 invisible z-20" style={{ height: '200vh' }}>
       
@@ -101,9 +58,6 @@ export default function ProductsCard() {
       {/* Actual Content */}
       <div 
         className="w-full h-screen bg-brand-black text-brand-cream transition-colors duration-300 p-4 md:p-8 flex flex-col md:flex-row gap-6 relative shadow-[0_-30px_60px_rgba(0,0,0,0.5)] z-30 overflow-hidden"
-        onWheel={handleWheel}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
       >
 
         {/* Left Column */}
@@ -170,6 +124,29 @@ export default function ProductsCard() {
                  Discover
                </button>
             </div>
+          </div>
+
+          {/* MOBILE ONLY: Cool Expanding Dynamic Dock */}
+          <div className="md:hidden absolute bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 p-2 bg-[#1A1A1A]/70 backdrop-blur-xl rounded-full border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] overflow-x-auto w-auto max-w-[95vw] snap-x snap-mandatory pointer-events-auto" style={{ scrollbarWidth: 'none' }}>
+             {products.map((p, i) => {
+               const isActive = i === activeIdx;
+               return (
+                 <div 
+                   key={`mob-thumb-${i}`}
+                   onClick={() => setActiveIdx(i)}
+                   className={`relative flex items-center gap-2 rounded-full overflow-hidden cursor-pointer transition-all duration-500 ease-out shrink-0 snap-center ${isActive ? 'w-[140px] h-12 bg-white/10 pl-1 pr-4 shadow-inner' : 'w-10 h-10 bg-transparent hover:bg-white/5'}`}
+                 >
+                    <div className={`rounded-full overflow-hidden shrink-0 transition-all duration-500 ${isActive ? 'w-10 h-10 border-2 border-[#A8D0CE]' : 'w-full h-full opacity-60'}`}>
+                      <img src={p.thumb} className="w-full h-full object-cover" alt="thumbnail" />
+                    </div>
+                    {isActive && (
+                      <span className="text-[10px] font-bold text-white uppercase tracking-wider truncate animate-pulse">
+                        {p.title[0]}
+                      </span>
+                    )}
+                 </div>
+               )
+             })}
           </div>
 
         </div>
