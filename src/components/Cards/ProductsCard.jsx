@@ -1,280 +1,190 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 export default function ProductsCard() {
+  // We have 4 products currently
   const products = [
     {
-      title: ['THE', 'FUTURE OF', 'LISTENING'],
+      id: 1,
+      title: 'THE FUTURE OF LISTENING',
+      subtitle: 'Noise Cancelling',
       desc: 'Designed for balanced acoustics and refined noise isolation, letting sound adapt seamlessly to your space.',
       heroImg: 'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?q=80&w=2400&auto=format&fit=crop',
-      thumb: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=400&auto=format&fit=crop',
-      bottomImg: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=800&auto=format&fit=crop'
     },
     {
-      title: ['PURE', 'SONIC', 'PERFECTION'],
+      id: 2,
+      title: 'PURE SONIC PERFECTION',
+      subtitle: 'Studio Grade',
       desc: 'High-fidelity audio drivers engineered for studio-grade mixing and audiophile listening.',
       heroImg: 'https://images.unsplash.com/photo-1511300636408-a63a89df3482?q=80&w=2400&auto=format&fit=crop',
-      thumb: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=400&auto=format&fit=crop',
-      bottomImg: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=800&auto=format&fit=crop'
     },
     {
-      title: ['WIRELESS', 'ULTIMATE', 'FREEDOM'],
+      id: 3,
+      title: 'WIRELESS FREEDOM',
+      subtitle: 'Ultralight',
       desc: 'Ultralight design with massive battery life. Experience your music without boundaries.',
       heroImg: 'https://images.unsplash.com/photo-1612222869049-d8ec83637a3c?q=80&w=2400&auto=format&fit=crop',
-      thumb: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=400&auto=format&fit=crop',
-      bottomImg: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop'
     },
     {
-      title: ['IMMERSIVE', 'SOUND', 'ANYWHERE'],
+      id: 4,
+      title: 'IMMERSIVE SOUND',
+      subtitle: 'Active ANC',
       desc: 'True wireless earbuds engineered with active noise cancellation and a precision-tuned acoustic architecture.',
       heroImg: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=2400&auto=format&fit=crop',
-      thumb: 'https://images.unsplash.com/photo-1572536147248-ac59a8abfa4b?q=80&w=400&auto=format&fit=crop',
-      bottomImg: 'https://images.unsplash.com/photo-1572536147248-ac59a8abfa4b?q=80&w=800&auto=format&fit=crop'
-    },
-    {
-      title: ['ROOM', 'FILLING', 'ACOUSTICS'],
-      desc: 'Architectural speakers that blend seamlessly into your home while delivering powerful, distortion-free bass.',
-      heroImg: 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?q=80&w=2400&auto=format&fit=crop',
-      thumb: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?q=80&w=400&auto=format&fit=crop',
-      bottomImg: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?q=80&w=800&auto=format&fit=crop'
-    },
-    {
-      title: ['CRAFTED', 'FOR', 'AUDIOPHILES'],
-      desc: 'Hand-tuned drivers paired with memory foam ear cushions for the ultimate extended listening sessions.',
-      heroImg: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=2400&auto=format&fit=crop',
-      thumb: 'https://images.unsplash.com/photo-1484704849700-f032a568e944?q=80&w=400&auto=format&fit=crop',
-      bottomImg: 'https://images.unsplash.com/photo-1484704849700-f032a568e944?q=80&w=800&auto=format&fit=crop'
     }
   ];
 
-  const [activeIdx, setActiveIdx] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const throttleRef = useRef(false);
+  const [activeId, setActiveId] = useState(null);
+  const [modalRect, setModalRect] = useState(null);
+  const [isExpanding, setIsExpanding] = useState(false);
+  const gridRefs = useRef({});
+
+  const handleOpen = (id) => {
+    const el = gridRefs.current[id];
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      setModalRect({
+        top: rect.top,
+        left: rect.left,
+        width: rect.width,
+        height: rect.height,
+      });
+      setActiveId(id);
+      
+      // Trigger expansion animation after a tiny delay
+      setTimeout(() => {
+        setIsExpanding(true);
+      }, 50);
+    }
+  };
+
+  const handleClose = () => {
+    setIsExpanding(false);
+    setTimeout(() => {
+      setActiveId(null);
+      setModalRect(null);
+    }, 500); // Wait for shrink animation
+  };
+
+  const activeProduct = products.find(p => p.id === activeId);
 
   return (
-    <div className="card-scroll-wrapper absolute top-0 left-0 w-full opacity-0 invisible z-20" style={{ height: '200vh' }}>
+    <div className="relative w-full min-h-screen bg-brand-black text-brand-cream overflow-hidden shadow-[0_-30px_60px_rgba(0,0,0,0.5)] z-30">
       
-      {/* Spacer for Intro Page */}
-      <div className="w-full h-screen pointer-events-none" />
-
-      {/* Actual Content */}
-      <div 
-        className="w-full h-screen bg-brand-black text-brand-cream transition-colors duration-300 p-4 md:p-8 flex flex-col md:flex-row gap-6 relative shadow-[0_-30px_60px_rgba(0,0,0,0.5)] z-30 overflow-hidden"
-      >
-
-        {/* Left Column */}
-        <div className="w-full md:w-[45%] h-full flex flex-col justify-between pt-10 pb-4 relative z-30 pointer-events-none">
-          
-          {/* Top Text & Desc - Crossfading Wrapper */}
-          <div className="relative w-full flex-1 md:h-[50vh] min-h-0 mb-4 md:mb-0">
-            {products.map((p, idx) => (
-              <div 
-                key={`text-${idx}`} 
-                className={`absolute top-0 left-0 w-full flex flex-col transition-opacity duration-1000 ease-in-out ${activeIdx === idx ? 'opacity-100' : 'opacity-0'}`}
-              >
-                 <div className="flex flex-col gap-2">
-                   <h2 className="font-sans font-light text-[11vw] md:text-[5.5vw] leading-[1.0] tracking-tight uppercase text-brand-cream transition-colors duration-300" style={{ transform: 'scaleX(1.3)', transformOrigin: 'left' }}>
-                     {p.title[0]}
-                   </h2>
-                   <h2 className="font-sans font-light text-[11vw] md:text-[5.5vw] leading-[1.0] tracking-tight uppercase text-brand-cream transition-colors duration-300" style={{ transform: 'scaleX(1.3)', transformOrigin: 'left' }}>
-                     {p.title[1]}
-                   </h2>
-                   <h2 className="font-sans font-light text-[11vw] md:text-[5.5vw] leading-[1.0] tracking-tight uppercase text-brand-cream transition-colors duration-300" style={{ transform: 'scaleX(1.3)', transformOrigin: 'left' }}>
-                     {p.title[2]}
-                   </h2>
-                 </div>
-
-                 <div className="flex justify-start md:ml-[15%] mt-8">
-                   <p className="text-xs md:text-sm text-brand-cream/50 transition-colors duration-300 text-left max-w-[280px] font-light leading-relaxed">
-                     {p.desc}
-                   </p>
-                 </div>
-              </div>
-            ))}
+      {/* 4-Section Grid */}
+      <div className="w-full h-screen grid grid-cols-1 md:grid-cols-2 grid-rows-4 md:grid-rows-2 gap-2 md:gap-4 p-2 md:p-4">
+        {products.map((p) => (
+          <div 
+            key={p.id}
+            ref={(el) => (gridRefs.current[p.id] = el)}
+            onClick={() => handleOpen(p.id)}
+            className={`relative w-full h-full rounded-[2rem] md:rounded-[3rem] overflow-hidden cursor-pointer group ${activeId === p.id ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+          >
+            {/* Background Image */}
+            <img 
+              src={p.heroImg} 
+              alt={p.title} 
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500" />
             
-            {/* Main CTA Button (Static layer over the crossfading text) */}
-            <div className="absolute bottom-0 left-0 mt-8 flex items-center pointer-events-auto">
-              <button onClick={() => setIsModalOpen(true)} className="group bg-[#A8D0CE] text-brand-black font-bold text-[10px] md:text-[11px] tracking-[0.2em] px-8 py-4 rounded-full uppercase hover:bg-brand-cream transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl hover:scale-105">
-                <span>View Product Details</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="-rotate-45 group-hover:rotate-0 transition-transform duration-300">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </button>
+            {/* Content */}
+            <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end pointer-events-none">
+              <span className="text-[#A8D0CE] text-xs font-bold uppercase tracking-[0.2em] mb-2 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                {p.subtitle}
+              </span>
+              <h2 className="text-2xl md:text-5xl font-sans font-bold text-white tracking-tighter uppercase leading-none">
+                {p.title}
+              </h2>
+            </div>
+
+            {/* Hover Icon */}
+            <div className="absolute top-6 right-6 md:top-10 md:right-10 w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="-rotate-45">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
             </div>
           </div>
+        ))}
+      </div>
 
-          {/* Bottom Left Small Product Box */}
-          <div className="w-full h-[35vh] md:h-[32vh] shrink-0 bg-brand-cream transition-colors duration-300 rounded-[3rem] p-4 md:p-6 flex text-brand-black relative overflow-hidden group shadow-2xl pointer-events-auto">
-            <div className="w-[55%] h-full relative">
-               {/* Crossfading images inside small box */}
-               {products.map((p, idx) => (
-                 <img 
-                   key={`bl-${idx}`} 
-                   src={p.bottomImg} 
-                   className={`absolute inset-0 w-full h-full object-cover rounded-[2rem] shadow-inner transition-opacity duration-1000 ease-in-out ${activeIdx === idx ? 'opacity-100' : 'opacity-0'}`} 
-                   alt="Product Detail"
-                 />
-               ))}
-            </div>
-            <div className="w-[45%] flex flex-col justify-center items-end text-right z-10 pl-4">
-               <p className="text-[10px] md:text-xs font-bold tracking-widest uppercase mb-4 md:mb-6 max-w-[180px] leading-relaxed text-brand-black transition-colors duration-300">
-                 ENGINEERED TO DELIVER CLARITY, DEPTH, AND CONTROL.
-               </p>
-            </div>
-          </div>
+      {/* FLIP Modal Overlay */}
+      {activeId && modalRect && (
+        <div 
+          className="fixed inset-0 z-[100] pointer-events-none"
+        >
+          {/* Backdrop Blur (fades in) */}
+          <div 
+            className={`absolute inset-0 bg-brand-black/90 backdrop-blur-2xl transition-opacity duration-500 ease-in-out ${isExpanding ? 'opacity-100 pointer-events-auto' : 'opacity-0'}`} 
+            onClick={handleClose}
+          />
 
-          {/* MOBILE ONLY: Cool Expanding Dynamic Dock Wrapper */}
-          <div className="md:hidden absolute bottom-4 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-2 pointer-events-auto max-w-[95vw]">
-             
-             {/* Highlight Label so user knows these are the products */}
-             <div className="bg-[#A8D0CE]/20 border border-[#A8D0CE]/30 backdrop-blur-md text-[#A8D0CE] px-4 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] shadow-[0_4px_15px_rgba(0,0,0,0.5)] flex items-center gap-2 animate-bounce">
-               <span>Browse Collection</span>
-               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+          {/* The Expanding Card */}
+          <div 
+            className="absolute bg-brand-black overflow-hidden pointer-events-auto flex flex-col md:flex-row transition-all duration-500 ease-[cubic-bezier(0.7,0,0.3,1)] shadow-2xl"
+            style={{
+              top: isExpanding ? 0 : modalRect.top,
+              left: isExpanding ? 0 : modalRect.left,
+              width: isExpanding ? '100vw' : modalRect.width,
+              height: isExpanding ? '100vh' : modalRect.height,
+              borderRadius: isExpanding ? '0px' : '3rem',
+            }}
+          >
+             {/* Left: Image Area */}
+             <div className="relative w-full md:w-1/2 h-[50vh] md:h-full shrink-0">
+               <img src={activeProduct.heroImg} alt="Hero" className="absolute inset-0 w-full h-full object-cover" />
+               <div className="absolute inset-0 bg-gradient-to-t from-brand-black to-transparent md:bg-gradient-to-r" />
+               
+               {/* Modal Content inside Image */}
+               <div className={`absolute bottom-8 left-8 md:bottom-16 md:left-16 pr-8 transition-opacity duration-500 delay-200 ${isExpanding ? 'opacity-100' : 'opacity-0'}`}>
+                  <span className="text-[#A8D0CE] text-sm font-bold uppercase tracking-[0.3em] mb-4 block">
+                    {activeProduct.subtitle}
+                  </span>
+                  <h2 className="text-4xl md:text-7xl font-sans font-bold text-white tracking-tighter uppercase leading-none">
+                    {activeProduct.title}
+                  </h2>
+               </div>
              </div>
 
-             {/* The Dock */}
-             <div className="flex items-center gap-2 p-2 bg-[#1A1A1A]/70 backdrop-blur-xl rounded-full border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] overflow-x-auto w-full snap-x snap-mandatory" style={{ scrollbarWidth: 'none' }}>
-               {products.map((p, i) => {
-                 const isActive = i === activeIdx;
-                 return (
-                   <div 
-                     key={`mob-thumb-${i}`}
-                     onClick={() => setActiveIdx(i)}
-                     className={`relative flex items-center gap-2 rounded-full overflow-hidden cursor-pointer transition-all duration-500 ease-out shrink-0 snap-center ${isActive ? 'w-[140px] h-12 bg-white/10 pl-1 pr-4 shadow-inner' : 'w-10 h-10 bg-transparent hover:bg-white/5'}`}
-                   >
-                      <div className={`rounded-full overflow-hidden shrink-0 transition-all duration-500 ${isActive ? 'w-10 h-10 border-2 border-[#A8D0CE]' : 'w-full h-full opacity-60'}`}>
-                        <img src={p.thumb} className="w-full h-full object-cover" alt="thumbnail" />
-                      </div>
-                      {isActive && (
-                        <span className="text-[10px] font-bold text-white uppercase tracking-wider truncate animate-pulse">
-                          {p.title[0]}
-                        </span>
-                      )}
-                   </div>
-                 )
-               })}
-             </div>
-          </div>
-
-        </div>
-
-        {/* Right Column - Massive Image with Cutouts */}
-        <div className="hidden md:block w-[55%] h-full relative z-10">
-          
-          {/* Main Image Base - Crossfading layer */}
-          <div className="w-full h-full rounded-[3rem] overflow-hidden relative bg-brand-black transition-colors duration-300 shadow-2xl pointer-events-auto">
-             {products.map((p, idx) => (
-               <img 
-                 key={`hero-${idx}`} 
-                 src={p.heroImg} 
-                 alt="Hero" 
-                 className={`absolute inset-0 w-full h-full object-cover transition-all duration-1200 ease-in-out ${activeIdx === idx ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`} 
-               />
-             ))}
-             {/* Subtle gradient overlay to match reference lighting */}
-             <div className="absolute inset-0 bg-gradient-to-tr from-brand-black/30 via-transparent to-transparent pointer-events-none transition-colors duration-300" />
-          </div>
-
-
-
-          {/* === MIDDLE LEFT CUTOUT (Vertical Navigation Pill) === */}
-          <div className="absolute top-1/2 -translate-y-1/2 left-0 w-20 h-80 bg-brand-black transition-colors duration-300 rounded-r-[2.5rem] z-20 flex flex-col items-center justify-center pl-2">
-             
-             {/* Vertical Label to indicate these are the products */}
-             <div className="absolute left-[92px] top-1/2 -translate-y-1/2 -rotate-90 origin-center flex items-center gap-3 pointer-events-none animate-pulse">
-               <span className="text-[12px] font-bold uppercase tracking-[0.5em] text-[#A8D0CE] whitespace-nowrap bg-[#1A1A1A]/80 px-6 py-2 rounded-full border border-[#A8D0CE]/30 backdrop-blur-md shadow-[0_0_20px_rgba(168,208,206,0.2)] flex items-center gap-3">
-                 Featured Collection
-                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="rotate-90"><path d="M5 12h14M12 5l7 7-7-7"/></svg>
-               </span>
-             </div>
-
-             {/* The Pill */}
-             <div className="w-14 h-72 bg-brand-black transition-colors duration-300 rounded-full flex flex-col items-center justify-between py-2 shadow-inner pointer-events-auto border border-brand-cream/5 relative z-10">
-               {products.map((p, i) => (
-                 <div 
-                   key={`pill-${i}`} 
-                   onClick={() => setActiveIdx(i)} 
-                   className={`w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden cursor-pointer border-2 transition-all duration-500 ease-out shrink-0 ${i === activeIdx ? 'border-brand-cream shadow-[0_0_15px_var(--color-brand-cream)]' : 'border-transparent opacity-40 hover:opacity-100 hover:scale-105'}`}
-                 >
-                    <img src={p.thumb} className="w-full h-full object-cover" alt="thumbnail" />
-                 </div>
-               ))}
-             </div>
-          </div>
-          {/* Inward curves for Middle Left Cutout */}
-          {/* top = 50% - (half of cutout height 160px) - (curve height 32px) */}
-          <div className="absolute left-0 w-8 h-8 bg-transparent rounded-bl-full shadow-[-15px_15px_0_15px_var(--color-brand-black)] transition-colors duration-300 z-20 pointer-events-none" style={{ top: 'calc(50% - 192px)' }} />
-          <div className="absolute left-0 w-8 h-8 bg-transparent rounded-tl-full shadow-[-15px_-15px_0_15px_var(--color-brand-black)] transition-colors duration-300 z-20 pointer-events-none" style={{ top: 'calc(50% + 160px)' }} />
-
-        </div>
-        
-        {/* MODAL OVERLAY */}
-        {isModalOpen && (
-          <div className="absolute inset-0 z-[100] bg-brand-black/80 backdrop-blur-2xl flex items-center justify-center p-4 md:p-12 animate-fade-in">
-            {/* Close Button */}
-            <button 
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-6 right-6 w-12 h-12 bg-brand-cream text-brand-black rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 z-50 shadow-2xl"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
-
-            <div className="w-full max-w-4xl h-full max-h-[80vh] bg-brand-cream/5 border border-brand-cream/10 rounded-[3rem] p-6 md:p-12 flex flex-col md:flex-row gap-8 overflow-y-auto shadow-[0_30px_100px_rgba(0,0,0,0.8)] pointer-events-auto">
-              
-              {/* Left Side Modal Image */}
-              <div className="w-full md:w-1/2 h-64 md:h-full bg-brand-black rounded-[2rem] overflow-hidden relative border border-brand-cream/10 shrink-0">
-                <img src={products[activeIdx].heroImg} alt="Detail" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 to-transparent" />
-                <div className="absolute bottom-6 left-6 pr-6">
-                  <h3 className="text-2xl md:text-4xl font-sans font-bold text-brand-cream leading-none tracking-tighter uppercase mb-2">
-                    {products[activeIdx].title.join(' ')}
-                  </h3>
-                  <p className="text-xs text-brand-cream/60 font-medium tracking-widest uppercase">Premium Edition</p>
-                </div>
-              </div>
-
-              {/* Right Side Dummy Data Specs */}
-              <div className="w-full md:w-1/2 flex flex-col justify-center gap-6">
+             {/* Right: Details Area */}
+             <div className={`w-full md:w-1/2 h-[50vh] md:h-full p-8 md:p-16 flex flex-col justify-center overflow-y-auto transition-opacity duration-500 delay-300 ${isExpanding ? 'opacity-100' : 'opacity-0'}`}>
                 
-                <div>
-                  <h4 className="text-[#A8D0CE] text-sm tracking-[0.2em] uppercase font-bold mb-2">Software Capabilities</h4>
-                  <p className="text-brand-cream/70 text-sm leading-relaxed mb-6">
-                    {products[activeIdx].desc} Transform your digital presence with enterprise-grade architecture and award-winning creative design tailored for modern platforms.
-                  </p>
-                </div>
+                <h4 className="text-[#A8D0CE] text-sm tracking-[0.2em] uppercase font-bold mb-4">Discover the Features</h4>
+                <p className="text-brand-cream/80 text-lg md:text-xl leading-relaxed mb-10 font-light">
+                  {activeProduct.desc} Experience unparalleled fidelity and flawless engineering with this meticulously crafted piece.
+                </p>
 
-                {/* Dynamic Bento Box Grid (GSAP FLIP Style Inspiration) */}
-                <div className="grid grid-cols-2 gap-4 mb-4">
-                  <div className="bg-gradient-to-br from-white/10 to-white/5 rounded-[2rem] p-5 border border-white/10 hover:scale-105 hover:border-[#A8D0CE]/50 hover:shadow-[0_0_30px_rgba(168,208,206,0.15)] transition-all duration-500 cursor-pointer group">
-                    <div className="text-[#A8D0CE]/70 text-[10px] uppercase tracking-widest mb-2 group-hover:text-[#A8D0CE] transition-colors">Architecture</div>
-                    <div className="text-white font-semibold text-sm">Scalable Cloud Native</div>
+                {/* Software Bento Grid Layout */}
+                <div className="grid grid-cols-2 gap-4 mb-10">
+                  <div className="bg-white/5 rounded-[2rem] p-6 border border-white/10 hover:border-[#A8D0CE]/50 transition-colors">
+                    <div className="text-white/40 text-[10px] uppercase tracking-widest mb-2">Build</div>
+                    <div className="text-white font-semibold text-lg">Premium</div>
                   </div>
-                  <div className="bg-gradient-to-br from-white/10 to-white/5 rounded-[2rem] p-5 border border-white/10 hover:scale-105 hover:border-[#A8D0CE]/50 hover:shadow-[0_0_30px_rgba(168,208,206,0.15)] transition-all duration-500 cursor-pointer group">
-                    <div className="text-[#A8D0CE]/70 text-[10px] uppercase tracking-widest mb-2 group-hover:text-[#A8D0CE] transition-colors">Performance</div>
-                    <div className="text-white font-semibold text-sm">GSAP + React 18+</div>
-                  </div>
-                  <div className="col-span-2 bg-gradient-to-r from-white/10 to-white/5 rounded-[2rem] p-6 border border-white/10 hover:scale-[1.02] hover:border-[#A8D0CE]/50 hover:shadow-[0_0_30px_rgba(168,208,206,0.15)] transition-all duration-500 cursor-pointer flex items-center justify-between group">
-                    <div>
-                      <div className="text-[#A8D0CE]/70 text-[10px] uppercase tracking-widest mb-2 group-hover:text-[#A8D0CE] transition-colors">Security & UX</div>
-                      <div className="text-white font-semibold text-sm">Zero-Trust & Smooth Micro-interactions</div>
-                    </div>
-                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#A8D0CE] group-hover:text-black transition-colors duration-500">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="-rotate-45 group-hover:rotate-0 transition-transform duration-500"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </div>
+                  <div className="bg-white/5 rounded-[2rem] p-6 border border-white/10 hover:border-[#A8D0CE]/50 transition-colors">
+                    <div className="text-white/40 text-[10px] uppercase tracking-widest mb-2">Performance</div>
+                    <div className="text-white font-semibold text-lg">Elite</div>
                   </div>
                 </div>
 
-                <div className="mt-auto pt-6 border-t border-white/10 flex items-center justify-end">
-                  <button className="bg-[#A8D0CE] text-brand-black px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_10px_30px_rgba(168,208,206,0.2)]">
-                    Start Project
+                <div className="mt-auto flex items-center justify-start">
+                  <button className="bg-[#A8D0CE] text-brand-black px-12 py-5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_10px_30px_rgba(168,208,206,0.2)]">
+                    Explore Details
                   </button>
                 </div>
+             </div>
 
-              </div>
-            </div>
+             {/* Close Button */}
+             <button 
+               onClick={handleClose}
+               className={`absolute top-6 right-6 md:top-12 md:right-12 w-14 h-14 bg-white/10 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white hover:text-black hover:scale-110 transition-all duration-300 z-50 shadow-2xl ${isExpanding ? 'opacity-100' : 'opacity-0'}`}
+             >
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+             </button>
+
           </div>
-        )}
+        </div>
+      )}
 
-      </div>
     </div>
   );
 }
