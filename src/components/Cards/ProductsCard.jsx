@@ -68,7 +68,11 @@ export default function ProductsCard() {
   const activeProduct = products.find(p => p.id === activeId);
 
   return (
-    <div className="relative w-full min-h-screen bg-brand-black text-brand-cream overflow-hidden shadow-[0_-30px_60px_rgba(0,0,0,0.5)] z-30">
+    <div className="card-scroll-wrapper absolute top-0 left-0 w-full opacity-0 invisible z-20" style={{ height: '200vh' }}>
+      {/* Spacer for Intro Page */}
+      <div className="w-full h-screen pointer-events-none shrink-0" />
+
+      <div className="relative w-full h-screen bg-brand-black text-brand-cream overflow-hidden shadow-[0_-30px_60px_rgba(0,0,0,0.5)] z-30 shrink-0">
       
       {/* 4-Section Grid */}
       <div className="w-full h-screen grid grid-cols-1 md:grid-cols-2 grid-rows-4 md:grid-rows-2 gap-2 md:gap-4 p-2 md:p-4">
@@ -185,6 +189,7 @@ export default function ProductsCard() {
         </div>
       )}
 
+    </div>
     </div>
   );
 }
