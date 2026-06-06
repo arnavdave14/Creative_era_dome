@@ -93,14 +93,8 @@ export default function ProductsCard() {
   };
 
   return (
-    <div className="card-scroll-wrapper absolute top-0 left-0 w-full opacity-0 invisible z-20" style={{ height: '200vh' }}>
-      
-      {/* Spacer for Intro Page */}
-      <div className="w-full h-screen pointer-events-none" />
-
-      {/* Actual Content */}
       <div 
-        className="w-full h-screen bg-brand-black text-brand-cream transition-colors duration-300 p-4 md:p-8 flex flex-col md:flex-row gap-6 relative shadow-[0_-30px_60px_rgba(0,0,0,0.5)] z-30 overflow-hidden"
+        className="w-full h-[100dvh] bg-brand-black text-brand-cream transition-colors duration-300 p-4 md:p-8 flex flex-col md:flex-row gap-6 relative shadow-[0_-30px_60px_rgba(0,0,0,0.5)] z-30 overflow-hidden pt-24 md:pt-32"
         onWheel={handleWheel}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
@@ -226,6 +220,5 @@ export default function ProductsCard() {
         </div>
         
       </div>
-    </div>
   );
 }

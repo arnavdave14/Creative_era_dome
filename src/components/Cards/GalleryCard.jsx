@@ -63,13 +63,7 @@ export default function GalleryCard() {
   const [activeIdx, setActiveIdx] = useState(0);
 
   return (
-    <div className="card-scroll-wrapper absolute top-0 left-0 w-full opacity-0 invisible z-20" style={{ height: '200vh' }}>
-      
-      {/* Spacer for Intro Page */}
-      <div className="w-full h-screen pointer-events-none" />
-
-      {/* Actual Content - Hardcoded vh to prevent overflowing screen */}
-      <div className="w-full h-screen bg-brand-cream text-brand-black transition-colors duration-300 p-4 md:px-12 md:pt-16 md:pb-6 flex flex-col relative shadow-[0_-30px_60px_rgba(0,0,0,0.5)] z-30 overflow-hidden">
+      <div className="w-full h-[100dvh] bg-brand-cream text-brand-black transition-colors duration-300 p-4 pt-24 md:px-12 md:pt-32 md:pb-6 flex flex-col relative shadow-[0_-30px_60px_rgba(0,0,0,0.5)] z-30 overflow-hidden">
 
         {/* Top Split Area - flexible height on mobile to leave room for bottom cards */}
         <div className="w-full flex-1 min-h-0 md:h-[60vh] flex flex-col md:flex-row mb-2 md:mb-6 relative">
@@ -206,6 +200,5 @@ export default function GalleryCard() {
         </div>
 
       </div>
-    </div>
   );
 }
