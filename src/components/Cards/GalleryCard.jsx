@@ -75,14 +75,14 @@ export default function GalleryCard() {
         <div className="w-full flex-1 min-h-0 md:h-[60vh] flex flex-col md:flex-row mb-2 md:mb-6 relative">
           
           {/* Left Text Content */}
-          <div className="w-full md:w-[45%] h-[240px] md:h-full relative z-30 pointer-events-none shrink-0">
+          <div className="w-full md:w-[45%] h-full relative z-30 pointer-events-none shrink-0">
              
              {/* Stretched Wide Typography - TRUE CROSSFADE WRAPPER */}
              <div className="relative w-full h-full">
                {products.map((prod, idx) => (
                  <div 
                    key={`text-${idx}`}
-                   className={`absolute top-0 left-0 w-full h-full flex flex-col justify-between pt-4 transition-all duration-1000 ease-in-out ${
+                   className={`absolute top-0 left-0 w-full h-full flex flex-col transition-all duration-1000 ease-in-out ${
                      activeIdx === idx ? 'opacity-100 pointer-events-auto transform-none' : 'opacity-0 pointer-events-none translate-y-4'
                    }`}
                  >
@@ -107,8 +107,15 @@ export default function GalleryCard() {
                      </h2>
                    </div>
                    
-                   <div className="pb-0 md:pb-8">
-                     <p className="font-inter text-sm md:text-base leading-relaxed text-brand-black/80 transition-colors duration-300 max-w-sm font-medium mb-2 md:mb-8">
+                   {/* MOBILE ONLY MAIN IMAGE */}
+                   <div className="flex-1 w-full relative z-10 py-4 md:hidden">
+                     <div className="w-full h-full bg-brand-cream rounded-3xl overflow-hidden relative shadow-md border border-brand-black/5">
+                        <img src={prod.img} className="w-full h-full object-cover mix-blend-multiply" alt={prod.name}/>
+                     </div>
+                   </div>
+
+                   <div className="pb-0 md:pb-8 shrink-0 mt-auto">
+                     <p className="font-inter text-sm md:text-base leading-relaxed text-brand-black/80 transition-colors duration-300 max-w-sm font-medium mb-2 md:mb-8 pointer-events-auto">
                        {prod.desc}
                      </p>
                    </div>
@@ -118,7 +125,7 @@ export default function GalleryCard() {
           </div>
 
           {/* Right Image Container */}
-          <div className="w-full md:w-[55%] flex-1 md:h-full relative z-10 mt-2 md:mt-0">
+          <div className="w-full md:w-[55%] flex-1 md:h-full relative z-10 mt-2 md:mt-0 hidden md:block">
              
              {/* Main Image Base - TRUE CROSSFADE */}
              <div className="w-full h-full bg-brand-cream rounded-[2.5rem] overflow-hidden relative shadow-lg transition-colors duration-300">
@@ -159,17 +166,28 @@ export default function GalleryCard() {
           </div>
         </div>
 
-        {/* Mobile Swipe Hint */}
-        <div className="w-full flex justify-between items-end md:hidden px-2 mb-1 shrink-0">
-          <div className="text-[10px] font-bold text-brand-black/40 tracking-wider">GALLERY COLLECTION</div>
-          <span className="text-[10px] text-brand-orange tracking-widest uppercase flex items-center gap-1 animate-pulse font-bold">
-            Swipe <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-
         {/* Bottom Horizontal Scrolling Gallery Cards */}
         {/* Added visible custom scrollbar tracking by removing 'no-scrollbar' and added explicit padding */}
-        <div className="w-full shrink-0 h-[26vh] md:h-[22vh] flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 relative z-30 pb-4 pt-2 items-center" style={{ scrollbarWidth: 'thin' }}>
+        <div 
+          className="w-full shrink-0 h-[26vh] md:h-[22vh] flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 relative z-30 pb-4 pt-2 items-center" 
+          style={{ scrollbarWidth: 'thin' }}
+          onScroll={(e) => {
+            const popup = document.getElementById('mobile-swipe-popup');
+            if (popup && popup.style.opacity !== '0') {
+              popup.style.opacity = '0';
+              setTimeout(() => { if (popup) popup.style.display = 'none'; }, 500);
+            }
+          }}
+        >
+          
+          {/* Mobile Swipe Popup Hint Overlay */}
+          <div className="absolute inset-0 z-40 flex items-center justify-center bg-brand-black/60 backdrop-blur-sm rounded-3xl md:hidden transition-opacity duration-500 pointer-events-none" 
+               id="mobile-swipe-popup">
+            <div className="bg-brand-cream text-brand-black px-6 py-3 rounded-full flex flex-col items-center shadow-2xl animate-bounce border border-brand-black/10">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="mb-1"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <span className="text-xs font-bold uppercase tracking-widest">Swipe for more</span>
+            </div>
+          </div>
           {products.map((prod, idx) => {
             const isActive = activeIdx === idx;
             return (
