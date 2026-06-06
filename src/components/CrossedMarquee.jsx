@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
 const companies = ['APPLE', 'GOOGLE', 'AMAZON', 'META', 'MICROSOFT', 'NETFLIX', 'TESLA', 'STARBUCKS', 'NIKE'];
