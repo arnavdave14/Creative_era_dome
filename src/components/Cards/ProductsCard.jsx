@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 export default function ProductsCard() {
   // We have 4 products currently
@@ -75,7 +76,7 @@ export default function ProductsCard() {
       <div className="relative w-full h-screen bg-brand-black text-brand-cream overflow-hidden shadow-[0_-30px_60px_rgba(0,0,0,0.5)] z-30 shrink-0">
       
       {/* 4-Section Grid */}
-      <div className="w-full h-screen grid grid-cols-1 md:grid-cols-2 grid-rows-4 md:grid-rows-2 gap-2 md:gap-4 p-2 md:p-4">
+      <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 grid-rows-4 md:grid-rows-2 gap-2 md:gap-4 p-2 md:p-4">
         {products.map((p) => (
           <div 
             key={p.id}
@@ -112,8 +113,8 @@ export default function ProductsCard() {
         ))}
       </div>
 
-      {/* FLIP Modal Overlay */}
-      {activeId && modalRect && (
+      {/* FLIP Modal Overlay using React Portal to escape all CSS transforms */}
+      {activeId && modalRect && createPortal(
         <div 
           className="fixed inset-0 z-[100] pointer-events-none"
         >
@@ -187,7 +188,7 @@ export default function ProductsCard() {
 
           </div>
         </div>
-      )}
+      , document.body)}
 
     </div>
     </div>
