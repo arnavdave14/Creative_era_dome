@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function AmbientBackground() {
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#050505]">
+    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
 
       {/* Floating Glowing Orbs (Optimized with Radial Gradients for 60fps performance) */}
       <div className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] mix-blend-screen ambient-orb-1 pointer-events-none" 
