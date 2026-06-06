@@ -55,6 +55,7 @@ export default function Product() {
   const pinRef = useRef(null);
 
   useLayoutEffect(() => {
+    if (!containerRef.current) return;
     const ctx = gsap.context(() => {
       
       // Pin the whole viewport section while scrolling down (length - 1) * 100vh

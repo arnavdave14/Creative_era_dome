@@ -14,7 +14,7 @@ export default {
         }
       },
       fontFamily: {
-        drose: ['Drose', 'Playfair Display', 'serif'],
+        drose: ['"Bebas Neue"', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
       }
     },

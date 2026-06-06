@@ -8,6 +8,7 @@ export default function CinematicIntro({ preTitle, title, descTitle, descText, i
   const containerRef = useRef(null);
   
   useLayoutEffect(() => {
+    if (!containerRef.current) return;
     const ctx = gsap.context(() => {
       // Basic entry animation
       gsap.from('.ci-title-char', { 

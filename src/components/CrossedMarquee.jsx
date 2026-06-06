@@ -8,7 +8,8 @@ export default function CrossedMarquee() {
   const marquee2Ref = useRef(null);
   const containerRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (!containerRef.current) return;
     // Infinite scrolling marquee effect
     const ctx = gsap.context(() => {
       gsap.to(marquee1Ref.current, {

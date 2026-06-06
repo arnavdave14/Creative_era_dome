@@ -9,6 +9,7 @@ export default function AboutUs() {
   const containerRef = useRef(null);
 
   useLayoutEffect(() => {
+    if (!containerRef.current) return;
     const ctx = gsap.context(() => {
       
       const tl = gsap.timeline({

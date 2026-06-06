@@ -66,6 +66,7 @@ export default function Home() {
   }, []);
 
   useLayoutEffect(() => {
+    if (!containerRef.current) return;
     const ctx = gsap.context(() => {
       
       // 1. Initial Hero Animations

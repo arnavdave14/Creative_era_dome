@@ -53,6 +53,7 @@ export default function Gallery() {
   };
 
   useLayoutEffect(() => {
+    if (!containerRef.current) return;
     const ctx = gsap.context(() => {
       // Intro animations
       gsap.from('.gallery-title', { y: 30, opacity: 0, duration: 1, stagger: 0.1, ease: 'power3.out' });
