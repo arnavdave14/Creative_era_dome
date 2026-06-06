@@ -91,13 +91,11 @@ export default function ProductsCard() {
               </div>
             ))}
             
-            {/* Buttons (Static layer over the crossfading text) */}
-            <div className="absolute bottom-0 left-0 mt-8 flex items-center gap-4 pointer-events-auto">
-              <button onClick={() => setIsModalOpen(true)} className="bg-[#A8D0CE] text-brand-black font-bold text-[10px] md:text-[11px] tracking-[0.2em] px-8 py-4 rounded-full uppercase hover:bg-brand-cream transition-colors duration-300">
-                Explore Collection
-              </button>
-              <button onClick={() => setIsModalOpen(true)} className="w-12 h-12 rounded-full bg-[#A8D0CE] flex items-center justify-center text-brand-black hover:bg-brand-cream transition-colors duration-300">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="-rotate-45">
+            {/* Main CTA Button (Static layer over the crossfading text) */}
+            <div className="absolute bottom-0 left-0 mt-8 flex items-center pointer-events-auto">
+              <button onClick={() => setIsModalOpen(true)} className="group bg-[#A8D0CE] text-brand-black font-bold text-[10px] md:text-[11px] tracking-[0.2em] px-8 py-4 rounded-full uppercase hover:bg-brand-cream transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl hover:scale-105">
+                <span>View Product Details</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="-rotate-45 group-hover:rotate-0 transition-transform duration-300">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </button>
@@ -121,9 +119,6 @@ export default function ProductsCard() {
                <p className="text-[10px] md:text-xs font-bold tracking-widest uppercase mb-4 md:mb-6 max-w-[180px] leading-relaxed text-brand-black transition-colors duration-300">
                  ENGINEERED TO DELIVER CLARITY, DEPTH, AND CONTROL.
                </p>
-               <button onClick={() => setIsModalOpen(true)} className="border border-brand-black/30 rounded-full px-6 py-2 text-[10px] uppercase tracking-[0.2em] font-semibold hover:bg-brand-black hover:text-brand-cream transition-all duration-300">
-                 Discover
-               </button>
             </div>
           </div>
 
@@ -179,17 +174,7 @@ export default function ProductsCard() {
              <div className="absolute inset-0 bg-gradient-to-tr from-brand-black/30 via-transparent to-transparent pointer-events-none transition-colors duration-300" />
           </div>
 
-          {/* === TOP RIGHT CUTOUT === */}
-          <div className="absolute top-0 right-0 w-24 h-24 bg-brand-black transition-colors duration-300 rounded-bl-[2.5rem] z-20 flex items-center justify-center pt-2 pr-2">
-             <button onClick={() => setIsModalOpen(true)} className="w-14 h-14 rounded-full bg-[#A8D0CE] flex items-center justify-center text-brand-black hover:bg-brand-cream hover:scale-105 transition-all duration-300 shadow-xl cursor-pointer pointer-events-auto">
-               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="-rotate-45">
-                 <path d="M5 12h14M12 5l7 7-7 7"/>
-               </svg>
-             </button>
-          </div>
-          {/* Inward curves for Top Right */}
-          <div className="absolute top-[96px] right-0 w-8 h-8 bg-transparent rounded-tr-full shadow-[15px_-15px_0_15px_var(--color-brand-black)] transition-colors duration-300 z-20 pointer-events-none" />
-          <div className="absolute top-0 right-[96px] w-8 h-8 bg-transparent rounded-tr-full shadow-[15px_-15px_0_15px_var(--color-brand-black)] transition-colors duration-300 z-20 pointer-events-none" />
+
 
           {/* === MIDDLE LEFT CUTOUT (Vertical Navigation Pill) === */}
           <div className="absolute top-1/2 -translate-y-1/2 left-0 w-20 h-80 bg-brand-black transition-colors duration-300 rounded-r-[2.5rem] z-20 flex flex-col items-center justify-center pl-2">
