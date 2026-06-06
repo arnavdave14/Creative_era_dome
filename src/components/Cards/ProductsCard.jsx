@@ -180,9 +180,11 @@ export default function ProductsCard() {
           <div className="absolute top-1/2 -translate-y-1/2 left-0 w-20 h-80 bg-brand-black transition-colors duration-300 rounded-r-[2.5rem] z-20 flex flex-col items-center justify-center pl-2">
              
              {/* Vertical Label to indicate these are the products */}
-             <div className="absolute left-[88px] top-1/2 -translate-y-1/2 -rotate-90 origin-center flex items-center gap-3 opacity-60 pointer-events-none">
-               <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-cream whitespace-nowrap">Featured Products</span>
-               <div className="w-12 h-[1px] bg-brand-cream/50"></div>
+             <div className="absolute left-[92px] top-1/2 -translate-y-1/2 -rotate-90 origin-center flex items-center gap-3 pointer-events-none animate-pulse">
+               <span className="text-[12px] font-bold uppercase tracking-[0.5em] text-[#A8D0CE] whitespace-nowrap bg-[#1A1A1A]/80 px-6 py-2 rounded-full border border-[#A8D0CE]/30 backdrop-blur-md shadow-[0_0_20px_rgba(168,208,206,0.2)] flex items-center gap-3">
+                 Featured Collection
+                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="rotate-90"><path d="M5 12h14M12 5l7 7-7-7"/></svg>
+               </span>
              </div>
 
              {/* The Pill */}
@@ -234,38 +236,36 @@ export default function ProductsCard() {
               <div className="w-full md:w-1/2 flex flex-col justify-center gap-6">
                 
                 <div>
-                  <h4 className="text-[#A8D0CE] text-sm tracking-[0.2em] uppercase font-bold mb-2">Technical Specifications</h4>
+                  <h4 className="text-[#A8D0CE] text-sm tracking-[0.2em] uppercase font-bold mb-2">Software Capabilities</h4>
                   <p className="text-brand-cream/70 text-sm leading-relaxed mb-6">
-                    {products[activeIdx].desc} Experience unparalleled fidelity and flawless engineering with this meticulously crafted piece.
+                    {products[activeIdx].desc} Transform your digital presence with enterprise-grade architecture and award-winning creative design tailored for modern platforms.
                   </p>
                 </div>
 
+                {/* Dynamic Bento Box Grid (GSAP FLIP Style Inspiration) */}
                 <div className="grid grid-cols-2 gap-4 mb-4">
-                  <div className="bg-white/5 rounded-2xl p-4 border border-white/5">
-                    <div className="text-white/40 text-[10px] uppercase tracking-widest mb-1">Driver</div>
-                    <div className="text-white font-semibold text-sm">50mm Titanium</div>
+                  <div className="bg-gradient-to-br from-white/10 to-white/5 rounded-[2rem] p-5 border border-white/10 hover:scale-105 hover:border-[#A8D0CE]/50 hover:shadow-[0_0_30px_rgba(168,208,206,0.15)] transition-all duration-500 cursor-pointer group">
+                    <div className="text-[#A8D0CE]/70 text-[10px] uppercase tracking-widest mb-2 group-hover:text-[#A8D0CE] transition-colors">Architecture</div>
+                    <div className="text-white font-semibold text-sm">Scalable Cloud Native</div>
                   </div>
-                  <div className="bg-white/5 rounded-2xl p-4 border border-white/5">
-                    <div className="text-white/40 text-[10px] uppercase tracking-widest mb-1">Battery</div>
-                    <div className="text-white font-semibold text-sm">40 Hours Playback</div>
+                  <div className="bg-gradient-to-br from-white/10 to-white/5 rounded-[2rem] p-5 border border-white/10 hover:scale-105 hover:border-[#A8D0CE]/50 hover:shadow-[0_0_30px_rgba(168,208,206,0.15)] transition-all duration-500 cursor-pointer group">
+                    <div className="text-[#A8D0CE]/70 text-[10px] uppercase tracking-widest mb-2 group-hover:text-[#A8D0CE] transition-colors">Performance</div>
+                    <div className="text-white font-semibold text-sm">GSAP + React 18+</div>
                   </div>
-                  <div className="bg-white/5 rounded-2xl p-4 border border-white/5">
-                    <div className="text-white/40 text-[10px] uppercase tracking-widest mb-1">Connectivity</div>
-                    <div className="text-white font-semibold text-sm">Bluetooth 5.3 + Wired</div>
-                  </div>
-                  <div className="bg-white/5 rounded-2xl p-4 border border-white/5">
-                    <div className="text-white/40 text-[10px] uppercase tracking-widest mb-1">Weight</div>
-                    <div className="text-white font-semibold text-sm">240g Ultra-light</div>
+                  <div className="col-span-2 bg-gradient-to-r from-white/10 to-white/5 rounded-[2rem] p-6 border border-white/10 hover:scale-[1.02] hover:border-[#A8D0CE]/50 hover:shadow-[0_0_30px_rgba(168,208,206,0.15)] transition-all duration-500 cursor-pointer flex items-center justify-between group">
+                    <div>
+                      <div className="text-[#A8D0CE]/70 text-[10px] uppercase tracking-widest mb-2 group-hover:text-[#A8D0CE] transition-colors">Security & UX</div>
+                      <div className="text-white font-semibold text-sm">Zero-Trust & Smooth Micro-interactions</div>
+                    </div>
+                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#A8D0CE] group-hover:text-black transition-colors duration-500">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="-rotate-45 group-hover:rotate-0 transition-transform duration-500"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
                   </div>
                 </div>
 
-                <div className="mt-auto pt-6 border-t border-white/10 flex items-center justify-between">
-                  <div className="flex flex-col">
-                    <span className="text-white/50 text-[10px] uppercase tracking-widest">Price</span>
-                    <span className="text-white text-3xl font-light tracking-tighter">$299<span className="text-lg">.00</span></span>
-                  </div>
-                  <button className="bg-[#A8D0CE] text-brand-black px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_10px_30px_rgba(168,208,206,0.2)]">
-                    Pre-Order Now
+                <div className="mt-auto pt-6 border-t border-white/10 flex items-center justify-end">
+                  <button className="bg-[#A8D0CE] text-brand-black px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_10px_30px_rgba(168,208,206,0.2)]">
+                    Start Project
                   </button>
                 </div>
 
