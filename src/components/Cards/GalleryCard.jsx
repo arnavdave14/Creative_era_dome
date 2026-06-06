@@ -75,7 +75,7 @@ export default function GalleryCard() {
         <div className="w-full flex-1 min-h-0 md:h-[60vh] flex flex-col md:flex-row mb-2 md:mb-6 relative">
           
           {/* Left Text Content */}
-          <div className="w-full md:w-[45%] h-full relative z-30 pointer-events-none">
+          <div className="w-full md:w-[45%] h-[240px] md:h-full relative z-30 pointer-events-none shrink-0">
              
              {/* Stretched Wide Typography - TRUE CROSSFADE WRAPPER */}
              <div className="relative w-full h-full">
@@ -107,8 +107,8 @@ export default function GalleryCard() {
                      </h2>
                    </div>
                    
-                   <div className="pb-8">
-                     <p className="font-inter text-sm md:text-base leading-relaxed text-brand-black/80 transition-colors duration-300 max-w-sm font-medium mb-8">
+                   <div className="pb-0 md:pb-8">
+                     <p className="font-inter text-sm md:text-base leading-relaxed text-brand-black/80 transition-colors duration-300 max-w-sm font-medium mb-2 md:mb-8">
                        {prod.desc}
                      </p>
                    </div>
@@ -118,7 +118,7 @@ export default function GalleryCard() {
           </div>
 
           {/* Right Image Container */}
-          <div className="w-full md:w-[55%] h-full relative z-10 hidden md:block">
+          <div className="w-full md:w-[55%] flex-1 md:h-full relative z-10 mt-2 md:mt-0">
              
              {/* Main Image Base - TRUE CROSSFADE */}
              <div className="w-full h-full bg-brand-cream rounded-[2.5rem] overflow-hidden relative shadow-lg transition-colors duration-300">
@@ -159,6 +159,14 @@ export default function GalleryCard() {
           </div>
         </div>
 
+        {/* Mobile Swipe Hint */}
+        <div className="w-full flex justify-between items-end md:hidden px-2 mb-1 shrink-0">
+          <div className="text-[10px] font-bold text-brand-black/40 tracking-wider">GALLERY COLLECTION</div>
+          <span className="text-[10px] text-brand-orange tracking-widest uppercase flex items-center gap-1 animate-pulse font-bold">
+            Swipe <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+
         {/* Bottom Horizontal Scrolling Gallery Cards */}
         {/* Added visible custom scrollbar tracking by removing 'no-scrollbar' and added explicit padding */}
         <div className="w-full shrink-0 h-[26vh] md:h-[22vh] flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 relative z-30 pb-4 pt-2 items-center" style={{ scrollbarWidth: 'thin' }}>
@@ -169,7 +177,7 @@ export default function GalleryCard() {
                 key={idx} 
                 onClick={() => setActiveIdx(idx)}
                 // Fixed minimum width ensures the cards peek out, inviting the user to scroll
-                className={`min-w-[85vw] md:min-w-[320px] shrink-0 h-full bg-brand-cream transition-colors duration-300 rounded-3xl p-3 flex gap-4 cursor-pointer group snap-start
+                className={`min-w-[75vw] md:min-w-[320px] shrink-0 h-full bg-brand-cream transition-colors duration-300 rounded-3xl p-3 flex gap-4 cursor-pointer group snap-start
                   ${isActive ? 'border-2 border-brand-orange shadow-xl -translate-y-2' : 'border border-brand-black/5 hover:shadow-lg hover:-translate-y-1'}`}
               >
                 {/* Card Image */}
