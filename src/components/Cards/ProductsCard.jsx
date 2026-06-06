@@ -127,27 +127,37 @@ export default function ProductsCard() {
             </div>
           </div>
 
-          {/* MOBILE ONLY: Cool Expanding Dynamic Dock */}
-          <div className="md:hidden absolute bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 p-2 bg-[#1A1A1A]/70 backdrop-blur-xl rounded-full border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] overflow-x-auto w-auto max-w-[95vw] snap-x snap-mandatory pointer-events-auto" style={{ scrollbarWidth: 'none' }}>
-             {products.map((p, i) => {
-               const isActive = i === activeIdx;
-               return (
-                 <div 
-                   key={`mob-thumb-${i}`}
-                   onClick={() => setActiveIdx(i)}
-                   className={`relative flex items-center gap-2 rounded-full overflow-hidden cursor-pointer transition-all duration-500 ease-out shrink-0 snap-center ${isActive ? 'w-[140px] h-12 bg-white/10 pl-1 pr-4 shadow-inner' : 'w-10 h-10 bg-transparent hover:bg-white/5'}`}
-                 >
-                    <div className={`rounded-full overflow-hidden shrink-0 transition-all duration-500 ${isActive ? 'w-10 h-10 border-2 border-[#A8D0CE]' : 'w-full h-full opacity-60'}`}>
-                      <img src={p.thumb} className="w-full h-full object-cover" alt="thumbnail" />
-                    </div>
-                    {isActive && (
-                      <span className="text-[10px] font-bold text-white uppercase tracking-wider truncate animate-pulse">
-                        {p.title[0]}
-                      </span>
-                    )}
-                 </div>
-               )
-             })}
+          {/* MOBILE ONLY: Cool Expanding Dynamic Dock Wrapper */}
+          <div className="md:hidden absolute bottom-4 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-2 pointer-events-auto max-w-[95vw]">
+             
+             {/* Highlight Label so user knows these are the products */}
+             <div className="bg-[#A8D0CE]/20 border border-[#A8D0CE]/30 backdrop-blur-md text-[#A8D0CE] px-4 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] shadow-[0_4px_15px_rgba(0,0,0,0.5)] flex items-center gap-2 animate-bounce">
+               <span>Browse Collection</span>
+               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+             </div>
+
+             {/* The Dock */}
+             <div className="flex items-center gap-2 p-2 bg-[#1A1A1A]/70 backdrop-blur-xl rounded-full border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] overflow-x-auto w-full snap-x snap-mandatory" style={{ scrollbarWidth: 'none' }}>
+               {products.map((p, i) => {
+                 const isActive = i === activeIdx;
+                 return (
+                   <div 
+                     key={`mob-thumb-${i}`}
+                     onClick={() => setActiveIdx(i)}
+                     className={`relative flex items-center gap-2 rounded-full overflow-hidden cursor-pointer transition-all duration-500 ease-out shrink-0 snap-center ${isActive ? 'w-[140px] h-12 bg-white/10 pl-1 pr-4 shadow-inner' : 'w-10 h-10 bg-transparent hover:bg-white/5'}`}
+                   >
+                      <div className={`rounded-full overflow-hidden shrink-0 transition-all duration-500 ${isActive ? 'w-10 h-10 border-2 border-[#A8D0CE]' : 'w-full h-full opacity-60'}`}>
+                        <img src={p.thumb} className="w-full h-full object-cover" alt="thumbnail" />
+                      </div>
+                      {isActive && (
+                        <span className="text-[10px] font-bold text-white uppercase tracking-wider truncate animate-pulse">
+                          {p.title[0]}
+                        </span>
+                      )}
+                   </div>
+                 )
+               })}
+             </div>
           </div>
 
         </div>
@@ -183,8 +193,15 @@ export default function ProductsCard() {
 
           {/* === MIDDLE LEFT CUTOUT (Vertical Navigation Pill) === */}
           <div className="absolute top-1/2 -translate-y-1/2 left-0 w-20 h-80 bg-brand-black transition-colors duration-300 rounded-r-[2.5rem] z-20 flex flex-col items-center justify-center pl-2">
+             
+             {/* Vertical Label to indicate these are the products */}
+             <div className="absolute left-[88px] top-1/2 -translate-y-1/2 -rotate-90 origin-center flex items-center gap-3 opacity-60 pointer-events-none">
+               <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-cream whitespace-nowrap">Featured Products</span>
+               <div className="w-12 h-[1px] bg-brand-cream/50"></div>
+             </div>
+
              {/* The Pill */}
-             <div className="w-14 h-72 bg-brand-black transition-colors duration-300 rounded-full flex flex-col items-center justify-between py-2 shadow-inner pointer-events-auto border border-brand-cream/5">
+             <div className="w-14 h-72 bg-brand-black transition-colors duration-300 rounded-full flex flex-col items-center justify-between py-2 shadow-inner pointer-events-auto border border-brand-cream/5 relative z-10">
                {products.map((p, i) => (
                  <div 
                    key={`pill-${i}`} 
