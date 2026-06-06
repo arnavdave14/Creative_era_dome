@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Drose';
+  src: url('/fonts/Drose.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --color-brand-orange: #FF5E00;
+  --color-brand-cream: #F9F6F0;
+  --color-brand-black: #121212;
+  
+  background-color: var(--color-brand-black);
+  color: var(--color-brand-cream);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark {
+  --color-brand-cream: #121212;
+  --color-brand-black: #F9F6F0;
+}
+
+/* Hide default cursor for our custom interactive cursor */
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+  a, button, input, textarea, select {
+    cursor: none;
+  }
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Base Setup */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: theme('fontFamily.inter');
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: theme('fontFamily.drose');
+}
+
+/* Utility to hide native scrollbar for a cleaner look */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Glassmorphism & Cinematic Utilities */
+.glass-panel {
+  background: rgba(18, 18, 18, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(249, 246, 240, 0.05);
+}
+
+.glow-orange {
+  box-shadow: 0 0 40px rgba(255, 94, 0, 0.4);
+}
+
+.glow-text {
+  text-shadow: 0 0 20px rgba(249, 246, 240, 0.3);
+}
+
+.motion-blur-subtle {
+  filter: blur(0.5px);
+  transition: filter 0.3s ease;
+}
+.motion-blur-subtle:hover {
+  filter: blur(0px);
+}
+
+/* Ambient Floating Background Animations */
+@keyframes float-1 {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(10vw, -15vh) scale(1.2); }
+  66% { transform: translate(-10vw, 15vh) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes float-2 {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-15vw, 10vh) scale(1.1); }
+  66% { transform: translate(15vw, -10vh) scale(0.8); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes float-3 {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(10vw, 15vh) scale(0.9); }
+  66% { transform: translate(-15vw, -15vh) scale(1.1); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+.ambient-orb-1 {
+  animation: float-1 25s infinite ease-in-out;
+}
+.ambient-orb-2 {
+  animation: float-2 30s infinite ease-in-out reverse;
+}
+.ambient-orb-3 {
+  animation: float-3 28s infinite ease-in-out;
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    body { background: #0d0d0d; margin: 0; color: white; display: flex; align-items: center; justify-content: center; height: 100vh; }
+    .font-drose { font-family: Impact, sans-serif; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div style="position: relative; width: 1000px; height: 350px;">
+    <svg width="0" height="0" class="absolute">
+      <defs>
+        <clipPath id="creativeClip">
+          <!-- Text must be inside the bounding box of the video -->
+          <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="300" class="font-drose">ERA</text>
+        </clipPath>
+      </defs>
+    </svg>
+    <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; clip-path: url(#creativeClip);">
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+    </video>
+  </div>
+</body>
+</html>

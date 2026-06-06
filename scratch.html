@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    body { background: #0d0d0d; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; color: white; }
+    .text-video {
+      position: relative;
+      font-size: 200px;
+      font-family: sans-serif;
+      font-weight: bold;
+    }
+    .text-video video {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
+      z-index: -1;
+    }
+    .text-video span {
+      background: white;
+      color: black;
+      mix-blend-mode: screen;
+    }
+  </style>
+</head>
+<body>
+  <div class="text-video">
+    <video src="https://www.w3schools.com/html/mov_bbb.mp4" autoplay loop muted></video>
+    <span style="background: black; color: white; mix-blend-mode: multiply;">ERA</span>
+  </div>
+</body>
+</html>
