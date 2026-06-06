@@ -85,6 +85,7 @@ function MagneticButton({ children, className = "" }) {
 // Scroll Progress Indicator
 function ScrollProgress() {
   const progressRef = useRef(null);
+  const textRef = useRef(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -95,18 +96,57 @@ function ScrollProgress() {
           trigger: document.body,
           start: "top top",
           end: "bottom bottom",
-          scrub: 0.3
+          scrub: 0.3,
+          onUpdate: (self) => {
+            if (textRef.current) {
+              textRef.current.innerText = `${Math.round(self.progress * 100)}%`;
+            }
+          }
         }
       });
     });
     return () => ctx.revert();
   }, []);
 
+  const scrollToTop = () => {
+    window.dispatchEvent(new CustomEvent('lenis-scroll', { detail: 0 }));
+  };
+
+  const scrollDown = () => {
+    window.dispatchEvent(new CustomEvent('lenis-scroll', { detail: window.scrollY + window.innerHeight }));
+  };
+
   return (
-    <div 
-      ref={progressRef}
-      className="fixed top-0 left-0 h-1 bg-brand-orange w-full z-[90] origin-left scale-x-0"
-    />
+    <>
+      <div 
+        ref={progressRef}
+        className="fixed top-0 left-0 h-1 bg-brand-orange w-full z-[90] origin-left scale-x-0"
+      />
+      
+      {/* Corner Controls */}
+      <div className="fixed bottom-6 md:bottom-8 left-6 md:left-8 right-6 md:right-8 z-[90] flex justify-between items-center pointer-events-none text-white mix-blend-difference transition-colors duration-300">
+        
+        {/* Left: Top Arrow & Percentage */}
+        <div className="flex items-center gap-4 pointer-events-auto">
+          <MagneticButton>
+            <button onClick={scrollToTop} className="w-10 h-10 md:w-12 md:h-12 border border-brand-cream/30 rounded-full flex items-center justify-center hover:bg-brand-cream hover:text-brand-black transition-all">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+            </button>
+          </MagneticButton>
+          <span ref={textRef} className="font-drose text-xl md:text-2xl tracking-widest mt-1">0%</span>
+        </div>
+
+        {/* Right: Down Arrow */}
+        <div className="pointer-events-auto">
+          <MagneticButton>
+            <button onClick={scrollDown} className="w-10 h-10 md:w-12 md:h-12 border border-brand-cream/30 rounded-full flex items-center justify-center hover:bg-brand-cream hover:text-brand-black transition-all">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+            </button>
+          </MagneticButton>
+        </div>
+
+      </div>
+    </>
   );
 }
 
@@ -193,11 +233,6 @@ function Navigation({ isDarkMode, toggleTheme }) {
       {/* Right Actions */}
       <div className="flex items-center gap-6 text-sm font-inter">
         <MagneticButton>
-          <button className="px-6 py-2 border border-brand-cream/30 rounded-full hover:bg-brand-cream hover:text-brand-black transition-all">
-            Sign In
-          </button>
-        </MagneticButton>
-        <MagneticButton>
           <button onClick={toggleTheme} className="hover:text-brand-orange transition-colors" aria-label="Toggle Theme">
             {isDarkMode ? (
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
@@ -205,11 +240,6 @@ function Navigation({ isDarkMode, toggleTheme }) {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             )}
           </button>
-        </MagneticButton>
-        <MagneticButton>
-          <div className="w-8 h-8 rounded-full bg-brand-cream overflow-hidden">
-            <img src="https://ui-avatars.com/api/?name=User&background=random" alt="User" className="w-full h-full object-cover" />
-          </div>
         </MagneticButton>
       </div>
     </nav>
