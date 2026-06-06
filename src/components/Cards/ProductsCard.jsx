@@ -47,6 +47,7 @@ export default function ProductsCard() {
   ];
 
   const [activeIdx, setActiveIdx] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const throttleRef = useRef(false);
 
   return (
@@ -92,10 +93,10 @@ export default function ProductsCard() {
             
             {/* Buttons (Static layer over the crossfading text) */}
             <div className="absolute bottom-0 left-0 mt-8 flex items-center gap-4 pointer-events-auto">
-              <button className="bg-[#A8D0CE] text-brand-black font-bold text-[10px] md:text-[11px] tracking-[0.2em] px-8 py-4 rounded-full uppercase hover:bg-brand-cream transition-colors duration-300">
+              <button onClick={() => setIsModalOpen(true)} className="bg-[#A8D0CE] text-brand-black font-bold text-[10px] md:text-[11px] tracking-[0.2em] px-8 py-4 rounded-full uppercase hover:bg-brand-cream transition-colors duration-300">
                 Explore Collection
               </button>
-              <button className="w-12 h-12 rounded-full bg-[#A8D0CE] flex items-center justify-center text-brand-black hover:bg-brand-cream transition-colors duration-300">
+              <button onClick={() => setIsModalOpen(true)} className="w-12 h-12 rounded-full bg-[#A8D0CE] flex items-center justify-center text-brand-black hover:bg-brand-cream transition-colors duration-300">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="-rotate-45">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
@@ -120,7 +121,7 @@ export default function ProductsCard() {
                <p className="text-[10px] md:text-xs font-bold tracking-widest uppercase mb-4 md:mb-6 max-w-[180px] leading-relaxed text-brand-black transition-colors duration-300">
                  ENGINEERED TO DELIVER CLARITY, DEPTH, AND CONTROL.
                </p>
-               <button className="border border-brand-black/30 rounded-full px-6 py-2 text-[10px] uppercase tracking-[0.2em] font-semibold hover:bg-brand-black hover:text-brand-cream transition-all duration-300">
+               <button onClick={() => setIsModalOpen(true)} className="border border-brand-black/30 rounded-full px-6 py-2 text-[10px] uppercase tracking-[0.2em] font-semibold hover:bg-brand-black hover:text-brand-cream transition-all duration-300">
                  Discover
                </button>
             </div>
@@ -170,7 +171,7 @@ export default function ProductsCard() {
 
           {/* === TOP RIGHT CUTOUT === */}
           <div className="absolute top-0 right-0 w-24 h-24 bg-brand-black transition-colors duration-300 rounded-bl-[2.5rem] z-20 flex items-center justify-center pt-2 pr-2">
-             <button className="w-14 h-14 rounded-full bg-[#A8D0CE] flex items-center justify-center text-brand-black hover:bg-brand-cream hover:scale-105 transition-all duration-300 shadow-xl cursor-pointer pointer-events-auto">
+             <button onClick={() => setIsModalOpen(true)} className="w-14 h-14 rounded-full bg-[#A8D0CE] flex items-center justify-center text-brand-black hover:bg-brand-cream hover:scale-105 transition-all duration-300 shadow-xl cursor-pointer pointer-events-auto">
                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="-rotate-45">
                  <path d="M5 12h14M12 5l7 7-7 7"/>
                </svg>
@@ -202,6 +203,75 @@ export default function ProductsCard() {
 
         </div>
         
+        {/* MODAL OVERLAY */}
+        {isModalOpen && (
+          <div className="absolute inset-0 z-[100] bg-brand-black/80 backdrop-blur-2xl flex items-center justify-center p-4 md:p-12 animate-fade-in">
+            {/* Close Button */}
+            <button 
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-6 right-6 w-12 h-12 bg-brand-cream text-brand-black rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 z-50 shadow-2xl"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+
+            <div className="w-full max-w-4xl h-full max-h-[80vh] bg-brand-cream/5 border border-brand-cream/10 rounded-[3rem] p-6 md:p-12 flex flex-col md:flex-row gap-8 overflow-y-auto shadow-[0_30px_100px_rgba(0,0,0,0.8)] pointer-events-auto">
+              
+              {/* Left Side Modal Image */}
+              <div className="w-full md:w-1/2 h-64 md:h-full bg-brand-black rounded-[2rem] overflow-hidden relative border border-brand-cream/10 shrink-0">
+                <img src={products[activeIdx].heroImg} alt="Detail" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 to-transparent" />
+                <div className="absolute bottom-6 left-6 pr-6">
+                  <h3 className="text-2xl md:text-4xl font-sans font-bold text-brand-cream leading-none tracking-tighter uppercase mb-2">
+                    {products[activeIdx].title.join(' ')}
+                  </h3>
+                  <p className="text-xs text-brand-cream/60 font-medium tracking-widest uppercase">Premium Edition</p>
+                </div>
+              </div>
+
+              {/* Right Side Dummy Data Specs */}
+              <div className="w-full md:w-1/2 flex flex-col justify-center gap-6">
+                
+                <div>
+                  <h4 className="text-[#A8D0CE] text-sm tracking-[0.2em] uppercase font-bold mb-2">Technical Specifications</h4>
+                  <p className="text-brand-cream/70 text-sm leading-relaxed mb-6">
+                    {products[activeIdx].desc} Experience unparalleled fidelity and flawless engineering with this meticulously crafted piece.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="bg-white/5 rounded-2xl p-4 border border-white/5">
+                    <div className="text-white/40 text-[10px] uppercase tracking-widest mb-1">Driver</div>
+                    <div className="text-white font-semibold text-sm">50mm Titanium</div>
+                  </div>
+                  <div className="bg-white/5 rounded-2xl p-4 border border-white/5">
+                    <div className="text-white/40 text-[10px] uppercase tracking-widest mb-1">Battery</div>
+                    <div className="text-white font-semibold text-sm">40 Hours Playback</div>
+                  </div>
+                  <div className="bg-white/5 rounded-2xl p-4 border border-white/5">
+                    <div className="text-white/40 text-[10px] uppercase tracking-widest mb-1">Connectivity</div>
+                    <div className="text-white font-semibold text-sm">Bluetooth 5.3 + Wired</div>
+                  </div>
+                  <div className="bg-white/5 rounded-2xl p-4 border border-white/5">
+                    <div className="text-white/40 text-[10px] uppercase tracking-widest mb-1">Weight</div>
+                    <div className="text-white font-semibold text-sm">240g Ultra-light</div>
+                  </div>
+                </div>
+
+                <div className="mt-auto pt-6 border-t border-white/10 flex items-center justify-between">
+                  <div className="flex flex-col">
+                    <span className="text-white/50 text-[10px] uppercase tracking-widest">Price</span>
+                    <span className="text-white text-3xl font-light tracking-tighter">$299<span className="text-lg">.00</span></span>
+                  </div>
+                  <button className="bg-[#A8D0CE] text-brand-black px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_10px_30px_rgba(168,208,206,0.2)]">
+                    Pre-Order Now
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        )}
+
       </div>
     </div>
   );
