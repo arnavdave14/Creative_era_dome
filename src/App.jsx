@@ -113,7 +113,7 @@ function ScrollProgress() {
   };
 
   const scrollDown = () => {
-    window.dispatchEvent(new CustomEvent('lenis-scroll', { detail: window.scrollY + window.innerHeight }));
+    window.dispatchEvent(new CustomEvent('lenis-scroll', { detail: document.body.scrollHeight }));
   };
 
   return (
