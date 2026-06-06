@@ -2,7 +2,13 @@ import React from 'react';
 
 export default function ContactCard() {
   return (
-      <div className="w-full min-h-[100dvh] shrink-0 flex flex-col items-center justify-center p-8 bg-brand-black text-brand-cream transition-colors duration-300 relative z-30 shadow-[0_-30px_60px_rgba(0,0,0,0.5)] overflow-hidden pt-24 md:pt-32">
+    <div className="card-scroll-wrapper absolute top-0 left-0 w-full opacity-0 invisible z-20" style={{ height: '200vh' }}>
+      
+      {/* Spacer for Intro Page */}
+      <div className="w-full h-screen pointer-events-none" />
+
+      {/* Actual Content Section */}
+      <div className="w-full h-screen shrink-0 flex flex-col items-center justify-center p-8 bg-brand-black text-brand-cream transition-colors duration-300 relative z-30 shadow-[0_-30px_60px_rgba(0,0,0,0.5)] overflow-hidden">
         
         <h2 className="text-[10vw] lg:text-[6vw] font-drose leading-none uppercase mb-12 text-center text-brand-cream transition-colors duration-300">Let's Connect</h2>
         
@@ -24,5 +30,6 @@ export default function ContactCard() {
         </div>
 
       </div>
+    </div>
   );
 }

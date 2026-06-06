@@ -2,10 +2,16 @@ import React from 'react';
 
 export default function AboutUsCard() {
   return (
-    <div className="w-full min-h-[100dvh] bg-brand-black transition-colors duration-300 pt-32 pb-12 md:pt-40 md:pb-24 flex flex-col">
+    <div className="card-scroll-wrapper absolute top-0 left-0 w-full opacity-0 invisible z-20" style={{ height: '200vh' }}>
       
-      {/* Giant Top Title */}
-      <div className="w-full px-4 mb-12 md:mb-16 shrink-0 mt-8">
+      {/* Spacer for Intro Page */}
+      <div className="w-full h-screen pointer-events-none" />
+
+      {/* Actual Content (Editorial Layout) */}
+      <div className="w-full h-screen overflow-y-auto md:overflow-hidden bg-brand-black transition-colors duration-300 pt-6 pb-12 md:pt-12 md:pb-24 relative shadow-[0_-30px_60px_rgba(0,0,0,0.8)] z-30 flex flex-col">
+        
+        {/* Giant Top Title */}
+        <div className="w-full px-4 mb-6 md:mb-12 shrink-0">
           <h1 className="w-full text-center font-drose text-[18vw] leading-[0.75] text-brand-cream tracking-tighter transition-colors duration-300">
             OUR ETHOS
           </h1>
@@ -66,6 +72,7 @@ export default function AboutUsCard() {
 
         </div>
 
+      </div>
     </div>
   );
 }

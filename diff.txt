@@ -1,0 +1,316 @@
+diff --git a/src/components/Cards/AboutUsCard.jsx b/src/components/Cards/AboutUsCard.jsx
+index a72eddb..2d59ea3 100644
+--- a/src/components/Cards/AboutUsCard.jsx
++++ b/src/components/Cards/AboutUsCard.jsx
+@@ -2,10 +2,16 @@ import React from 'react';
+ 
+ export default function AboutUsCard() {
+   return (
+-    <div className="w-full min-h-[100dvh] bg-brand-black transition-colors duration-300 pt-32 pb-12 md:pt-40 md:pb-24 flex flex-col">
++    <div className="card-scroll-wrapper absolute top-0 left-0 w-full opacity-0 invisible z-20" style={{ height: '200vh' }}>
+       
+-      {/* Giant Top Title */}
+-      <div className="w-full px-4 mb-12 md:mb-16 shrink-0 mt-8">
++      {/* Spacer for Intro Page */}
++      <div className="w-full h-screen pointer-events-none" />
++
++      {/* Actual Content (Editorial Layout) */}
++      <div className="w-full h-screen overflow-y-auto md:overflow-hidden bg-brand-black transition-colors duration-300 pt-6 pb-12 md:pt-12 md:pb-24 relative shadow-[0_-30px_60px_rgba(0,0,0,0.8)] z-30 flex flex-col">
++        
++        {/* Giant Top Title */}
++        <div className="w-full px-4 mb-6 md:mb-12 shrink-0">
+           <h1 className="w-full text-center font-drose text-[18vw] leading-[0.75] text-brand-cream tracking-tighter transition-colors duration-300">
+             OUR ETHOS
+           </h1>
+@@ -66,6 +72,7 @@ export default function AboutUsCard() {
+ 
+         </div>
+ 
++      </div>
+     </div>
+   );
+ }
+diff --git a/src/components/Cards/ContactCard.jsx b/src/components/Cards/ContactCard.jsx
+index 36fdd8d..2c9f524 100644
+--- a/src/components/Cards/ContactCard.jsx
++++ b/src/components/Cards/ContactCard.jsx
+@@ -2,7 +2,13 @@ import React from 'react';
+ 
+ export default function ContactCard() {
+   return (
+-      <div className="w-full min-h-[100dvh] shrink-0 flex flex-col items-center justify-center p-8 bg-brand-black text-brand-cream transition-colors duration-300 relative z-30 shadow-[0_-30px_60px_rgba(0,0,0,0.5)] overflow-hidden pt-24 md:pt-32">
++    <div className="card-scroll-wrapper absolute top-0 left-0 w-full opacity-0 invisible z-20" style={{ height: '200vh' }}>
++      
++      {/* Spacer for Intro Page */}
++      <div className="w-full h-screen pointer-events-none" />
++
++      {/* Actual Content Section */}
++      <div className="w-full h-screen shrink-0 flex flex-col items-center justify-center p-8 bg-brand-black text-brand-cream transition-colors duration-300 relative z-30 shadow-[0_-30px_60px_rgba(0,0,0,0.5)] overflow-hidden">
+         
+         <h2 className="text-[10vw] lg:text-[6vw] font-drose leading-none uppercase mb-12 text-center text-brand-cream transition-colors duration-300">Let's Connect</h2>
+         
+@@ -24,5 +30,6 @@ export default function ContactCard() {
+         </div>
+ 
+       </div>
++    </div>
+   );
+ }
+diff --git a/src/components/Cards/GalleryCard.jsx b/src/components/Cards/GalleryCard.jsx
+index fc4643d..ee6fdcb 100644
+--- a/src/components/Cards/GalleryCard.jsx
++++ b/src/components/Cards/GalleryCard.jsx
+@@ -63,7 +63,13 @@ export default function GalleryCard() {
+   const [activeIdx, setActiveIdx] = useState(0);
+ 
+   return (
+-      <div className="w-full h-[100dvh] bg-brand-cream text-brand-black transition-colors duration-300 p-4 pt-24 md:px-12 md:pt-32 md:pb-6 flex flex-col relative shadow-[0_-30px_60px_rgba(0,0,0,0.5)] z-30 overflow-hidden">
++    <div className="card-scroll-wrapper absolute top-0 left-0 w-full opacity-0 invisible z-20" style={{ height: '200vh' }}>
++      
++      {/* Spacer for Intro Page */}
++      <div className="w-full h-screen pointer-events-none" />
++
++      {/* Actual Content - Hardcoded vh to prevent overflowing screen */}
++      <div className="w-full h-screen bg-brand-cream text-brand-black transition-colors duration-300 p-4 md:px-12 md:pt-16 md:pb-6 flex flex-col relative shadow-[0_-30px_60px_rgba(0,0,0,0.5)] z-30 overflow-hidden">
+ 
+         {/* Top Split Area - flexible height on mobile to leave room for bottom cards */}
+         <div className="w-full flex-1 min-h-0 md:h-[60vh] flex flex-col md:flex-row mb-2 md:mb-6 relative">
+@@ -200,5 +206,6 @@ export default function GalleryCard() {
+         </div>
+ 
+       </div>
++    </div>
+   );
+ }
+diff --git a/src/components/Cards/ProductsCard.jsx b/src/components/Cards/ProductsCard.jsx
+index 0ac3ffe..8da4106 100644
+--- a/src/components/Cards/ProductsCard.jsx
++++ b/src/components/Cards/ProductsCard.jsx
+@@ -93,8 +93,14 @@ export default function ProductsCard() {
+   };
+ 
+   return (
++    <div className="card-scroll-wrapper absolute top-0 left-0 w-full opacity-0 invisible z-20" style={{ height: '200vh' }}>
++      
++      {/* Spacer for Intro Page */}
++      <div className="w-full h-screen pointer-events-none" />
++
++      {/* Actual Content */}
+       <div 
+-        className="w-full h-[100dvh] bg-brand-black text-brand-cream transition-colors duration-300 p-4 md:p-8 flex flex-col md:flex-row gap-6 relative shadow-[0_-30px_60px_rgba(0,0,0,0.5)] z-30 overflow-hidden pt-24 md:pt-32"
++        className="w-full h-screen bg-brand-black text-brand-cream transition-colors duration-300 p-4 md:p-8 flex flex-col md:flex-row gap-6 relative shadow-[0_-30px_60px_rgba(0,0,0,0.5)] z-30 overflow-hidden"
+         onWheel={handleWheel}
+         onTouchStart={handleTouchStart}
+         onTouchEnd={handleTouchEnd}
+@@ -220,5 +226,6 @@ export default function ProductsCard() {
+         </div>
+         
+       </div>
++    </div>
+   );
+ }
+diff --git a/src/pages/Home.jsx b/src/pages/Home.jsx
+index 7caf3e2..003047c 100644
+--- a/src/pages/Home.jsx
++++ b/src/pages/Home.jsx
+@@ -58,17 +58,6 @@ gsap.registerPlugin(ScrollTrigger);
+ export default function Home() {
+   const containerRef = useRef(null);
+   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+-  const [expandedCard, setExpandedCard] = useState(null);
+-
+-  const toggleCard = (index) => {
+-    if (index !== null) {
+-      setExpandedCard(index);
+-      document.body.style.overflow = 'hidden';
+-    } else {
+-      setExpandedCard(null);
+-      document.body.style.overflow = 'auto';
+-    }
+-  };
+ 
+   useEffect(() => {
+     const handleResize = () => setIsMobile(window.innerWidth < 768);
+@@ -103,13 +92,13 @@ export default function Home() {
+         "-=1.5"
+       );
+ 
+-      // 2. Master Scroll Timeline (Horizontal Panning)
++      // 2. Master Scroll Timeline (Horizontal + Fullscreen FLIP expansion)
+       const masterTl = gsap.timeline({
+         scrollTrigger: {
+           id: 'masterScroll',
+           trigger: '.pin-wrapper',
+           start: 'top top',
+-          end: () => `+=${window.innerWidth * 3}`, // Scroll area for 4 cards
++          end: '+=16000', // Massive scroll area to fit 4 cards + their vertical content
+           scrub: 1, 
+           pin: true,
+           anticipatePin: 1,
+@@ -122,10 +111,22 @@ export default function Home() {
+       }, 0);
+ 
+       const cards = gsap.utils.toArray('.story-card');
+-      
++      const innerScrolls = gsap.utils.toArray('.card-scroll-wrapper');
++      const backgrounds = gsap.utils.toArray('.card-bg');
++      const textTitles = gsap.utils.toArray('.card-title');
++
+       let currentTime = 1; // Start sequence after hero fade out
+ 
+       cards.forEach((card, i) => {
++        const innerScroll = innerScrolls[i];
++        const bg = backgrounds[i];
++        const title = textTitles[i];
++        
++        // Ensure innerScroll height is available (temporarily un-hide if needed)
++        // We know they are rendered, but hidden via GSAP autoAlpha. We can read scrollHeight.
++        const scrollDistance = Math.max(0, innerScroll.scrollHeight - window.innerHeight);
++        const verticalScrollDuration = scrollDistance > 0 ? (scrollDistance / window.innerHeight) * 2 : 0; 
++        
+         // If it's the first card, we need to pan it in from 100vw (after hero fades)
+         if (i === 0) {
+           masterTl.to(cards, {
+@@ -162,6 +163,87 @@ export default function Home() {
+ 
+         // Add label for Navigation
+         masterTl.addLabel(`expand-${sections[i].id}`, currentTime);
++
++        // Bring the expanding card to the absolute front
++        masterTl.set(card, { zIndex: 50 }, currentTime);
++
++        // B. Expand Card to Fullscreen (GSAP FLIP simulation for robust scrub)
++        masterTl.to(card, {
++          width: '100vw',
++          height: '100vh',
++          borderRadius: '0px',
++          ease: "power2.inOut",
++          duration: 1.5
++        }, currentTime);
++        
++        // Reset background image constraints so it perfectly fills the fullscreen
++        masterTl.to(bg, {
++          width: '100%',
++          left: '0%',
++          xPercent: 0,
++          ease: "power2.inOut",
++          duration: 1.5
++        }, currentTime);
++
++        currentTime += 1.5;
++
++        // C. Reveal Vertical Storytelling Content
++        masterTl.to(innerScroll, {
++          autoAlpha: 1,
++          duration: 0.5
++        }, currentTime);
++
++        // Animate content titles natively
++        const titleReveal = innerScroll.querySelector('.title-reveal');
++        if (titleReveal) {
++          masterTl.to(titleReveal, {
++            autoAlpha: 1,
++            y: 0,
++            duration: 1,
++            ease: "power3.out"
++          }, currentTime);
++        }
++
++        currentTime += 1;
++
++        // D. Vertical Scroll inside the expanded card
++        if (scrollDistance > 0) {
++          masterTl.to(innerScroll, {
++            y: -scrollDistance,
++            ease: "none",
++            duration: verticalScrollDuration
++          }, currentTime);
++          currentTime += verticalScrollDuration;
++        }
++
++        // Add a slight pause at the end of the content before closing
++        currentTime += 0.5;
++
++        // E. Collapse Card back to Horizontal Gallery State
++        masterTl.to(innerScroll, {
++          autoAlpha: 0,
++          duration: 0.5
++        }, currentTime);
++        
++        masterTl.to(card, {
++          width: '35vw',
++          height: '60vh',
++          borderRadius: '2rem',
++          ease: "power2.inOut",
++          duration: 1.5
++        }, currentTime);
++
++        // Reset z-index after collapsing
++        masterTl.set(card, { zIndex: 10 }, currentTime + 1.5);
++
++        masterTl.to(bg, {
++          width: '140%',
++          left: '-20%',
++          ease: "power2.inOut",
++          duration: 1.5
++        }, currentTime);
++
++        currentTime += 1.5;
+       });
+       
+     }, containerRef); // Scope everything to the container
+@@ -251,15 +333,14 @@ export default function Home() {
+             {sections.map((sec, i) => (
+               <div 
+                 key={sec.id} 
+-                className="story-card absolute top-1/2 left-1/2 overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.8)] border border-white/5 flex items-center justify-center bg-brand-black pointer-events-auto will-change-transform transform-gpu cursor-pointer hover:scale-[1.02] transition-transform duration-500"
++                className="story-card absolute top-1/2 left-1/2 overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.8)] border border-white/5 flex items-center justify-center bg-brand-black pointer-events-auto will-change-transform transform-gpu"
+                 style={{ 
+                   width: isMobile ? '85vw' : '35vw', 
+-                  height: isMobile ? '70dvh' : '60dvh', 
++                  height: isMobile ? '70vh' : '60vh', 
+                   borderRadius: '2rem',
+                   transform: `translate(-50%, -50%)`, 
+                   marginLeft: `${100 + ((isMobile ? 95 : 45) * i)}vw` // Card 0 starts at 100vw, subsequent cards follow tightly
+                 }}
+-                onClick={() => toggleCard(i)}
+               >
+                 {/* Parallax Background Wrapper */}
+                 <div className="card-bg-wrapper absolute top-0 left-0 w-full h-screen overflow-hidden pointer-events-none z-0">
+@@ -307,6 +388,9 @@ export default function Home() {
+                     </div>
+                   </div>
+                 </div>
++
++                {/* Expanded Vertical Content */}
++                <sec.component />
+               </div>
+             ))}
+           </div>
+@@ -317,26 +401,6 @@ export default function Home() {
+       
+       {/* Footer revealed after pinned horizontal scrolling ends */}
+       <Footer />
+-
+-      {/* Expanded Card Overlay */}
+-      <div 
+-        className={`fixed inset-0 z-[100] transition-all duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] bg-brand-black flex flex-col ${expandedCard !== null ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none translate-y-8'}`}
+-      >
+-        {expandedCard !== null && (
+-          <>
+-            <button 
+-              className="fixed top-6 right-6 md:top-8 md:right-8 z-[110] w-12 h-12 bg-brand-cream/10 backdrop-blur-md rounded-full flex items-center justify-center text-brand-cream hover:bg-brand-orange transition-colors"
+-              onClick={() => toggleCard(null)}
+-              aria-label="Close"
+-            >
+-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+-            </button>
+-            <div className="w-full h-[100dvh] overflow-y-auto overflow-x-hidden">
+-              {React.createElement(sections[expandedCard].component)}
+-            </div>
+-          </>
+-        )}
+-      </div>
+     </div>
+   );
+ }
