@@ -174,8 +174,8 @@ export default function Home() {
 
         // B. Expand Card to Fullscreen (GSAP FLIP simulation for robust scrub)
         masterTl.to(card, {
-          width: '100vw',
-          height: '100vh',
+          width: '100%',
+          height: '100%',
           borderRadius: '0px',
           ease: "power2.inOut",
           duration: 1.5
@@ -224,33 +224,39 @@ export default function Home() {
         // Add a slight pause at the end of the content before closing
         currentTime += 0.5;
 
-        // E. Collapse Card back to Horizontal Gallery State
-        masterTl.to(innerScroll, {
-          autoAlpha: 0,
-          duration: 0.5
-        }, currentTime);
-        
-        const vh60 = window.innerHeight * 0.6;
-        const vw45 = window.innerWidth * 0.45;
-        const desktopHeight = `${Math.min(vh60, vw45)}px`;
+        if (i < sections.length - 1) {
+          // E. Collapse Card back to Horizontal Gallery State
+          masterTl.to(innerScroll, {
+            autoAlpha: 0,
+            duration: 0.5
+          }, currentTime);
+          
+          const vh60 = window.innerHeight * 0.6;
+          const vw45 = window.innerWidth * 0.45;
+          const desktopHeight = `${Math.min(vh60, vw45)}px`;
 
-        masterTl.to(card, {
-          width: isMobile ? '85vw' : '35vw',
-          height: isMobile ? '70vh' : desktopHeight,
-          borderRadius: '2rem',
-          ease: "power2.inOut",
-          duration: 1.5
-        }, currentTime);
+          masterTl.to(card, {
+            width: isMobile ? '85vw' : '35vw',
+            height: isMobile ? '70vh' : desktopHeight,
+            borderRadius: '2rem',
+            ease: "power2.inOut",
+            duration: 1.5
+          }, currentTime);
 
-        // Reset z-index after collapsing
-        masterTl.set(card, { zIndex: 10 }, currentTime + 1.5);
+          // Reset z-index after collapsing
+          masterTl.set(card, { zIndex: 10 }, currentTime + 1.5);
 
-        masterTl.to(bg, {
-          width: '140%',
-          left: '-20%',
-          ease: "power2.inOut",
-          duration: 1.5
-        }, currentTime);
+          masterTl.to(bg, {
+            width: '140%',
+            left: '-20%',
+            ease: "power2.inOut",
+            duration: 1.5
+          }, currentTime);
+        } else {
+          // For the final card (Contact), keep it expanded so the user can interact with it
+          // Add buffer time to timeline to allow smooth transition to the footer
+          currentTime += 2;
+        }
 
         currentTime += 1.5;
       });
