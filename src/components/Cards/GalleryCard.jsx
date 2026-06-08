@@ -72,7 +72,7 @@ export default function GalleryCard() {
       <div className="w-full h-screen bg-brand-cream text-brand-black transition-colors duration-300 p-4 md:px-12 md:pt-16 md:pb-6 flex flex-col relative shadow-[0_-30px_60px_rgba(0,0,0,0.5)] z-30 overflow-hidden">
 
         {/* Top Split Area - flexible height on mobile to leave room for bottom cards */}
-        <div className="w-full flex-1 min-h-0 md:h-[60vh] flex flex-col md:flex-row mb-2 md:mb-6 relative">
+        <div className="w-full flex-1 min-h-0 md:h-[60vh] md:max-h-[600px] flex flex-col md:flex-row mb-2 md:mb-6 relative">
           
           {/* Left Text Content */}
           <div className="w-full md:w-[45%] h-full relative z-30 pointer-events-none shrink-0">

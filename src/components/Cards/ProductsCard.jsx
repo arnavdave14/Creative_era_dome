@@ -126,7 +126,7 @@ export default function ProductsCard() {
 
           {/* The Expanding Card */}
           <div 
-            className="absolute bg-brand-black overflow-hidden pointer-events-auto flex flex-col md:flex-row transition-all duration-500 ease-[cubic-bezier(0.7,0,0.3,1)] shadow-2xl"
+            className="absolute bg-brand-black overflow-hidden pointer-events-auto flex flex-col md:landscape:flex-row transition-all duration-500 ease-[cubic-bezier(0.7,0,0.3,1)] shadow-2xl"
             style={{
               top: isExpanding ? 0 : modalRect.top,
               left: isExpanding ? 0 : modalRect.left,
@@ -136,7 +136,7 @@ export default function ProductsCard() {
             }}
           >
              {/* Left: Image Area */}
-             <div className="relative w-full md:w-1/2 h-[50vh] md:h-full shrink-0">
+             <div className="relative w-full md:landscape:w-1/2 h-[50vh] md:landscape:h-full shrink-0">
                <img src={activeProduct.heroImg} alt="Hero" className="absolute inset-0 w-full h-full object-cover" />
                <div className="absolute inset-0 bg-gradient-to-t from-brand-black to-transparent md:bg-gradient-to-r" />
                
@@ -152,7 +152,7 @@ export default function ProductsCard() {
              </div>
 
              {/* Right: Details Area */}
-             <div className={`w-full md:w-1/2 h-[50vh] md:h-full p-8 md:p-16 flex flex-col justify-center overflow-y-auto transition-opacity duration-500 delay-300 ${isExpanding ? 'opacity-100' : 'opacity-0'}`}>
+             <div className={`w-full md:landscape:w-1/2 h-[50vh] md:landscape:h-full p-8 md:p-16 flex flex-col justify-center overflow-y-auto transition-opacity duration-500 delay-300 ${isExpanding ? 'opacity-100' : 'opacity-0'}`}>
                 
                 <h4 className="text-[#A8D0CE] text-sm tracking-[0.2em] uppercase font-bold mb-4">Discover the Features</h4>
                 <p className="text-brand-cream/80 text-lg md:text-xl leading-relaxed mb-10 font-light">

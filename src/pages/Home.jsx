@@ -176,6 +176,12 @@ export default function Home() {
         // Bring the expanding card to the absolute front
         masterTl.set(card, { zIndex: 50 }, currentTime);
 
+        // Fade out the poster layout so it doesn't show through transparent gaps on mobile Chrome
+        const posterLayout = card.querySelector('.z-10.flex-col');
+        if (posterLayout) {
+          masterTl.to(posterLayout, { autoAlpha: 0, duration: 0.5 }, currentTime);
+        }
+
         // B. Expand Card to Fullscreen (GSAP FLIP simulation for robust scrub)
         masterTl.to(card, {
           width: '100%',
@@ -234,6 +240,10 @@ export default function Home() {
             autoAlpha: 0,
             duration: 0.5
           }, currentTime);
+
+          if (posterLayout) {
+             masterTl.to(posterLayout, { autoAlpha: 1, duration: 0.5 }, currentTime + 0.5);
+          }
           
           const vh60 = window.innerHeight * 0.6;
           const vw45 = window.innerWidth * 0.45;

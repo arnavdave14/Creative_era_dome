@@ -8,7 +8,7 @@ export default function ContactCard() {
       <div className="w-full h-screen pointer-events-none" />
 
       {/* Actual Content Section */}
-      <div className="w-full h-screen shrink-0 flex flex-col items-center justify-center p-8 bg-brand-black text-brand-cream transition-colors duration-300 relative z-30 shadow-[0_-30px_60px_rgba(0,0,0,0.5)] overflow-hidden">
+      <div className="w-full h-screen min-h-[110dvh] shrink-0 flex flex-col items-center justify-center p-8 bg-brand-black text-brand-cream transition-colors duration-300 relative z-30 shadow-[0_-30px_60px_rgba(0,0,0,0.5)] overflow-hidden">
         
         <h2 className="text-[10vw] lg:text-[6vw] font-drose leading-none uppercase mb-12 text-center text-brand-cream transition-colors duration-300">Let's Connect</h2>
         

@@ -28,7 +28,7 @@ export default function AboutUsCard() {
           </div>
 
           {/* Col 5-7: Center Image */}
-          <div className="col-span-1 md:col-span-3 flex justify-center order-1 md:order-2">
+          <div className="col-span-1 md:col-span-3 flex justify-center items-center order-1 md:order-2">
             <div className="w-full max-w-[60vw] md:max-w-none aspect-[4/5] md:aspect-[4/5] bg-zinc-900 overflow-hidden shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
               <img 
                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1200&auto=format&fit=crop" 
