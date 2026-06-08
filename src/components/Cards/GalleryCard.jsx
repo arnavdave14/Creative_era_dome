@@ -72,7 +72,7 @@ export default function GalleryCard() {
       <div className="w-full h-screen bg-brand-cream text-brand-black transition-colors duration-300 p-4 md:px-12 md:pt-16 md:pb-6 flex flex-col relative shadow-[0_-30px_60px_rgba(0,0,0,0.5)] z-30 overflow-hidden">
 
         {/* Top Split Area - flexible height on mobile to leave room for bottom cards */}
-        <div className="w-full flex-1 min-h-0 md:landscape:h-[60vh] md:max-h-[600px] flex flex-col md:landscape:flex-row mb-2 md:landscape:mb-6 relative">
+        <div className="w-full shrink-0 md:landscape:flex-1 min-h-0 md:landscape:h-[60vh] md:max-h-[600px] flex flex-col md:landscape:flex-row mb-2 md:landscape:mb-6 relative">
           
           {/* Left Text Content */}
           <div className="w-full md:landscape:w-[45%] h-full relative z-30 pointer-events-none shrink-0">
@@ -108,7 +108,7 @@ export default function GalleryCard() {
                    </div>
                    
                    {/* MOBILE ONLY MAIN IMAGE */}
-                   <div className="flex-1 min-h-[15vh] max-h-[25vh] w-full relative z-10 py-2 md:landscape:hidden">
+                   <div className="w-full h-[180px] relative z-10 py-2 md:landscape:hidden">
                      <div className="w-full h-full bg-brand-cream dark:bg-brand-black rounded-3xl overflow-hidden relative shadow-md border border-brand-black/5">
                         <img src={prod.img} className="w-full h-full object-cover mix-blend-multiply dark:mix-blend-normal" alt={prod.name}/>
                      </div>
@@ -169,7 +169,7 @@ export default function GalleryCard() {
         {/* Bottom Horizontal Scrolling Gallery Cards */}
         {/* Added visible custom scrollbar tracking by removing 'no-scrollbar' and added explicit padding */}
         <div 
-          className="w-full shrink-0 h-[26vh] md:h-[22vh] flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 relative z-30 pb-4 pt-2 items-center" 
+          className="w-full flex-1 md:landscape:flex-none md:landscape:h-[22vh] grid grid-cols-1 md:grid-cols-2 md:landscape:flex overflow-y-auto md:landscape:overflow-y-visible md:landscape:overflow-x-auto snap-y md:landscape:snap-x snap-mandatory gap-4 md:landscape:gap-6 relative z-30 pb-4 pt-2 md:landscape:items-center" 
           style={{ scrollbarWidth: 'thin' }}
           onScroll={(e) => {
             const popup = document.getElementById('mobile-swipe-popup');
@@ -195,11 +195,11 @@ export default function GalleryCard() {
                 key={idx} 
                 onClick={() => setActiveIdx(idx)}
                 // Fixed minimum width ensures the cards peek out, inviting the user to scroll
-                className={`min-w-[75vw] md:min-w-[320px] shrink-0 h-full bg-brand-cream transition-colors duration-300 rounded-3xl p-3 flex gap-4 cursor-pointer group snap-start
-                  ${isActive ? 'border-2 border-brand-orange shadow-xl -translate-y-2' : 'border border-brand-black/5 hover:shadow-lg hover:-translate-y-1'}`}
+                className={`w-full md:landscape:min-w-[320px] md:landscape:w-auto h-[120px] md:landscape:h-full shrink-0 bg-brand-cream transition-colors duration-300 rounded-3xl p-3 flex gap-4 cursor-pointer group snap-start
+                  ${isActive ? 'border-2 border-brand-orange shadow-xl -translate-y-1' : 'border border-brand-black/5 hover:shadow-lg hover:-translate-y-1'}`}
               >
                 {/* Card Image */}
-                <div className="w-[40%] h-full bg-brand-cream dark:bg-brand-black rounded-2xl overflow-hidden relative shadow-inner">
+                <div className="w-[35%] md:landscape:w-[40%] h-full bg-brand-cream dark:bg-brand-black rounded-2xl overflow-hidden relative shadow-inner">
                   <img src={prod.img} className="w-full h-full object-cover mix-blend-multiply dark:mix-blend-normal opacity-90 group-hover:scale-110 transition-transform duration-700" alt={prod.name} />
                   
                   {/* Active Indicator Overlay */}
