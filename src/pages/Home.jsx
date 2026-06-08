@@ -57,14 +57,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const containerRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(!window.matchMedia('(min-width: 768px) and (orientation: landscape)').matches);
+  const [isMobile, setIsMobile] = useState(!window.matchMedia('(min-width: 768px)').matches);
 
   useEffect(() => {
     let timeoutId;
     const handleResize = () => {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
-        setIsMobile(!window.matchMedia('(min-width: 768px) and (orientation: landscape)').matches);
+        setIsMobile(!window.matchMedia('(min-width: 768px)').matches);
       }, 150);
     };
     window.addEventListener('resize', handleResize);

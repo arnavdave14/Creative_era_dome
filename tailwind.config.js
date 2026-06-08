@@ -8,10 +8,10 @@ export default {
   theme: {
     extend: {
       screens: {
-        'md': {'raw': '(min-width: 768px) and (orientation: landscape)'},
-        'lg': {'raw': '(min-width: 1024px) and (orientation: landscape)'},
-        'xl': {'raw': '(min-width: 1280px) and (orientation: landscape)'},
-        '2xl': {'raw': '(min-width: 1536px) and (orientation: landscape)'},
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
       },
       colors: {
         brand: {
