@@ -125,6 +125,10 @@ export default function Home() {
       const backgrounds = gsap.utils.toArray('.card-bg');
       const textTitles = gsap.utils.toArray('.card-title');
 
+      // CRITICAL: Set centering via GSAP to prevent it from baking CSS translate(-50%, -50%) into absolute pixels.
+      // This ensures centering remains perfectly accurate even when card width dynamically expands to 100%.
+      gsap.set(cards, { xPercent: -50, yPercent: -50 });
+
       let currentTime = 1; // Start sequence after hero fade out
 
       cards.forEach((card, i) => {
@@ -364,7 +368,6 @@ export default function Home() {
                   width: isMobile ? '85vw' : '35vw', 
                   height: isMobile ? '70vh' : desktopHeight,
                   borderRadius: '2rem',
-                  transform: `translate(-50%, -50%)`, 
                   marginLeft: `${100 + ((isMobile ? 95 : 45) * i)}vw` // Card 0 starts at 100vw, subsequent cards follow tightly
                 }}
               >
