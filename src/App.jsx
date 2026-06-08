@@ -95,7 +95,8 @@ function ScrollProgress() {
         scrollTrigger: {
           trigger: document.body,
           start: "top top",
-          end: "bottom bottom",
+          end: () => `+=${ScrollTrigger.maxScroll(window)}`,
+          invalidateOnRefresh: true,
           scrub: 0.3,
           onUpdate: (self) => {
             if (textRef.current) {
@@ -107,6 +108,15 @@ function ScrollProgress() {
     });
     return () => ctx.revert();
   }, []);
+
+  // Force GSAP to recalculate progress bar range after route changes and GSAP pinning
+  const { pathname } = useLocation();
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 500); // Give enough time for child components (like Home) to create their pin spacers
+    return () => clearTimeout(timer);
+  }, [pathname]);
 
   const scrollToTop = () => {
     window.dispatchEvent(new CustomEvent('lenis-scroll', { detail: 0 }));
