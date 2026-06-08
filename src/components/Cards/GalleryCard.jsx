@@ -72,10 +72,10 @@ export default function GalleryCard() {
       <div className="w-full h-screen bg-brand-cream text-brand-black transition-colors duration-300 p-4 md:px-12 md:pt-16 md:pb-6 flex flex-col relative shadow-[0_-30px_60px_rgba(0,0,0,0.5)] z-30 overflow-hidden">
 
         {/* Top Split Area - flexible height on mobile to leave room for bottom cards */}
-        <div className="w-full flex-1 min-h-0 md:h-[60vh] md:max-h-[600px] flex flex-col md:flex-row mb-2 md:mb-6 relative">
+        <div className="w-full flex-1 min-h-0 md:landscape:h-[60vh] md:max-h-[600px] flex flex-col md:landscape:flex-row mb-2 md:landscape:mb-6 relative">
           
           {/* Left Text Content */}
-          <div className="w-full md:w-[45%] h-full relative z-30 pointer-events-none shrink-0">
+          <div className="w-full md:landscape:w-[45%] h-full relative z-30 pointer-events-none shrink-0">
              
              {/* Stretched Wide Typography - TRUE CROSSFADE WRAPPER */}
              <div className="relative w-full h-full">
@@ -108,7 +108,7 @@ export default function GalleryCard() {
                    </div>
                    
                    {/* MOBILE ONLY MAIN IMAGE */}
-                   <div className="flex-1 min-h-[15vh] max-h-[25vh] w-full relative z-10 py-2 md:hidden">
+                   <div className="flex-1 min-h-[15vh] max-h-[25vh] w-full relative z-10 py-2 md:landscape:hidden">
                      <div className="w-full h-full bg-brand-cream dark:bg-brand-black rounded-3xl overflow-hidden relative shadow-md border border-brand-black/5">
                         <img src={prod.img} className="w-full h-full object-cover mix-blend-multiply dark:mix-blend-normal" alt={prod.name}/>
                      </div>
@@ -125,7 +125,7 @@ export default function GalleryCard() {
           </div>
 
           {/* Right Image Container */}
-          <div className="w-full md:w-[55%] flex-1 md:h-full relative z-10 mt-2 md:mt-0 hidden md:block">
+          <div className="w-full md:landscape:w-[55%] flex-1 md:landscape:h-full relative z-10 mt-2 md:landscape:mt-0 hidden md:landscape:block">
              
              {/* Main Image Base - TRUE CROSSFADE */}
              <div className="w-full h-full bg-brand-cream dark:bg-brand-black rounded-[2.5rem] overflow-hidden relative shadow-lg transition-colors duration-300">

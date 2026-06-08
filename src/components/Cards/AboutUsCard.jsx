@@ -18,17 +18,17 @@ export default function AboutUsCard() {
         </div>
 
         {/* 12-Column Editorial Grid */}
-        <div className="w-full max-w-[95vw] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-4 relative z-30 flex-1">
+        <div className="w-full max-w-[95vw] mx-auto grid grid-cols-1 md:landscape:grid-cols-12 gap-8 md:landscape:gap-4 relative z-30 flex-1 content-center">
           
           {/* Col 1-4: Left Text (Bottom aligned) */}
-          <div className="col-span-1 md:col-span-4 flex items-end pb-8 md:pb-16 md:pr-12 order-3 md:order-1">
+          <div className="col-span-1 md:landscape:col-span-4 flex items-end pb-8 md:landscape:pb-16 md:landscape:pr-12 order-3 md:landscape:order-1">
             <p className="font-drose text-3xl md:text-[2.2vw] leading-[1.1] text-brand-cream/90 transition-colors duration-300">
               We are masters of our craft, creating high-fidelity experiences and integrations for design-led creative event design, and art blocks to respectfully create in practical means.
             </p>
           </div>
 
           {/* Col 5-7: Center Image */}
-          <div className="col-span-1 md:col-span-3 flex justify-center items-center order-1 md:order-2">
+          <div className="col-span-1 md:landscape:col-span-3 flex justify-center items-center order-1 md:landscape:order-2">
             <div className="w-full max-w-[60vw] md:max-w-none aspect-[4/5] md:aspect-[4/5] bg-zinc-900 overflow-hidden shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
               <img 
                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1200&auto=format&fit=crop" 
@@ -39,14 +39,14 @@ export default function AboutUsCard() {
           </div>
 
           {/* Col 8-10: Right Paragraph */}
-          <div className="col-span-1 md:col-span-3 md:pl-8 pt-8 md:pt-16 order-2 md:order-3">
+          <div className="col-span-1 md:landscape:col-span-3 md:landscape:pl-8 pt-8 md:landscape:pt-16 order-2 md:landscape:order-3">
             <p className="font-serif text-sm md:text-[1vw] leading-[1.7] text-brand-cream/70 text-justify md:text-left transition-colors duration-300">
               Our team works with bespoke envelope markets, simultaneous and situations that are uncompromising to local on a in the together in influenced as the development process consent, and edge to align it comes true and ongoing to result some what they form. We focus on striking visual identity.
             </p>
           </div>
 
           {/* Col 11-12: Far Right "01" Section */}
-          <div className="col-span-1 md:col-span-2 flex flex-col items-start md:items-end pt-4 pb-8 md:pb-0 order-4">
+          <div className="col-span-1 md:landscape:col-span-2 flex flex-col items-start md:landscape:items-end pt-4 pb-8 md:landscape:pb-0 order-4">
             
             {/* Top Right Label */}
             <span className="text-[10px] md:text-[0.6vw] tracking-widest uppercase text-brand-cream/50 mb-12 hidden md:block transition-colors duration-300">
