@@ -57,14 +57,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const containerRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(!window.matchMedia('(min-width: 768px)').matches);
+  const [isMobile, setIsMobile] = useState(!window.matchMedia('(min-width: 768px) and (orientation: landscape)').matches);
 
   useEffect(() => {
     let timeoutId;
     const handleResize = () => {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
-        setIsMobile(!window.matchMedia('(min-width: 768px)').matches);
+        setIsMobile(!window.matchMedia('(min-width: 768px) and (orientation: landscape)').matches);
       }, 150);
     };
     window.addEventListener('resize', handleResize);
@@ -232,7 +232,7 @@ export default function Home() {
         
         masterTl.to(card, {
           width: isMobile ? '85vw' : '35vw',
-          height: isMobile ? '70vh' : '60vh',
+          height: isMobile ? '70vh' : 'min(60vh, 45vw)', // Cap height based on width to prevent skinny columns on abnormal aspect ratios
           borderRadius: '2rem',
           ease: "power2.inOut",
           duration: 1.5
@@ -347,7 +347,7 @@ export default function Home() {
                 className="story-card absolute top-1/2 left-1/2 overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.8)] border border-white/5 flex items-center justify-center bg-brand-black pointer-events-auto will-change-transform transform-gpu"
                 style={{ 
                   width: isMobile ? '85vw' : '35vw', 
-                  height: isMobile ? '70vh' : '60vh', 
+                  height: isMobile ? '70vh' : 'min(60vh, 45vw)', // Cap initial height 
                   borderRadius: '2rem',
                   transform: `translate(-50%, -50%)`, 
                   marginLeft: `${100 + ((isMobile ? 95 : 45) * i)}vw` // Card 0 starts at 100vw, subsequent cards follow tightly
