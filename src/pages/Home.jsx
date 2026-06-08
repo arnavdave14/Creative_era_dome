@@ -355,7 +355,7 @@ export default function Home() {
               >
                 {/* Parallax Background Wrapper */}
                 <div className="card-bg-wrapper absolute top-0 left-0 w-full h-screen overflow-hidden pointer-events-none z-0">
-                  <img src={sec.bg} className="card-bg absolute top-0 w-[140%] h-full object-cover" style={{ left: '-20%' }} alt={sec.id} />
+                  <img src={sec.bg} className="card-bg absolute top-0 w-[140%] max-w-none h-full object-cover" style={{ left: '-20%' }} alt={sec.id} />
                   <div className="absolute inset-0 bg-brand-black/30 transition-colors duration-300" />
                 </div>
                 
