@@ -57,12 +57,21 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const containerRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(!window.matchMedia('(min-width: 768px)').matches);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    let timeoutId;
+    const handleResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setIsMobile(!window.matchMedia('(min-width: 768px)').matches);
+      }, 150);
+    };
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   useLayoutEffect(() => {
@@ -107,7 +116,7 @@ export default function Home() {
       });
 
       // Fade out the hero elements gracefully before cards enter
-      masterTl.to(['.hero-text-top-scroll', '.hero-text-bottom-scroll', '.hero-bg', '.marquee-container'], { 
+      masterTl.to(['.hero-text-top-scroll', '.hero-text-bottom-scroll', '.hero-bg', '.marquee-fade-target'], { 
         autoAlpha: 0, ease: 'none', duration: 1 
       }, 0);
 
@@ -128,37 +137,32 @@ export default function Home() {
         const scrollDistance = Math.max(0, innerScroll.scrollHeight - window.innerHeight);
         const verticalScrollDuration = scrollDistance > 0 ? (scrollDistance / window.innerHeight) * 2 : 0; 
         
+        // Calculate absolute X positions based on index
+        const stepWidth = isMobile ? 95 : 45;
+        const targetX = -(100 + (stepWidth * i));
+        
         // If it's the first card, we need to pan it in from 100vw (after hero fades)
         if (i === 0) {
           masterTl.to(cards, {
-            x: "-=100vw", 
+            x: `${targetX}vw`, 
             ease: "power2.inOut",
             duration: 2
           }, currentTime);
           
-          masterTl.to('.bg-marquee-text', { x: "-=20vw", ease: "power2.inOut", duration: 2 }, currentTime);
+          masterTl.to('.bg-marquee-text', { x: "-20vw", ease: "power2.inOut", duration: 2 }, currentTime);
           
-          cards.forEach(c => {
-            const cardBg = c.querySelector('.card-bg');
-            masterTl.to(cardBg, { xPercent: 20, ease: "power2.inOut", duration: 2 }, currentTime);
-          });
-
           currentTime += 2;
         } else {
-          // Subsequent cards pan in from dynamic spacing
+          // Subsequent cards pan in using absolute positions
           masterTl.to(cards, {
-            x: isMobile ? "-=95vw" : "-=45vw",
+            x: `${targetX}vw`,
             ease: "power2.inOut",
             duration: 1.5
           }, currentTime);
           
-          masterTl.to('.bg-marquee-text', { x: "-=15vw", ease: "power2.inOut", duration: 1.5 }, currentTime);
+          const marqueeX = -(20 + (15 * i));
+          masterTl.to('.bg-marquee-text', { x: `${marqueeX}vw`, ease: "power2.inOut", duration: 1.5 }, currentTime);
           
-          cards.forEach(c => {
-            const cardBg = c.querySelector('.card-bg');
-            masterTl.to(cardBg, { xPercent: 15, ease: "power2.inOut", duration: 1.5 }, currentTime);
-          });
-
           currentTime += 1.5;
         }
 
@@ -227,8 +231,8 @@ export default function Home() {
         }, currentTime);
         
         masterTl.to(card, {
-          width: '35vw',
-          height: '60vh',
+          width: isMobile ? '85vw' : '35vw',
+          height: isMobile ? '70vh' : '60vh',
           borderRadius: '2rem',
           ease: "power2.inOut",
           duration: 1.5
@@ -255,12 +259,12 @@ export default function Home() {
   return (
     <div className="w-full bg-brand-black transition-colors duration-300">
       <CinematicIntro 
-        preTitle="P A R A D I S E"
-        title="CARIBE"
-        descTitle="ENDLESS BLUE HORIZONS"
-        descText="Turquoise waters, white sand beaches and warm tropical skies create the perfect destination for unforgettable luxury experiences and relaxation."
+        preTitle="C R E A T I V E"
+        title="ERA"
+        descTitle="LUXURY EVENTS & EXPERIENCES"
+        descText="We design award-winning, immersive events that captivate audiences and leave lasting impressions."
         indexStr="01_05"
-        bgImage="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=2670&auto=format&fit=crop"
+        bgImage="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2669&auto=format&fit=crop"
       />
       <div ref={containerRef} className="w-full relative">
       
@@ -272,31 +276,37 @@ export default function Home() {
           {/* ----------------------------------------------------
               Hero State
               ---------------------------------------------------- */}
-          <CrossedMarquee />
+          <div className="marquee-fade-target absolute inset-0 z-0 pointer-events-none">
+            <CrossedMarquee />
+          </div>
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none pt-12">
             
             <div className="relative hero-text-top-scroll w-full flex justify-center">
-              {/* Outer container uses mix-blend-screen to make the pure black background transparent against the app theme */}
-              <div className="hero-text-top-intro w-full max-w-[90vw] mx-auto flex justify-center items-center h-[16vw] relative z-20 bg-black mix-blend-screen overflow-hidden rounded-[2rem]">
+              <div className="hero-text-top-intro w-full max-w-[90vw] mx-auto flex justify-center items-center h-[16vw] relative z-20">
                 
-                {/* Ultra-performant CSS-only Video Text Cutout */}
+                {/* SVG Mask strictly cuts the video to the text shape, removing any background box */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none">
+                  <defs>
+                    <mask id="video-text-mask">
+                      <rect width="100%" height="100%" fill="black" />
+                      <text x="50%" y="50%" dominantBaseline="central" textAnchor="middle" className="font-drose" style={{ fontSize: '15vw', letterSpacing: '-0.02em', fill: 'white' }}>
+                        CREATIVE
+                      </text>
+                    </mask>
+                  </defs>
+                </svg>
+                
                 <video 
                   autoPlay 
                   loop 
                   muted 
                   playsInline 
                   className="absolute inset-0 w-full h-full object-cover"
+                  style={{ mask: 'url(#video-text-mask)', WebkitMask: 'url(#video-text-mask)' }}
                 >
                   <source src="/Creative_Era.mp4" type="video/mp4" />
                 </video>
-                
-                {/* Inner mask uses mix-blend-multiply (Black hides video, White shows video) */}
-                <div className="absolute inset-0 bg-black flex items-center justify-center mix-blend-multiply pointer-events-none">
-                  <span className="text-white font-drose text-[15vw] leading-none" style={{ letterSpacing: '-0.02em' }}>
-                    CREATIVE
-                  </span>
-                </div>
-                
+
                 <div className="absolute top-[20%] right-[15%] w-4 h-4 bg-brand-orange rounded-full shadow-[0_0_15px_rgba(255,94,0,0.6)]" />
               </div>
             </div>
@@ -326,7 +336,7 @@ export default function Home() {
             
             {/* Massive Background Scrolling Text */}
             <div className="absolute inset-0 z-0 flex items-center overflow-hidden opacity-[0.03] pointer-events-none mix-blend-screen">
-              <div className="bg-marquee-text whitespace-nowrap font-drose text-[35vw] leading-none text-brand-cream absolute left-0" style={{ transform: 'translateX(10vw)' }}>
+              <div className="bg-marquee-text whitespace-nowrap font-drose text-[35vw] leading-none text-brand-cream dark:text-white/20 absolute left-0" style={{ transform: 'translateX(10vw)' }}>
                 CREATIVE ERA — LUXURY EVENTS — UNFORGETTABLE EXPERIENCES — 
               </div>
             </div>
@@ -350,7 +360,7 @@ export default function Home() {
                 </div>
                 
                 {/* Horizontal State Title (Cinematic Poster Layout) */}
-                <div className="absolute inset-0 z-10 flex flex-col p-6 md:p-12 text-brand-cream overflow-hidden pointer-events-none">
+                <div className="absolute inset-0 z-10 flex flex-col p-6 md:p-12 text-brand-cream dark:text-white overflow-hidden pointer-events-none">
                   
                   {/* Top center subtitle */}
                   <div className="w-full flex justify-center mt-2 md:mt-4">
@@ -369,7 +379,7 @@ export default function Home() {
                   {/* Bottom layout */}
                   <div className="absolute bottom-6 left-6 right-6 md:bottom-12 md:left-12 md:right-12 flex justify-between items-end">
                     {/* Left Description */}
-                    <div className="max-w-[200px] md:max-w-xs hidden sm:block">
+                    <div className="max-w-[140px] md:max-w-[180px] hidden md:block">
                       <h3 className="font-inter font-semibold text-[10px] md:text-xs tracking-widest uppercase mb-3 md:mb-4">{sec.descTitle}</h3>
                       <p className="font-inter text-[10px] md:text-xs leading-relaxed opacity-80">
                         {sec.desc}
@@ -378,8 +388,8 @@ export default function Home() {
 
                     {/* Center Scroll Indication */}
                     <div className="flex flex-col items-center opacity-60 absolute left-1/2 -translate-x-1/2 bottom-0">
-                      <span className="font-inter text-[8px] md:text-[10px] tracking-widest uppercase mb-3 text-brand-cream">Scroll</span>
-                      <div className="w-[1px] h-8 md:h-12 bg-brand-cream/50" />
+                      <span className="font-inter text-[8px] md:text-[10px] tracking-widest uppercase mb-3 text-brand-cream dark:text-white">Scroll</span>
+                      <div className="w-[1px] h-8 md:h-12 bg-brand-cream/50 dark:bg-white/50" />
                     </div>
 
                     {/* Right Number */}

@@ -108,9 +108,9 @@ export default function GalleryCard() {
                    </div>
                    
                    {/* MOBILE ONLY MAIN IMAGE */}
-                   <div className="flex-1 w-full relative z-10 py-4 md:hidden">
-                     <div className="w-full h-full bg-brand-cream rounded-3xl overflow-hidden relative shadow-md border border-brand-black/5">
-                        <img src={prod.img} className="w-full h-full object-cover mix-blend-multiply" alt={prod.name}/>
+                   <div className="flex-1 min-h-[15vh] max-h-[25vh] w-full relative z-10 py-2 md:hidden">
+                     <div className="w-full h-full bg-brand-cream dark:bg-brand-black rounded-3xl overflow-hidden relative shadow-md border border-brand-black/5">
+                        <img src={prod.img} className="w-full h-full object-cover mix-blend-multiply dark:mix-blend-normal" alt={prod.name}/>
                      </div>
                    </div>
 
@@ -128,13 +128,13 @@ export default function GalleryCard() {
           <div className="w-full md:w-[55%] flex-1 md:h-full relative z-10 mt-2 md:mt-0 hidden md:block">
              
              {/* Main Image Base - TRUE CROSSFADE */}
-             <div className="w-full h-full bg-brand-cream rounded-[2.5rem] overflow-hidden relative shadow-lg transition-colors duration-300">
+             <div className="w-full h-full bg-brand-cream dark:bg-brand-black rounded-[2.5rem] overflow-hidden relative shadow-lg transition-colors duration-300">
                {products.map((prod, idx) => (
                  <img 
                    key={`img-${idx}`}
                    src={prod.img} 
                    alt={prod.name} 
-                   className={`absolute top-0 left-0 w-full h-full object-cover mix-blend-multiply transition-opacity duration-1000 ease-in-out ${
+                   className={`absolute top-0 left-0 w-full h-full object-cover mix-blend-multiply dark:mix-blend-normal transition-opacity duration-1000 ease-in-out ${
                      activeIdx === idx ? 'opacity-90' : 'opacity-0'
                    }`}
                  />
@@ -199,8 +199,8 @@ export default function GalleryCard() {
                   ${isActive ? 'border-2 border-brand-orange shadow-xl -translate-y-2' : 'border border-brand-black/5 hover:shadow-lg hover:-translate-y-1'}`}
               >
                 {/* Card Image */}
-                <div className="w-[40%] h-full bg-brand-cream rounded-2xl overflow-hidden relative shadow-inner">
-                  <img src={prod.img} className="w-full h-full object-cover mix-blend-multiply opacity-90 group-hover:scale-110 transition-transform duration-700" alt={prod.name} />
+                <div className="w-[40%] h-full bg-brand-cream dark:bg-brand-black rounded-2xl overflow-hidden relative shadow-inner">
+                  <img src={prod.img} className="w-full h-full object-cover mix-blend-multiply dark:mix-blend-normal opacity-90 group-hover:scale-110 transition-transform duration-700" alt={prod.name} />
                   
                   {/* Active Indicator Overlay */}
                   {isActive && (

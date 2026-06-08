@@ -5,18 +5,18 @@
 @tailwind utilities;
 
 :root {
-  --color-brand-orange: #FF5E00;
-  --color-brand-cream: #F9F6F0;
-  --color-brand-black: #121212;
+  --color-brand-orange: 255 94 0;
+  --color-brand-cream: 249 246 240;
+  --color-brand-black: 18 18 18;
   
-  background-color: var(--color-brand-black);
-  color: var(--color-brand-cream);
+  background-color: rgb(var(--color-brand-black));
+  color: rgb(var(--color-brand-cream));
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 html.dark {
-  --color-brand-cream: #121212;
-  --color-brand-black: #F9F6F0;
+  --color-brand-cream: 18 18 18;
+  --color-brand-black: 249 246 240;
 }
 
 /* Hide default cursor for our custom interactive cursor */
@@ -82,6 +82,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .glow-text {
   text-shadow: 0 0 20px rgba(249, 246, 240, 0.3);
+}
+
+.marquee-stroke {
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.2);
+}
+
+html.dark .marquee-stroke {
+  -webkit-text-stroke: 2px rgb(var(--color-brand-orange));
 }
 
 .motion-blur-subtle {

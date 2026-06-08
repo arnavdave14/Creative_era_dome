@@ -52,7 +52,7 @@ export default function CinematicIntro({ preTitle, title, descTitle, descText, i
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center flex-1 ci-content text-brand-cream">
+      <div className="relative z-10 flex flex-col items-center justify-center flex-1 ci-content text-brand-cream dark:text-white">
         
         {/* Pre Title */}
         <p className="text-sm md:text-base tracking-[0.6em] md:tracking-[1em] mb-4 ci-fade uppercase drop-shadow-md">
@@ -60,7 +60,7 @@ export default function CinematicIntro({ preTitle, title, descTitle, descText, i
         </p>
 
         {/* Huge Title */}
-        <h1 className="text-[18vw] md:text-[20vw] font-drose leading-[0.75] tracking-tighter text-brand-cream overflow-hidden drop-shadow-2xl">
+        <h1 className="text-[18vw] md:text-[20vw] font-drose leading-[0.75] tracking-tighter text-brand-cream dark:text-white overflow-hidden drop-shadow-2xl">
           {title.split('').map((char, i) => (
             <span key={i} className="inline-block ci-title-char">
               {char === ' ' ? '\u00A0' : char}
@@ -71,7 +71,7 @@ export default function CinematicIntro({ preTitle, title, descTitle, descText, i
       </div>
 
       {/* Bottom Footer Section */}
-      <div className="relative z-10 flex flex-col md:flex-row justify-between items-center md:items-end w-full ci-content text-brand-cream mt-12 gap-8 md:gap-0">
+      <div className="relative z-10 flex flex-col md:flex-row justify-between items-center md:items-end w-full ci-content text-brand-cream dark:text-white mt-12 gap-8 md:gap-0">
         
         {/* Bottom Left: Description */}
         <div className="max-w-[300px] md:max-w-[400px] ci-fade order-2 md:order-1 text-center md:text-left">
@@ -84,16 +84,16 @@ export default function CinematicIntro({ preTitle, title, descTitle, descText, i
         {/* Bottom Center: Scroll Indicator */}
         <div className="md:absolute md:left-1/2 md:-translate-x-1/2 bottom-0 flex flex-col items-center ci-fade order-1 md:order-2 w-full md:w-auto">
           <p className="text-[10px] tracking-[0.3em] mb-4 uppercase opacity-80 font-medium">Scroll Down</p>
-          <div className="w-7 h-12 border border-brand-cream/40 rounded-full flex justify-center p-2 relative overflow-hidden backdrop-blur-sm shadow-lg">
-             <div className="w-1 h-3 bg-brand-cream rounded-full animate-bounce shadow-[0_0_8px_var(--color-brand-cream)]" />
+          <div className="w-7 h-12 border border-brand-cream/40 dark:border-white/40 rounded-full flex justify-center p-2 relative overflow-hidden backdrop-blur-sm shadow-lg">
+             <div className="w-1 h-3 bg-brand-cream dark:bg-white rounded-full animate-bounce shadow-[0_0_8px_var(--color-brand-cream)] dark:shadow-[0_0_8px_white]" />
           </div>
         </div>
 
         {/* Bottom Right: Index */}
         <div className="ci-fade flex items-center md:items-end gap-3 font-light order-3 md:order-3 drop-shadow-md">
            <span className="text-4xl md:text-5xl">{indexStr.split('_')[0]}</span>
-           <div className="w-12 h-[1px] bg-brand-cream/50 md:mb-3" />
-           <span className="text-2xl md:text-3xl text-brand-cream/70">{indexStr.split('_')[1]}</span>
+           <div className="w-12 h-[1px] bg-brand-cream/50 dark:bg-white/50 md:mb-3" />
+           <span className="text-2xl md:text-3xl text-brand-cream/70 dark:text-white/70">{indexStr.split('_')[1]}</span>
         </div>
 
       </div>

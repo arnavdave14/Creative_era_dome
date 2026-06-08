@@ -32,10 +32,10 @@ export default function CrossedMarquee() {
 
   const marqueeContent = [...companies, ...companies, ...companies, ...companies].map((company, index) => (
     <React.Fragment key={index}>
-      <span className="mx-8 font-drose text-[10vh] leading-none tracking-wider text-transparent" style={{ WebkitTextStroke: '2px rgba(255, 255, 255, 0.2)' }}>
+      <span className="marquee-stroke mx-8 font-drose text-[10vh] leading-none tracking-wider text-transparent">
         {company}
       </span>
-      <span className="mx-8 text-[8vh] text-white/10">•</span>
+      <span className="mx-8 text-[8vh] text-white/10 dark:text-brand-orange/50">•</span>
     </React.Fragment>
   ));
 
