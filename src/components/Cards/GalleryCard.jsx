@@ -72,17 +72,17 @@ export default function GalleryCard() {
       <div className="w-full h-screen bg-brand-cream text-brand-black transition-colors duration-300 p-4 md:px-12 md:pt-16 md:pb-6 flex flex-col relative shadow-[0_-30px_60px_rgba(0,0,0,0.5)] z-30 overflow-hidden">
 
         {/* Top Split Area - flexible height on mobile to leave room for bottom cards */}
-        <div className="w-full shrink-0 md:landscape:flex-1 min-h-0 md:landscape:h-[60vh] md:max-h-[600px] flex flex-col md:landscape:flex-row mb-2 md:landscape:mb-6 relative">
+        <div className="w-full shrink-0 md:landscape:flex-1 md:landscape:h-[60vh] md:max-h-[600px] flex flex-col md:landscape:flex-row mb-2 md:landscape:mb-6 relative">
           
           {/* Left Text Content */}
-          <div className="w-full md:landscape:w-[45%] h-full relative z-30 pointer-events-none shrink-0">
+          <div className="w-full md:landscape:w-[45%] md:landscape:h-full relative z-30 pointer-events-none shrink-0">
              
              {/* Stretched Wide Typography - TRUE CROSSFADE WRAPPER */}
-             <div className="relative w-full h-full">
+             <div className="relative w-full grid grid-cols-1 grid-rows-1">
                {products.map((prod, idx) => (
                  <div 
                    key={`text-${idx}`}
-                   className={`absolute top-0 left-0 w-full h-full flex flex-col transition-all duration-1000 ease-in-out ${
+                   className={`col-start-1 row-start-1 w-full flex flex-col transition-all duration-1000 ease-in-out ${
                      activeIdx === idx ? 'opacity-100 pointer-events-auto transform-none' : 'opacity-0 pointer-events-none translate-y-4'
                    }`}
                  >
