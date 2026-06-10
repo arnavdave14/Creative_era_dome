@@ -17,6 +17,9 @@ function CustomCursor() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      // Accurately center the cursor on the mouse tip
+      gsap.set(cursorRef.current, { xPercent: -50, yPercent: -50 });
+      
       const xSet = gsap.quickSetter(cursorRef.current, "x", "px");
       const ySet = gsap.quickSetter(cursorRef.current, "y", "px");
 
@@ -34,7 +37,7 @@ function CustomCursor() {
   return (
     <div 
       ref={cursorRef} 
-      className="fixed top-0 left-0 w-4 h-4 bg-brand-cream border border-brand-black/20 rounded-full pointer-events-none z-[9999] shadow-[0_0_10px_rgba(0,0,0,0.2)] -translate-x-1/2 -translate-y-1/2 hidden md:block will-change-transform"
+      className="fixed top-0 left-0 w-4 h-4 bg-brand-cream border border-brand-black/20 rounded-full pointer-events-none z-[9999] shadow-[0_0_10px_rgba(0,0,0,0.2)] hidden md:block will-change-transform"
       style={{ transition: 'width 0.3s, height 0.3s' }}
       id="custom-cursor"
     />
