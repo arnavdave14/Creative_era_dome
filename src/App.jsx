@@ -21,8 +21,8 @@ function CustomCursor() {
       gsap.set(cursorRef.current, { xPercent: -50, yPercent: -50 });
       
       // Use quickTo instead of quickSetter to add a buttery liquid trailing effect
-      const xTo = gsap.quickTo(cursorRef.current, "x", { duration: 0.15, ease: "power3.out" });
-      const yTo = gsap.quickTo(cursorRef.current, "y", { duration: 0.15, ease: "power3.out" });
+      const xTo = gsap.quickTo(cursorRef.current, "x", { duration: 0.25, ease: "power3.out", force3D: true });
+      const yTo = gsap.quickTo(cursorRef.current, "y", { duration: 0.25, ease: "power3.out", force3D: true });
 
       const onMouseMove = (e) => {
         xTo(e.clientX);
@@ -38,7 +38,7 @@ function CustomCursor() {
   return (
     <div 
       ref={cursorRef} 
-      className="fixed top-0 left-0 w-4 h-4 bg-brand-cream border border-brand-black/20 rounded-full pointer-events-none z-[9999] shadow-[0_0_10px_rgba(0,0,0,0.2)] hidden md:block will-change-transform"
+      className="fixed top-0 left-0 w-4 h-4 bg-brand-cream border border-brand-black/20 rounded-full pointer-events-none z-[9999] shadow-[0_0_10px_rgba(0,0,0,0.2)] hidden md:block"
       style={{ transition: 'width 0.3s, height 0.3s' }}
       id="custom-cursor"
     />
