@@ -116,17 +116,23 @@ export default function Home() {
       });
 
       // Fade out the hero elements gracefully before cards enter
-      masterTl.to(['.hero-text-top-scroll', '.hero-bg', '.marquee-fade-target'], { 
-        autoAlpha: 0, ease: 'none', duration: 1 
-      }, 0);
+      masterTl.fromTo(['.hero-text-top-scroll', '.marquee-fade-target'], 
+        { autoAlpha: 1 },
+        { autoAlpha: 0, ease: 'none', duration: 1 }, 
+        0
+      );
 
       // Zoom-in effect for "ERA"
-      masterTl.to('.hero-text-bottom-scroll', {
-        scale: 40,
-        autoAlpha: 0,
-        ease: 'power3.in',
-        duration: 2
-      }, 0);
+      masterTl.fromTo('.hero-text-bottom-scroll', 
+        { scale: 1, autoAlpha: 1 },
+        {
+          scale: 25,
+          autoAlpha: 0,
+          ease: 'power3.in',
+          duration: 2
+        }, 
+        0
+      );
 
       const cards = gsap.utils.toArray('.story-card');
       const innerScrolls = gsap.utils.toArray('.card-scroll-wrapper');
@@ -343,7 +349,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="hero-text-bottom-scroll -mt-[6vw] relative z-30 w-full flex justify-center origin-center will-change-transform transform-gpu">
+            <div className="hero-text-bottom-scroll -mt-[6vw] relative z-30 w-full flex justify-center origin-center ">
               <div className="hero-text-bottom-intro w-full max-w-[90vw] mx-auto flex justify-center items-center h-[26vw]">
                 <h1 className="text-[22vw] font-drose leading-[0.8] tracking-tighter">
                   <span 
@@ -381,7 +387,7 @@ export default function Home() {
               return (
               <div 
                 key={sec.id} 
-                className="story-card absolute top-1/2 left-1/2 overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.8)] border border-white/5 flex items-center justify-center bg-brand-black pointer-events-auto will-change-transform transform-gpu"
+                className="story-card absolute top-1/2 left-1/2 overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.8)] border border-white/5 flex items-center justify-center bg-brand-black pointer-events-auto "
                 style={{ 
                   width: isMobile ? '85vw' : '35vw', 
                   height: isMobile ? '70vh' : desktopHeight,
@@ -406,7 +412,7 @@ export default function Home() {
                   {/* Center massive title */}
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none mt-8">
                     <h2 
-                      className="card-title font-drose text-[8vw] md:text-[6vw] leading-none text-brand-cream opacity-100 uppercase will-change-transform transform-gpu drop-shadow-2xl"
+                      className="card-title font-drose text-[8vw] md:text-[6vw] leading-none text-brand-cream opacity-100 uppercase  drop-shadow-2xl"
                     >
                       {sec.title}
                     </h2>
