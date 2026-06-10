@@ -4,6 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Apply custom PNG cursor globally with zero latency */
+body {
+  cursor: url('/cursor.png') 8 8, auto;
+}
+
+a, button, input, textarea, select, [role="button"] {
+  cursor: url('/cursor.png') 8 8, pointer;
+}
+
 :root {
   --color-brand-orange: 255 94 0;
   --color-brand-cream: 249 246 240;
