@@ -34,7 +34,7 @@ function CustomCursor() {
   return (
     <div 
       ref={cursorRef} 
-      className="fixed top-0 left-0 w-4 h-4 bg-brand-cream rounded-full pointer-events-none z-[100] mix-blend-difference -translate-x-1/2 -translate-y-1/2 hidden md:block"
+      className="fixed top-0 left-0 w-4 h-4 bg-brand-cream rounded-full pointer-events-none z-[9999] mix-blend-difference -translate-x-1/2 -translate-y-1/2 hidden md:block"
       style={{ transition: 'width 0.3s, height 0.3s' }}
       id="custom-cursor"
     />
