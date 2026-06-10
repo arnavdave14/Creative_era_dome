@@ -4,13 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Apply custom PNG cursor globally with zero latency */
-body {
-  cursor: url('/cursor.png') 8 8, auto;
+/* Apply custom PNG cursor globally with zero latency and override Tailwind utilities */
+* {
+  cursor: url('/cursor.png') 8 8, auto !important;
 }
 
-a, button, input, textarea, select, [role="button"] {
-  cursor: url('/cursor.png') 8 8, pointer;
+a, button, input, textarea, select, [role="button"], .cursor-pointer, [class*="cursor-pointer"] {
+  cursor: url('/cursor.png') 8 8, pointer !important;
 }
 
 :root {
