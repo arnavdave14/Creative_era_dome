@@ -161,13 +161,13 @@ export default function ProductsCard() {
 
                 {/* Software Bento Grid Layout */}
                 <div className="grid grid-cols-2 gap-4 mb-10">
-                  <div className="bg-white/5 rounded-[2rem] p-6 border border-white/10 hover:border-[#A8D0CE]/50 transition-colors">
-                    <div className="text-white/40 text-[10px] uppercase tracking-widest mb-2">Build</div>
-                    <div className="text-white font-semibold text-lg">Premium</div>
+                  <div className="bg-brand-cream/5 rounded-[2rem] p-6 border border-brand-cream/10 hover:border-[#A8D0CE]/50 transition-colors">
+                    <div className="text-brand-cream/40 text-[10px] uppercase tracking-widest mb-2">Build</div>
+                    <div className="text-brand-cream font-semibold text-lg">Premium</div>
                   </div>
-                  <div className="bg-white/5 rounded-[2rem] p-6 border border-white/10 hover:border-[#A8D0CE]/50 transition-colors">
-                    <div className="text-white/40 text-[10px] uppercase tracking-widest mb-2">Performance</div>
-                    <div className="text-white font-semibold text-lg">Elite</div>
+                  <div className="bg-brand-cream/5 rounded-[2rem] p-6 border border-brand-cream/10 hover:border-[#A8D0CE]/50 transition-colors">
+                    <div className="text-brand-cream/40 text-[10px] uppercase tracking-widest mb-2">Performance</div>
+                    <div className="text-brand-cream font-semibold text-lg">Elite</div>
                   </div>
                 </div>
 
@@ -181,7 +181,7 @@ export default function ProductsCard() {
              {/* Close Button */}
              <button 
                onClick={handleClose}
-               className={`absolute top-6 right-6 md:top-12 md:right-12 w-14 h-14 bg-white/10 backdrop-blur-md text-white rounded-full flex items-center justify-center hover:bg-white hover:text-black hover:scale-110 transition-all duration-300 z-50 shadow-2xl ${isExpanding ? 'opacity-100' : 'opacity-0'}`}
+               className={`absolute top-6 right-6 md:top-12 md:right-12 w-14 h-14 bg-brand-cream/10 backdrop-blur-md text-brand-cream rounded-full flex items-center justify-center hover:bg-brand-cream hover:text-brand-black hover:scale-110 transition-all duration-300 z-50 shadow-2xl ${isExpanding ? 'opacity-100' : 'opacity-0'}`}
              >
                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
              </button>
