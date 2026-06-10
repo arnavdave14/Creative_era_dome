@@ -11,39 +11,7 @@ import ContactUs from './pages/ContactUs';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Custom Cursor Component
-function CustomCursor() {
-  const cursorRef = useRef(null);
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      // Accurately center the cursor on the mouse tip
-      gsap.set(cursorRef.current, { xPercent: -50, yPercent: -50 });
-      
-      // Use quickTo instead of quickSetter to add a buttery liquid trailing effect
-      const xTo = gsap.quickTo(cursorRef.current, "x", { duration: 0.25, ease: "power3.out", force3D: true });
-      const yTo = gsap.quickTo(cursorRef.current, "y", { duration: 0.25, ease: "power3.out", force3D: true });
-
-      const onMouseMove = (e) => {
-        xTo(e.clientX);
-        yTo(e.clientY);
-      };
-
-      window.addEventListener("mousemove", onMouseMove);
-      return () => window.removeEventListener("mousemove", onMouseMove);
-    });
-    return () => ctx.revert();
-  }, []);
-
-  return (
-    <div 
-      ref={cursorRef} 
-      className="fixed top-0 left-0 w-4 h-4 bg-brand-cream border border-brand-black/20 rounded-full pointer-events-none z-[9999] shadow-[0_0_10px_rgba(0,0,0,0.2)] hidden md:block"
-      style={{ transition: 'width 0.3s, height 0.3s' }}
-      id="custom-cursor"
-    />
-  );
-}
 
 // Magnetic Button Component
 function MagneticButton({ children, className = "" }) {
@@ -336,7 +304,8 @@ function App() {
     <Router>
       {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
       <ScrollToTop />
-      <CustomCursor />
+      {/* Ambient Background handles cinematic global effects */}
+      <AmbientBackground />
       <ScrollProgress />
       
       <div className="bg-brand-black min-h-screen text-brand-cream selection:bg-brand-orange selection:text-white relative transition-colors duration-300">
