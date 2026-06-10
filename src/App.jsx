@@ -34,7 +34,7 @@ function CustomCursor() {
   return (
     <div 
       ref={cursorRef} 
-      className="fixed top-0 left-0 w-4 h-4 bg-brand-cream rounded-full pointer-events-none z-[9999] mix-blend-difference -translate-x-1/2 -translate-y-1/2 hidden md:block"
+      className="fixed top-0 left-0 w-4 h-4 bg-brand-cream border border-brand-black/20 rounded-full pointer-events-none z-[9999] shadow-[0_0_10px_rgba(0,0,0,0.2)] -translate-x-1/2 -translate-y-1/2 hidden md:block"
       style={{ transition: 'width 0.3s, height 0.3s' }}
       id="custom-cursor"
     />
@@ -314,8 +314,6 @@ function App() {
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
     });
-
-    gsap.ticker.lagSmoothing(0);
 
     // Listen for custom lenis-scroll events from Navigation
     const handleLenisScroll = (e) => {
