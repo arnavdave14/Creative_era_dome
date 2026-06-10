@@ -34,7 +34,7 @@ function CustomCursor() {
   return (
     <div 
       ref={cursorRef} 
-      className="fixed top-0 left-0 w-4 h-4 bg-brand-cream border border-brand-black/20 rounded-full pointer-events-none z-[9999] shadow-[0_0_10px_rgba(0,0,0,0.2)] -translate-x-1/2 -translate-y-1/2 hidden md:block"
+      className="fixed top-0 left-0 w-4 h-4 bg-brand-cream border border-brand-black/20 rounded-full pointer-events-none z-[9999] shadow-[0_0_10px_rgba(0,0,0,0.2)] -translate-x-1/2 -translate-y-1/2 hidden md:block will-change-transform"
       style={{ transition: 'width 0.3s, height 0.3s' }}
       id="custom-cursor"
     />
@@ -298,14 +298,14 @@ function App() {
   useEffect(() => {
     // Initialize Lenis for smooth scrolling
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.0,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
       direction: 'vertical',
       gestureDirection: 'vertical',
       smooth: true,
       mouseMultiplier: 1,
       smoothTouch: false,
-      touchMultiplier: 2,
+      touchMultiplier: 1.5,
       infinite: false,
     });
 

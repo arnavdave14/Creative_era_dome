@@ -109,7 +109,7 @@ export default function Home() {
           trigger: '.pin-wrapper',
           start: 'top top',
           end: '+=16000', // Massive scroll area to fit 4 cards + their vertical content
-          scrub: 1, 
+          scrub: 0.1, 
           pin: true,
           anticipatePin: 1,
         }

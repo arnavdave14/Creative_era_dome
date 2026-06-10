@@ -170,12 +170,6 @@ export default function ProductsCard() {
                     <div className="text-brand-cream font-semibold text-lg">Elite</div>
                   </div>
                 </div>
-
-                <div className="mt-auto flex items-center justify-start">
-                  <button className="bg-[#A8D0CE] text-brand-black px-12 py-5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_10px_30px_rgba(168,208,206,0.2)]">
-                    Explore Details
-                  </button>
-                </div>
              </div>
 
              {/* Close Button */}
