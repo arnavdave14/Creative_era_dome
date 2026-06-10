@@ -304,8 +304,6 @@ function App() {
     <Router>
       {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
       <ScrollToTop />
-      {/* Ambient Background handles cinematic global effects */}
-      <AmbientBackground />
       <ScrollProgress />
       
       <div className="bg-brand-black min-h-screen text-brand-cream selection:bg-brand-orange selection:text-white relative transition-colors duration-300">
