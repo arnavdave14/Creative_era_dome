@@ -116,8 +116,16 @@ export default function Home() {
       });
 
       // Fade out the hero elements gracefully before cards enter
-      masterTl.to(['.hero-text-top-scroll', '.hero-text-bottom-scroll', '.hero-bg', '.marquee-fade-target'], { 
+      masterTl.to(['.hero-text-top-scroll', '.hero-bg', '.marquee-fade-target'], { 
         autoAlpha: 0, ease: 'none', duration: 1 
+      }, 0);
+
+      // Zoom-in effect for "ERA"
+      masterTl.to('.hero-text-bottom-scroll', {
+        scale: 40,
+        autoAlpha: 0,
+        ease: 'power3.in',
+        duration: 2
       }, 0);
 
       const cards = gsap.utils.toArray('.story-card');
@@ -335,7 +343,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="hero-text-bottom-scroll -mt-[6vw] relative z-30 w-full flex justify-center">
+            <div className="hero-text-bottom-scroll -mt-[6vw] relative z-30 w-full flex justify-center origin-center will-change-transform transform-gpu">
               <div className="hero-text-bottom-intro w-full max-w-[90vw] mx-auto flex justify-center items-center h-[26vw]">
                 <h1 className="text-[22vw] font-drose leading-[0.8] tracking-tighter">
                   <span 
