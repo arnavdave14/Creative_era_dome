@@ -20,12 +20,13 @@ function CustomCursor() {
       // Accurately center the cursor on the mouse tip
       gsap.set(cursorRef.current, { xPercent: -50, yPercent: -50 });
       
-      const xSet = gsap.quickSetter(cursorRef.current, "x", "px");
-      const ySet = gsap.quickSetter(cursorRef.current, "y", "px");
+      // Use quickTo instead of quickSetter to add a buttery liquid trailing effect
+      const xTo = gsap.quickTo(cursorRef.current, "x", { duration: 0.15, ease: "power3.out" });
+      const yTo = gsap.quickTo(cursorRef.current, "y", { duration: 0.15, ease: "power3.out" });
 
       const onMouseMove = (e) => {
-        xSet(e.clientX);
-        ySet(e.clientY);
+        xTo(e.clientX);
+        yTo(e.clientY);
       };
 
       window.addEventListener("mousemove", onMouseMove);
