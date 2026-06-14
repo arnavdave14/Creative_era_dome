@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function AboutUsCard() {
   return (
@@ -58,15 +59,15 @@ export default function AboutUsCard() {
               <h3 className="font-drose text-4xl md:text-5xl md:landscape:text-[1.8vw] leading-[1.1] uppercase text-brand-cream tracking-wide mb-6 transition-colors duration-300">
                 EXPERIENCE<br/>LED
               </h3>
-              <span className="text-brand-cream/50 text-2xl font-light hover:translate-x-4 transition-all duration-300 cursor-pointer">⟶</span>
+              <Link to="/about" aria-label="Go to About Us Page" className="text-brand-cream/50 text-2xl font-light hover:translate-x-4 hover:text-brand-orange transition-all duration-300 cursor-pointer inline-block">⟶</Link>
             </div>
             
             {/* Bottom White Pill */}
-            <div className="mt-16 md:landscape:mt-auto bg-brand-cream rounded-xl px-6 py-3 flex items-center justify-center cursor-pointer hover:bg-brand-cream/80 transition-colors duration-300">
+            <Link to="/about" aria-label="Go to About Us Page" className="mt-16 md:landscape:mt-auto bg-brand-cream rounded-xl px-6 py-3 flex items-center justify-center cursor-pointer hover:bg-brand-cream/80 transition-colors duration-300">
                <span className="text-brand-black font-inter text-[14px] md:landscape:text-[0.65vw] font-bold tracking-widest uppercase transition-colors duration-300">
                  Creative Era
                </span>
-            </div>
+            </Link>
 
           </div>
 

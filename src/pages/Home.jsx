@@ -12,48 +12,48 @@ import Footer from '../components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
-    const sections = [
-      { 
-        id: 'about', 
-        title: 'About Us', 
-        component: AboutUsCard,
-        subtitle: 'Our Story', 
-        number: '01', 
-        descTitle: 'EXPERIENCE-LED GROWTH',
-        desc: 'Creative Era is an Experience-Led Growth Company. We design, produce, and deliver experiences that create measurable business growth.',
-        bg: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2669&auto=format&fit=crop' 
-      },
-      { 
-        id: 'gallery', 
-        title: 'Portfolio', 
-        component: GalleryCard,
-        subtitle: 'Visuals', 
-        number: '02', 
-        descTitle: 'MEMORABLE EXPERIENCES',
-        desc: 'Showcasing our award-winning work, from corporate conferences to large-scale public events.',
-        bg: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2670&auto=format&fit=crop' 
-      },
-      { 
-        id: 'products', 
-        title: 'Services', 
-        component: ProductsCard,
-        subtitle: 'Offerings', 
-        number: '03', 
-        descTitle: 'MEASURABLE GROWTH',
-        desc: 'Explore our premium suite of event management services and high-end technological integrations.',
-        bg: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=2670&auto=format&fit=crop' 
-      },
-      { 
-        id: 'contact', 
-        title: 'Contact', 
-        component: ContactCard,
-        subtitle: 'Connect', 
-        number: '04', 
-        descTitle: 'START A PARTNERSHIP',
-        desc: 'Every client engagement is the start of a long-term partnership. Reach out to our team today.',
-        bg: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=2670&auto=format&fit=crop' 
-      },
-    ];
+const sections = [
+  {
+    id: 'about',
+    title: 'About Us',
+    component: AboutUsCard,
+    subtitle: 'Our Story',
+    number: '01',
+    descTitle: 'EXPERIENCE-LED GROWTH',
+    desc: 'Creative Era is an Experience-Led Growth Company. We design, produce, and deliver experiences that create measurable business growth.',
+    bg: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2669&auto=format&fit=crop'
+  },
+  {
+    id: 'gallery',
+    title: 'Portfolio',
+    component: GalleryCard,
+    subtitle: 'Visuals',
+    number: '02',
+    descTitle: 'MEMORABLE EXPERIENCES',
+    desc: 'Showcasing our award-winning work, from corporate conferences to large-scale public events.',
+    bg: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2670&auto=format&fit=crop'
+  },
+  {
+    id: 'products',
+    title: 'Services',
+    component: ProductsCard,
+    subtitle: 'Offerings',
+    number: '03',
+    descTitle: 'MEASURABLE GROWTH',
+    desc: 'Explore our premium suite of event management services and high-end technological integrations.',
+    bg: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=2670&auto=format&fit=crop'
+  },
+  {
+    id: 'contact',
+    title: 'Contact',
+    component: ContactCard,
+    subtitle: 'Connect',
+    number: '04',
+    descTitle: 'START A PARTNERSHIP',
+    desc: 'Every client engagement is the start of a long-term partnership. Reach out to our team today.',
+    bg: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=2670&auto=format&fit=crop'
+  },
+];
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -77,7 +77,7 @@ export default function Home() {
   useLayoutEffect(() => {
     if (!containerRef.current) return;
     const ctx = gsap.context(() => {
-      
+
       // 1. Initial Hero Animations
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -86,21 +86,21 @@ export default function Home() {
           toggleActions: 'play none none reverse'
         }
       });
-      
-      tl.fromTo('.hero-text-top-intro', 
-        { yPercent: 100, opacity: 0 }, 
+
+      tl.fromTo('.hero-text-top-intro',
+        { yPercent: 100, opacity: 0 },
         { yPercent: 0, opacity: 1, duration: 1.5, ease: 'power4.out' }
       )
-      .fromTo('.hero-text-bottom-intro',
-        { yPercent: -100, opacity: 0 },
-        { yPercent: 0, opacity: 1, duration: 1.5, ease: 'power4.out' },
-        "-=1.2"
-      )
-      .fromTo('.marquee-container',
-        { yPercent: 50, opacity: 0 },
-        { yPercent: 0, opacity: 1, duration: 1.5, ease: 'power4.out' },
-        "-=1.5"
-      );
+        .fromTo('.hero-text-bottom-intro',
+          { yPercent: -100, opacity: 0 },
+          { yPercent: 0, opacity: 1, duration: 1.5, ease: 'power4.out' },
+          "-=1.2"
+        )
+        .fromTo('.marquee-container',
+          { yPercent: 50, opacity: 0 },
+          { yPercent: 0, opacity: 1, duration: 1.5, ease: 'power4.out' },
+          "-=1.5"
+        );
 
       // 2. Master Scroll Timeline (Horizontal + Fullscreen FLIP expansion)
       const masterTl = gsap.timeline({
@@ -109,28 +109,28 @@ export default function Home() {
           trigger: '.pin-wrapper',
           start: 'top top',
           end: '+=16000', // Massive scroll area to fit 4 cards + their vertical content
-          scrub: 0.1, 
+          scrub: 0.1,
           pin: true,
           anticipatePin: 1,
         }
       });
 
       // Fade out the hero elements gracefully before cards enter
-      masterTl.fromTo(['.hero-text-top-scroll', '.marquee-fade-target'], 
+      masterTl.fromTo(['.hero-text-top-scroll', '.marquee-fade-target'],
         { autoAlpha: 1 },
-        { autoAlpha: 0, ease: 'none', duration: 1 }, 
+        { autoAlpha: 0, ease: 'none', duration: 1 },
         0
       );
 
       // Zoom-in effect for "ERA"
-      masterTl.fromTo('.hero-text-bottom-scroll', 
+      masterTl.fromTo('.hero-text-bottom-scroll',
         { scale: 1, autoAlpha: 1 },
         {
           scale: 25,
           autoAlpha: 0,
           ease: 'power3.in',
           duration: 2
-        }, 
+        },
         0
       );
 
@@ -149,26 +149,26 @@ export default function Home() {
         const innerScroll = innerScrolls[i];
         const bg = backgrounds[i];
         const title = textTitles[i];
-        
+
         // Ensure innerScroll height is available (temporarily un-hide if needed)
         // We know they are rendered, but hidden via GSAP autoAlpha. We can read scrollHeight.
         const scrollDistance = Math.max(0, innerScroll.scrollHeight - window.innerHeight);
-        const verticalScrollDuration = scrollDistance > 0 ? (scrollDistance / window.innerHeight) * 2 : 0; 
-        
+        const verticalScrollDuration = scrollDistance > 0 ? (scrollDistance / window.innerHeight) * 2 : 0;
+
         // Calculate absolute X positions based on index
         const stepWidth = isMobile ? 95 : 45;
         const targetX = -(100 + (stepWidth * i));
-        
+
         // If it's the first card, we need to pan it in from 100vw (after hero fades)
         if (i === 0) {
           masterTl.to(cards, {
-            x: `${targetX}vw`, 
+            x: `${targetX}vw`,
             ease: "power2.inOut",
             duration: 2
           }, currentTime);
-          
+
           masterTl.to('.bg-marquee-text', { x: "-20vw", ease: "power2.inOut", duration: 2 }, currentTime);
-          
+
           currentTime += 2;
         } else {
           // Subsequent cards pan in using absolute positions
@@ -177,10 +177,10 @@ export default function Home() {
             ease: "power2.inOut",
             duration: 1.5
           }, currentTime);
-          
+
           const marqueeX = -(20 + (15 * i));
           masterTl.to('.bg-marquee-text', { x: `${marqueeX}vw`, ease: "power2.inOut", duration: 1.5 }, currentTime);
-          
+
           currentTime += 1.5;
         }
 
@@ -204,7 +204,7 @@ export default function Home() {
           ease: "power2.inOut",
           duration: 1.5
         }, currentTime);
-        
+
         // Reset background image constraints so it perfectly fills the fullscreen
         masterTl.to(bg, {
           width: '100%',
@@ -256,9 +256,9 @@ export default function Home() {
           }, currentTime);
 
           if (posterLayout) {
-             masterTl.to(posterLayout, { autoAlpha: 1, duration: 0.5 }, currentTime + 0.5);
+            masterTl.to(posterLayout, { autoAlpha: 1, duration: 0.5 }, currentTime + 0.5);
           }
-          
+
           const vh60 = window.innerHeight * 0.6;
           const vw45 = window.innerWidth * 0.45;
           const desktopHeight = `${Math.min(vh60, vw45)}px`;
@@ -288,7 +288,7 @@ export default function Home() {
 
         currentTime += 1.5;
       });
-      
+
     }, containerRef); // Scope everything to the container
 
     return () => ctx.revert(); // Cleanup GSAP instances on unmount
@@ -296,7 +296,7 @@ export default function Home() {
 
   return (
     <div className="w-full bg-brand-black transition-colors duration-300">
-      <CinematicIntro 
+      <CinematicIntro
         preTitle="C R E A T I V E"
         title="ERA"
         descTitle="EXPERIENCE-LED GROWTH"
@@ -305,12 +305,12 @@ export default function Home() {
         bgImage="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2669&auto=format&fit=crop"
       />
       <div ref={containerRef} className="w-full relative">
-      
+
         {/* Cinematic Ambient Background for the horizontal scroll section */}
         <AmbientBackground />
 
         <div className="pin-wrapper h-screen w-full relative flex items-center justify-center overflow-hidden">
-          
+
           {/* ----------------------------------------------------
               Hero State
               ---------------------------------------------------- */}
@@ -318,10 +318,10 @@ export default function Home() {
             <CrossedMarquee />
           </div>
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none pt-12">
-            
+
             <div className="relative hero-text-top-scroll w-full flex justify-center">
               <div className="hero-text-top-intro w-full max-w-[90vw] mx-auto flex justify-center items-center h-[16vw] relative z-20">
-                
+
                 {/* SVG Mask strictly cuts the video to the text shape, removing any background box */}
                 <svg className="absolute inset-0 w-full h-full pointer-events-none">
                   <defs>
@@ -333,12 +333,12 @@ export default function Home() {
                     </mask>
                   </defs>
                 </svg>
-                
-                <video 
-                  autoPlay 
-                  loop 
-                  muted 
-                  playsInline 
+
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="absolute inset-0 w-full h-full object-cover"
                   style={{ mask: 'url(#video-text-mask)', WebkitMask: 'url(#video-text-mask)' }}
                 >
@@ -352,9 +352,9 @@ export default function Home() {
             <div className="hero-text-bottom-scroll -mt-[6vw] relative z-30 w-full flex justify-center origin-center ">
               <div className="hero-text-bottom-intro w-full max-w-[90vw] mx-auto flex justify-center items-center h-[26vw]">
                 <h1 className="text-[22vw] font-drose leading-[0.8] tracking-tighter">
-                  <span 
+                  <span
                     className="bg-clip-text text-transparent bg-cover bg-center block w-full h-full"
-                    style={{ 
+                    style={{
                       backgroundImage: "url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop')",
                       backgroundColor: '#ffffff'
                     }}
@@ -371,11 +371,11 @@ export default function Home() {
               Cinematic Horizontal -> Fullscreen Expand Layout
               ---------------------------------------------------- */}
           <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden">
-            
+
             {/* Massive Background Scrolling Text */}
             <div className="absolute inset-0 z-0 flex items-center overflow-hidden opacity-[0.03] pointer-events-none mix-blend-screen">
               <div className="bg-marquee-text whitespace-nowrap font-drose text-[35vw] leading-none text-brand-cream dark:text-white/20 absolute left-0" style={{ transform: 'translateX(10vw)' }}>
-                CREATIVE ERA — EXPERIENCE-LED GROWTH — EXPERIENCES DESIGNED FOR OUTCOMES — 
+                CREATIVE ERA — EXPERIENCE-LED GROWTH — EXPERIENCES DESIGNED FOR OUTCOMES —
               </div>
             </div>
 
@@ -383,68 +383,68 @@ export default function Home() {
               const vh60 = typeof window !== 'undefined' ? window.innerHeight * 0.6 : 0;
               const vw45 = typeof window !== 'undefined' ? window.innerWidth * 0.45 : 0;
               const desktopHeight = `${Math.min(vh60, vw45)}px`;
-              
+
               return (
-              <div 
-                key={sec.id} 
-                className="story-card absolute top-1/2 left-1/2 overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.8)] border border-white/5 flex items-center justify-center bg-brand-black pointer-events-auto "
-                style={{ 
-                  width: isMobile ? '85vw' : '35vw', 
-                  height: isMobile ? '70vh' : desktopHeight,
-                  borderRadius: '2rem',
-                  marginLeft: `${100 + ((isMobile ? 95 : 45) * i)}vw` // Card 0 starts at 100vw, subsequent cards follow tightly
-                }}
-              >
-                {/* Parallax Background Wrapper */}
-                <div className="card-bg-wrapper absolute top-0 left-0 w-full h-screen overflow-hidden pointer-events-none z-0">
-                  <img src={sec.bg} className="card-bg absolute top-0 w-[140%] max-w-none h-full object-cover" style={{ left: '-20%' }} alt={sec.id} />
-                  <div className="absolute inset-0 bg-brand-black/30 transition-colors duration-300" />
+                <div
+                  key={sec.id}
+                  className="story-card absolute top-1/2 left-1/2 overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.8)] border border-white/5 flex items-center justify-center bg-brand-black pointer-events-auto "
+                  style={{
+                    width: isMobile ? '85vw' : '35vw',
+                    height: isMobile ? '70vh' : desktopHeight,
+                    borderRadius: '2rem',
+                    marginLeft: `${100 + ((isMobile ? 95 : 45) * i)}vw` // Card 0 starts at 100vw, subsequent cards follow tightly
+                  }}
+                >
+                  {/* Parallax Background Wrapper */}
+                  <div className="card-bg-wrapper absolute top-0 left-0 w-full h-screen overflow-hidden pointer-events-none z-0">
+                    <img src={sec.bg} className="card-bg absolute top-0 w-[140%] max-w-none h-full object-cover" style={{ left: '-20%' }} alt={sec.id} />
+                    <div className="absolute inset-0 bg-brand-black/30 transition-colors duration-300" />
+                  </div>
+
+                  {/* Horizontal State Title (Cinematic Poster Layout) */}
+                  <div className="absolute inset-0 z-10 flex flex-col p-6 md:p-12 text-brand-cream dark:text-white overflow-hidden pointer-events-none">
+
+                    {/* Top center subtitle */}
+                    <div className="w-full flex justify-center mt-2 md:mt-4">
+                      <span className="font-drose tracking-[0.8em] text-xs md:text-xl uppercase opacity-80">{sec.subtitle}</span>
+                    </div>
+
+                    {/* Center massive title */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none mt-8">
+                      <h2
+                        className="card-title font-drose text-[8vw] md:text-[6vw] leading-none text-brand-cream opacity-100 uppercase  drop-shadow-2xl"
+                      >
+                        {sec.title}
+                      </h2>
+                    </div>
+
+                    {/* Bottom layout */}
+                    <div className="absolute bottom-6 left-6 right-6 md:bottom-12 md:left-12 md:right-12 flex justify-between items-end">
+                      {/* Left Description */}
+                      <div className="max-w-[140px] md:max-w-[180px] hidden md:block">
+                        <h3 className="font-inter font-semibold text-[10px] md:text-xs tracking-widest uppercase mb-3 md:mb-4">{sec.descTitle}</h3>
+                        <p className="font-inter text-[10px] md:text-xs leading-relaxed opacity-80">
+                          {sec.desc}
+                        </p>
+                      </div>
+
+                      {/* Center Scroll Indication */}
+                      <div className="flex flex-col items-center opacity-60 absolute left-1/2 -translate-x-1/2 bottom-0">
+                        <span className="font-inter text-[8px] md:text-[10px] tracking-widest uppercase mb-3 text-brand-cream dark:text-white">Scroll</span>
+                        <div className="w-[1px] h-8 md:h-12 bg-brand-cream/50 dark:bg-white/50" />
+                      </div>
+
+                      {/* Right Number */}
+                      <div className="flex items-end gap-2 md:gap-4 font-drose">
+                        <span className="text-5xl md:text-8xl leading-none">{sec.number}</span>
+                        <span className="text-lg md:text-3xl leading-none opacity-50 mb-1 md:mb-2">_ 04</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Expanded Vertical Content */}
+                  <sec.component />
                 </div>
-                
-                {/* Horizontal State Title (Cinematic Poster Layout) */}
-                <div className="absolute inset-0 z-10 flex flex-col p-6 md:p-12 text-brand-cream dark:text-white overflow-hidden pointer-events-none">
-                  
-                  {/* Top center subtitle */}
-                  <div className="w-full flex justify-center mt-2 md:mt-4">
-                    <span className="font-drose tracking-[0.8em] text-xs md:text-xl uppercase opacity-80">{sec.subtitle}</span>
-                  </div>
-                  
-                  {/* Center massive title */}
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none mt-8">
-                    <h2 
-                      className="card-title font-drose text-[8vw] md:text-[6vw] leading-none text-brand-cream opacity-100 uppercase  drop-shadow-2xl"
-                    >
-                      {sec.title}
-                    </h2>
-                  </div>
-
-                  {/* Bottom layout */}
-                  <div className="absolute bottom-6 left-6 right-6 md:bottom-12 md:left-12 md:right-12 flex justify-between items-end">
-                    {/* Left Description */}
-                    <div className="max-w-[140px] md:max-w-[180px] hidden md:block">
-                      <h3 className="font-inter font-semibold text-[10px] md:text-xs tracking-widest uppercase mb-3 md:mb-4">{sec.descTitle}</h3>
-                      <p className="font-inter text-[10px] md:text-xs leading-relaxed opacity-80">
-                        {sec.desc}
-                      </p>
-                    </div>
-
-                    {/* Center Scroll Indication */}
-                    <div className="flex flex-col items-center opacity-60 absolute left-1/2 -translate-x-1/2 bottom-0">
-                      <span className="font-inter text-[8px] md:text-[10px] tracking-widest uppercase mb-3 text-brand-cream dark:text-white">Scroll</span>
-                      <div className="w-[1px] h-8 md:h-12 bg-brand-cream/50 dark:bg-white/50" />
-                    </div>
-
-                    {/* Right Number */}
-                    <div className="flex items-end gap-2 md:gap-4 font-drose">
-                      <span className="text-5xl md:text-8xl leading-none">{sec.number}</span>
-                      <span className="text-lg md:text-3xl leading-none opacity-50 mb-1 md:mb-2">_ 04</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Expanded Vertical Content */}
-                <sec.component />
-              </div>
               );
             })}
           </div>
@@ -452,7 +452,7 @@ export default function Home() {
         </div>
 
       </div>
-      
+
       {/* Footer revealed after pinned horizontal scrolling ends */}
       <Footer />
     </div>

@@ -115,25 +115,33 @@ export default function AboutUs() {
             </h3>
             
             {/* Simple arrow element */}
-            <div className="mb-12 opacity-60 text-brand-cream">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+            <button 
+              className="mb-12 opacity-60 text-brand-cream hover:opacity-100 transition-opacity cursor-pointer flex justify-start"
+              onClick={() => document.getElementById('mission-section')?.scrollIntoView({ behavior: 'smooth' })}
+              aria-label="Scroll to Mission Section"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="rotate-90 transform transition-transform duration-300 hover:translate-y-2">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
-            </div>
+            </button>
             
-            <div className="bg-brand-cream text-brand-black px-6 py-3 rounded-2xl w-max flex items-center gap-3 font-inter font-bold text-xs tracking-widest cursor-pointer hover:scale-105 transition-transform">
+            <button 
+              className="bg-brand-cream text-brand-black px-6 py-3 rounded-2xl w-max flex items-center gap-3 font-inter font-bold text-xs tracking-widest cursor-pointer hover:scale-105 transition-transform"
+              onClick={() => document.getElementById('mission-section')?.scrollIntoView({ behavior: 'smooth' })}
+              aria-label="Explore Creative Era"
+            >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2L2 22h20L12 2z"/>
               </svg>
               CREATIVE ERA
-            </div>
+            </button>
           </div>
 
         </div>
       </div>
 
       {/* Mission & Vision Section */}
-      <div className="w-full max-w-[1400px] mx-auto mb-32 border-t border-brand-cream/10 pt-24">
+      <div id="mission-section" className="w-full max-w-[1400px] mx-auto mb-32 border-t border-brand-cream/10 pt-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
           <div className="ethos-text">
             <h2 className="text-5xl font-drose mb-6 text-brand-orange uppercase tracking-wide">Mission</h2>
