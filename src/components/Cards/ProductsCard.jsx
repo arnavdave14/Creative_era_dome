@@ -6,31 +6,52 @@ export default function ProductsCard() {
   const products = [
     {
       id: 1,
-      title: 'THE FUTURE OF LISTENING',
-      subtitle: 'Noise Cancelling',
-      desc: 'Designed for balanced acoustics and refined noise isolation, letting sound adapt seamlessly to your space.',
-      heroImg: 'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?q=80&w=2400&auto=format&fit=crop',
+      title: 'CORPORATE CONFERENCE',
+      subtitle: 'Decision Makers',
+      desc: 'A large-scale corporate conference engineered to drive business decisions — not just attendance.',
+      heroImg: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2400&auto=format&fit=crop',
     },
     {
       id: 2,
-      title: 'PURE SONIC PERFECTION',
-      subtitle: 'Studio Grade',
-      desc: 'High-fidelity audio drivers engineered for studio-grade mixing and audiophile listening.',
-      heroImg: 'https://images.unsplash.com/photo-1511300636408-a63a89df3482?q=80&w=2400&auto=format&fit=crop',
+      title: 'BRAND ACTIVATION',
+      subtitle: 'Engineered Memory',
+      desc: 'Interactive, intelligent, and designed so every participant leaves with a direct emotional connection.',
+      heroImg: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2400&auto=format&fit=crop',
     },
     {
       id: 3,
-      title: 'WIRELESS FREEDOM',
-      subtitle: 'Ultralight',
-      desc: 'Ultralight design with massive battery life. Experience your music without boundaries.',
-      heroImg: 'https://images.unsplash.com/photo-1612222869049-d8ec83637a3c?q=80&w=2400&auto=format&fit=crop',
+      title: 'PRODUCT LAUNCH',
+      subtitle: 'The Reveal',
+      desc: 'Staged to create anticipation, deliver impact, and generate coverage that extends value.',
+      heroImg: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=2400&auto=format&fit=crop',
     },
     {
       id: 4,
-      title: 'IMMERSIVE SOUND',
-      subtitle: 'Active ANC',
-      desc: 'True wireless earbuds engineered with active noise cancellation and a precision-tuned acoustic architecture.',
-      heroImg: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=2400&auto=format&fit=crop',
+      title: 'LARGE-SCALE PUBLIC',
+      subtitle: 'Zero Compromise',
+      desc: 'Multi-thousand audience events requiring military-grade logistics and multi-vendor coordination.',
+      heroImg: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=2400&auto=format&fit=crop',
+    },
+    {
+      id: 5,
+      title: 'AWARD NIGHT / GALA',
+      subtitle: 'The Room Remembers',
+      desc: 'Calibrated to make the honoured feel honoured — and the audience feel part of something.',
+      heroImg: 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=2400&auto=format&fit=crop',
+    },
+    {
+      id: 6,
+      title: 'SPIRITUAL EXPERIENCE',
+      subtitle: 'Precision Devotion',
+      desc: 'Experiences that honour tradition while engineering participation and emotional flow.',
+      heroImg: 'https://images.unsplash.com/photo-1540036666873-19597793d5f9?q=80&w=2400&auto=format&fit=crop',
+    },
+    {
+      id: 7,
+      title: 'EXPERIENCE INNOVATION',
+      subtitle: 'CERA LAB',
+      desc: 'Interactive and AI-powered assets deployed to create experiences the audience has never had before.',
+      heroImg: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2400&auto=format&fit=crop',
     }
   ];
 
@@ -75,8 +96,8 @@ export default function ProductsCard() {
 
       <div className="relative w-full h-screen bg-brand-black text-brand-cream overflow-hidden shadow-[0_-30px_60px_rgba(0,0,0,0.5)] z-30 shrink-0">
       
-      {/* 4-Section Grid */}
-      <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 grid-rows-4 md:grid-rows-2 gap-2 md:gap-4 p-2 md:p-4">
+      {/* 7-Section Grid */}
+      <div className="w-full h-[90vh] md:h-full grid grid-cols-2 md:grid-cols-4 grid-rows-4 md:grid-rows-2 gap-2 md:gap-4 p-2 md:p-4 overflow-y-auto md:overflow-hidden pb-12">
         {products.map((p) => (
           <div 
             key={p.id}
@@ -98,7 +119,7 @@ export default function ProductsCard() {
               <span className="text-[#A8D0CE] text-xs font-bold uppercase tracking-[0.2em] mb-2 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                 {p.subtitle}
               </span>
-              <h2 className="text-2xl md:text-5xl font-sans font-bold text-white tracking-tighter uppercase leading-none">
+              <h2 className="text-xl md:text-3xl font-sans font-bold text-white tracking-tighter uppercase leading-none">
                 {p.title}
               </h2>
             </div>

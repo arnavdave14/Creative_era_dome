@@ -15,22 +15,22 @@ gsap.registerPlugin(ScrollTrigger);
     const sections = [
       { 
         id: 'about', 
-        title: 'About', 
+        title: 'About Us', 
         component: AboutUsCard,
         subtitle: 'Our Story', 
         number: '01', 
-        descTitle: 'CRAFTING EXPERIENCES',
-        desc: 'We design award-winning, immersive events that captivate audiences and leave lasting impressions.',
+        descTitle: 'EXPERIENCE-LED GROWTH',
+        desc: 'Creative Era is an Experience-Led Growth Company. We design, produce, and deliver experiences that create measurable business growth.',
         bg: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2669&auto=format&fit=crop' 
       },
       { 
         id: 'gallery', 
-        title: 'Gallery', 
+        title: 'Portfolio', 
         component: GalleryCard,
         subtitle: 'Visuals', 
         number: '02', 
-        descTitle: 'MODERN SPACES',
-        desc: 'A curated collection of our most stunning and visually striking event environments.',
+        descTitle: 'MEMORABLE EXPERIENCES',
+        desc: 'Showcasing our award-winning work, from corporate conferences to large-scale public events.',
         bg: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2670&auto=format&fit=crop' 
       },
       { 
@@ -39,7 +39,7 @@ gsap.registerPlugin(ScrollTrigger);
         component: ProductsCard,
         subtitle: 'Offerings', 
         number: '03', 
-        descTitle: 'THE FUTURE OF LISTENING',
+        descTitle: 'MEASURABLE GROWTH',
         desc: 'Explore our premium suite of event management services and high-end technological integrations.',
         bg: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=2670&auto=format&fit=crop' 
       },
@@ -49,8 +49,8 @@ gsap.registerPlugin(ScrollTrigger);
         component: ContactCard,
         subtitle: 'Connect', 
         number: '04', 
-        descTitle: 'GET IN TOUCH',
-        desc: 'Reach out to our team of experts to begin planning your next extraordinary experience.',
+        descTitle: 'START A PARTNERSHIP',
+        desc: 'Every client engagement is the start of a long-term partnership. Reach out to our team today.',
         bg: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=2670&auto=format&fit=crop' 
       },
     ];
@@ -299,8 +299,8 @@ export default function Home() {
       <CinematicIntro 
         preTitle="C R E A T I V E"
         title="ERA"
-        descTitle="LUXURY EVENTS & EXPERIENCES"
-        descText="We design award-winning, immersive events that captivate audiences and leave lasting impressions."
+        descTitle="EXPERIENCE-LED GROWTH"
+        descText="We create growth through experiences. Connecting organizations, communities, and audiences."
         indexStr="01_05"
         bgImage="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2669&auto=format&fit=crop"
       />
@@ -375,7 +375,7 @@ export default function Home() {
             {/* Massive Background Scrolling Text */}
             <div className="absolute inset-0 z-0 flex items-center overflow-hidden opacity-[0.03] pointer-events-none mix-blend-screen">
               <div className="bg-marquee-text whitespace-nowrap font-drose text-[35vw] leading-none text-brand-cream dark:text-white/20 absolute left-0" style={{ transform: 'translateX(10vw)' }}>
-                CREATIVE ERA — LUXURY EVENTS — UNFORGETTABLE EXPERIENCES — 
+                CREATIVE ERA — EXPERIENCE-LED GROWTH — EXPERIENCES DESIGNED FOR OUTCOMES — 
               </div>
             </div>
 

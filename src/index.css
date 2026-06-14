@@ -14,9 +14,10 @@ a, button, input, textarea, select, [role="button"], .cursor-pointer, [class*="c
 }
 
 :root {
-  --color-brand-orange: 255 94 0;
-  --color-brand-cream: 249 246 240;
-  --color-brand-black: 18 18 18;
+  --color-brand-orange: 255 92 0;
+  --color-brand-cream: 240 240 240;
+  --color-brand-black: 8 8 8;
+  --color-brand-cyan: 0 212 255;
   
   background-color: rgb(var(--color-brand-black));
   color: rgb(var(--color-brand-cream));
@@ -24,8 +25,8 @@ a, button, input, textarea, select, [role="button"], .cursor-pointer, [class*="c
 }
 
 html.dark {
-  --color-brand-cream: 18 18 18;
-  --color-brand-black: 249 246 240;
+  --color-brand-cream: 8 8 8;
+  --color-brand-black: 240 240 240;
 }
 
 

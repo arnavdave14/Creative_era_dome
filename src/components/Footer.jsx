@@ -20,25 +20,24 @@ export default function Footer() {
           {/* Column 1 */}
           <div className="flex flex-col gap-4">
             <h4 className="font-semibold tracking-widest uppercase mb-4 text-white">Office</h4>
-            <p>128 Cinematic Way</p>
-            <p>Creative District</p>
-            <p>Los Angeles, CA 90028</p>
+            <p>[Business Address]</p>
+            <p>Pan-India Operations</p>
           </div>
 
           {/* Column 2 */}
           <div className="flex flex-col gap-4">
             <h4 className="font-semibold tracking-widest uppercase mb-4 text-white">Contact</h4>
-            <a href="#" className="hover:text-brand-orange transition-colors">hello@creativeera.com</a>
-            <a href="#" className="hover:text-brand-orange transition-colors">+1 (555) 000-0000</a>
+            <a href="mailto:gouravevents00@gmail.com" className="hover:text-brand-orange transition-colors">gouravevents00@gmail.com</a>
+            <a href="#" className="hover:text-brand-orange transition-colors">[Phone Number TO BE PROVIDED]</a>
           </div>
 
           {/* Column 3 */}
           <div className="flex flex-col gap-4">
             <h4 className="font-semibold tracking-widest uppercase mb-4 text-white">Social</h4>
             <a href="#" className="hover:text-white transition-colors">Instagram</a>
-            <a href="#" className="hover:text-white transition-colors">Twitter (X)</a>
+            <a href="#" className="hover:text-white transition-colors">Facebook</a>
             <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
-            <a href="#" className="hover:text-white transition-colors">Vimeo</a>
+            <a href="#" className="hover:text-white transition-colors">YouTube</a>
           </div>
 
           {/* Column 4 */}

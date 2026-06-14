@@ -13,7 +13,7 @@ export default function AboutUsCard() {
         {/* Giant Top Title */}
         <div className="w-full px-4 mb-6 md:mb-12 shrink-0">
           <h1 className="w-full text-center font-drose text-[18vw] leading-[0.75] text-brand-cream tracking-tighter transition-colors duration-300">
-            OUR ETHOS
+            OUR STORY
           </h1>
         </div>
 
@@ -23,7 +23,7 @@ export default function AboutUsCard() {
           {/* Col 1-4: Left Text (Bottom aligned) */}
           <div className="col-span-1 md:landscape:col-span-4 flex items-end pb-8 md:landscape:pb-16 md:landscape:pr-12 order-3 md:landscape:order-1">
             <p className="font-drose text-3xl md:text-6xl md:landscape:text-[2.2vw] leading-[1.1] text-brand-cream/90 transition-colors duration-300">
-              We are masters of our craft, creating high-fidelity experiences and integrations for design-led creative event design, and art blocks to respectfully create in practical means.
+              Creative Era is an Experience-Led Growth Company. We build the ecosystem that connects organizations, communities, and audiences.
             </p>
           </div>
 
@@ -41,7 +41,7 @@ export default function AboutUsCard() {
           {/* Col 8-10: Right Paragraph */}
           <div className="col-span-1 md:landscape:col-span-3 md:landscape:pl-8 pt-8 md:landscape:pt-16 order-2 md:landscape:order-3">
             <p className="font-serif text-lg md:text-2xl md:landscape:text-[1vw] leading-[1.7] text-brand-cream/70 text-justify md:landscape:text-left transition-colors duration-300">
-              Our team works with bespoke envelope markets, simultaneous and situations that are uncompromising to local on a in the together in influenced as the development process consent, and edge to align it comes true and ongoing to result some what they form. We focus on striking visual identity.
+              With 1500+ experiences delivered across India, Creative Era operates at the intersection of production excellence, AI intelligence, and experience innovation.
             </p>
           </div>
 
@@ -56,7 +56,7 @@ export default function AboutUsCard() {
             <div className="flex flex-col items-start w-full md:pl-4">
               <h2 className="font-drose text-8xl md:text-9xl md:landscape:text-[8vw] leading-none text-brand-cream mb-2 transition-colors duration-300">01</h2>
               <h3 className="font-drose text-4xl md:text-5xl md:landscape:text-[1.8vw] leading-[1.1] uppercase text-brand-cream tracking-wide mb-6 transition-colors duration-300">
-                BRAND<br/>STRATEGY
+                EXPERIENCE<br/>LED
               </h3>
               <span className="text-brand-cream/50 text-2xl font-light hover:translate-x-4 transition-all duration-300 cursor-pointer">⟶</span>
             </div>

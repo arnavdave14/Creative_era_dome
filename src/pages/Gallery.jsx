@@ -8,31 +8,52 @@ export default function Gallery() {
   const galleryItems = [
     {
       id: 1,
-      title: ["LIGHTS MADE", "FOR MODERN", "SPACES"],
-      subtitle: "Thoughtfully crafted lamps that bring warmth, ambiance, and style to your living.",
-      image: "https://images.unsplash.com/photo-1517991104123-1d56a6e81ed9?q=80&w=2000&auto=format&fit=crop",
-      thumb: "https://images.unsplash.com/photo-1517991104123-1d56a6e81ed9?q=80&w=200&auto=format&fit=crop"
+      title: ['DESIGNED FOR', 'DECISION MAKERS', 'NOT AUDIENCES'],
+      subtitle: "A large-scale corporate conference engineered to drive business decisions — not just attendance.",
+      image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop",
+      thumb: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=400&auto=format&fit=crop"
     },
     {
       id: 2,
-      title: ["AURA LAMP", "ELEVATE", "INTERIOR"],
-      subtitle: "Premium lighting fixtures designed to elevate your modern spatial design.",
-      image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?q=80&w=2000&auto=format&fit=crop",
-      thumb: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?q=80&w=800&auto=format&fit=crop"
+      title: ['PARTICIPATION', 'ENGINEERED', 'FOR MEMORY'],
+      subtitle: "A brand activation built to be remembered — interactive, intelligent, and designed for emotional connection.",
+      image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2000&auto=format&fit=crop",
+      thumb: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=400&auto=format&fit=crop"
     },
     {
       id: 3,
-      title: ["LUME LIGHT", "MINIMALIST", "BRILLIANCE"],
-      subtitle: "Minimalist design meeting elegant functionality for the modern home.",
-      image: "https://images.unsplash.com/photo-1524061614234-8449637d36ce?q=80&w=2000&auto=format&fit=crop",
-      thumb: "https://images.unsplash.com/photo-1524061614234-8449637d36ce?q=80&w=800&auto=format&fit=crop"
+      title: ['THE MOMENT', 'BEFORE THE', 'MARKET KNOWS'],
+      subtitle: "A product launch experience that transforms a reveal into a story, generating long-lasting coverage.",
+      image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=2000&auto=format&fit=crop",
+      thumb: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=400&auto=format&fit=crop"
     },
     {
       id: 4,
-      title: ["NOVA SHINE", "CLASSIC", "AESTHETICS"],
-      subtitle: "A modern classic that blends seamless aesthetics with brilliant illumination.",
-      image: "https://images.unsplash.com/photo-1524498250077-390f9e378fc0?q=80&w=2000&auto=format&fit=crop",
-      thumb: "https://images.unsplash.com/photo-1524498250077-390f9e378fc0?q=80&w=800&auto=format&fit=crop"
+      title: ['THOUSANDS', 'ONE EXPERIENCE', 'ZERO COMPROMISE'],
+      subtitle: "Multi-thousand audience events requiring military-grade logistics and multi-vendor coordination at scale.",
+      image: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=2000&auto=format&fit=crop",
+      thumb: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=400&auto=format&fit=crop"
+    },
+    {
+      id: 5,
+      title: ['THE ROOM', 'REMEMBERS', 'EVERYTHING'],
+      subtitle: "An award night where every visual and moment is calibrated to make the honoured feel honoured.",
+      image: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=2000&auto=format&fit=crop",
+      thumb: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=400&auto=format&fit=crop"
+    },
+    {
+      id: 6,
+      title: ['DEVOTION', 'DESIGNED', 'WITH PRECISION'],
+      subtitle: "Spiritual and cultural experiences that honour tradition while engineering participation and flow.",
+      image: "https://images.unsplash.com/photo-1540036666873-19597793d5f9?q=80&w=2000&auto=format&fit=crop",
+      thumb: "https://images.unsplash.com/photo-1540036666873-19597793d5f9?q=80&w=400&auto=format&fit=crop"
+    },
+    {
+      id: 7,
+      title: ['AI. ROBOTICS.', 'HUMAN', 'EXPERIENCE'],
+      subtitle: "Interactive and AI-powered experience assets — tested at CERA LAB™ and deployed to create new memories.",
+      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2000&auto=format&fit=crop",
+      thumb: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=400&auto=format&fit=crop"
     }
   ];
 

@@ -18,6 +18,7 @@ export default {
           orange: 'rgb(var(--color-brand-orange) / <alpha-value>)',
           cream: 'rgb(var(--color-brand-cream) / <alpha-value>)',
           black: 'rgb(var(--color-brand-black) / <alpha-value>)',
+          cyan: 'rgb(var(--color-brand-cyan) / <alpha-value>)',
         }
       },
       fontFamily: {

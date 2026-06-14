@@ -3,60 +3,53 @@ import React, { useState } from 'react';
 export default function GalleryCard() {
   const products = [
     { 
-      name: 'Aura Lamp', 
-      type: 'Table Lamp',
-      heading: ['LIGHTS MADE', 'FOR MODERN', 'SPACES'],
-      desc: 'Thoughtfully crafted lamps that bring warmth, ambiance, and style to your living.',
-      img: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?q=80&w=1200&auto=format&fit=crop' 
+      name: 'Corporate Conference', 
+      type: 'Corporate Event',
+      heading: ['DESIGNED FOR', 'DECISION MAKERS', 'NOT AUDIENCES'],
+      desc: 'A large-scale corporate conference engineered to drive business decisions — not just attendance. Designed for alignment, authority, and measurable outcomes.',
+      img: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&auto=format&fit=crop' 
     },
     { 
-      name: 'Lume Light', 
-      type: 'Pendant Light',
-      heading: ['LUME LIGHT', 'MINIMALIST', 'DESIGN'],
-      desc: 'Sleek, structural lighting engineered for contemporary workspaces and architectural interiors.',
-      img: 'https://images.unsplash.com/photo-1540932239986-30128078f3c5?q=80&w=1200&auto=format&fit=crop' 
+      name: 'Brand Activation', 
+      type: 'Experiential',
+      heading: ['PARTICIPATION', 'ENGINEERED', 'FOR MEMORY'],
+      desc: 'A brand activation built to be remembered — interactive, intelligent, and designed so every participant leaves with a direct emotional connection.',
+      img: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop' 
     },
     { 
-      name: 'Nova Shine', 
-      type: 'Desk Lamp',
-      heading: ['NOVA SHINE', 'BRILLIANT', 'OVERHEAD'],
-      desc: 'A striking statement piece that bathes your entire room in soft, diffused golden light.',
-      img: 'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?q=80&w=1200&auto=format&fit=crop' 
+      name: 'Product Launch', 
+      type: 'Launch Event',
+      heading: ['THE MOMENT', 'BEFORE THE', 'MARKET KNOWS'],
+      desc: 'A product launch experience that transforms a reveal into a story. Staged to create anticipation, deliver impact, and generate coverage.',
+      img: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1200&auto=format&fit=crop' 
     },
     {
-      name: 'Eclipse Halo',
-      type: 'Wall Sconce',
-      heading: ['ECLIPSE', 'AMBIENT', 'GLOW'],
-      desc: 'A subtle, wall-mounted halo that mimics a solar eclipse for moody atmospheric lighting.',
-      img: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?q=80&w=1200&auto=format&fit=crop'
+      name: 'Large-Scale Event',
+      type: 'Public Event',
+      heading: ['THOUSANDS', 'ONE EXPERIENCE', 'ZERO COMPROMISE'],
+      desc: 'Multi-thousand audience events requiring military-grade logistics, multi-vendor coordination, and experience design that holds quality at scale.',
+      img: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=1200&auto=format&fit=crop'
     },
     {
-      name: 'Zenith Stand',
-      type: 'Floor Lamp',
-      heading: ['ZENITH', 'STANDING', 'TALL'],
-      desc: 'An elegant floor lamp designed to anchor your living space with powerful, adjustable beams.',
-      img: 'https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?q=80&w=1200&auto=format&fit=crop'
+      name: 'Award Night / Gala',
+      type: 'Ceremony',
+      heading: ['THE ROOM', 'REMEMBERS', 'EVERYTHING'],
+      desc: 'An award night where every visual, lighting state, and moment is calibrated to make the honoured feel honoured — and the audience feel part of something.',
+      img: 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=1200&auto=format&fit=crop'
     },
     {
-      name: 'Geometric Drop',
-      type: 'Chandelier',
-      heading: ['GEOMETRIC', 'MODERN', 'DROP'],
-      desc: 'A striking focal point combining sharp angles with warm illumination.',
-      img: 'https://images.unsplash.com/photo-1534073828943-f801091bb18c?q=80&w=1200&auto=format&fit=crop'
+      name: 'Spiritual Experience',
+      type: 'Cultural Event',
+      heading: ['DEVOTION', 'DESIGNED', 'WITH PRECISION'],
+      desc: 'Spiritual and cultural experiences that honour tradition while engineering the participation, flow, and emotional arc that creates genuine connection.',
+      img: 'https://images.unsplash.com/photo-1540036666873-19597793d5f9?q=80&w=1200&auto=format&fit=crop'
     },
     {
-      name: 'Lumina Globe',
-      type: 'Table Lamp',
-      heading: ['LUMINA', 'FROSTED', 'GLOBE'],
-      desc: 'A perfectly spherical frosted glass lamp that emits a soft, 360-degree ambient glow.',
-      img: 'https://images.unsplash.com/photo-1543198126-a8ad8e47fb22?q=80&w=1200&auto=format&fit=crop'
-    },
-    {
-      name: 'Artemis Arch',
-      type: 'Floor Lamp',
-      heading: ['ARTEMIS', 'SWEEPING', 'ARCH'],
-      desc: 'A dramatic, sweeping arch lamp designed to reach over sectionals and dining tables.',
-      img: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1200&auto=format&fit=crop'
+      name: 'Experience Innovation',
+      type: 'CERA LAB™',
+      heading: ['AI. ROBOTICS.', 'HUMAN', 'EXPERIENCE'],
+      desc: 'Interactive and AI-powered experience assets — Smart Activations™, CUB™ hardware platform, and CERA Hand™ — tested at CERA LAB™.',
+      img: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200&auto=format&fit=crop'
     }
   ];
 

@@ -8,44 +8,93 @@ gsap.registerPlugin(ScrollTrigger);
 const productsData = [
   {
     id: 1,
-    titleLines: ["THE", "FUTURE OF", "LISTENING"],
-    desc: "Designed for balanced acoustics and refined noise isolation, letting sound adapt seamlessly to your space.",
-    cardText: "ENGINEERED TO DELIVER CLARITY, DEPTH, AND CONTROL.",
-    mainImage: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=2000&auto=format&fit=crop",
-    cardImage: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop",
+    titleLines: ["CORPORATE", "CONFERENCE", "DESIGN"],
+    desc: "A large-scale corporate conference engineered to drive business decisions — not just attendance.",
+    cardText: "DESIGNED FOR DECISION MAKERS.",
+    mainImage: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop",
+    cardImage: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop",
     thumbnails: [
-      "https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1484704849700-f032a568e944?q=80&w=400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?q=80&w=400&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?q=80&w=400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=400&auto=format&fit=crop"
     ]
   },
   {
     id: 2,
-    titleLines: ["PURE", "SONIC", "PERFECTION"],
-    desc: "Immerse yourself in spatial audio with ultra-low latency and breathtaking clarity for true audiophiles.",
-    cardText: "CRAFTED FOR THE ULTIMATE AUDIOPHILE EXPERIENCE.",
-    mainImage: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?q=80&w=2000&auto=format&fit=crop",
-    cardImage: "https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=800&auto=format&fit=crop",
+    titleLines: ["BRAND", "ACTIVATION", "EVENTS"],
+    desc: "A brand activation built to be remembered — interactive, intelligent, and designed for emotional connection.",
+    cardText: "PARTICIPATION ENGINEERED FOR MEMORY.",
+    mainImage: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2000&auto=format&fit=crop",
+    cardImage: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
     thumbnails: [
-      "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?q=80&w=400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1484704849700-f032a568e944?q=80&w=400&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?q=80&w=400&auto=format&fit=crop"
     ]
   },
   {
     id: 3,
-    titleLines: ["UNLEASH", "YOUR", "RHYTHM"],
-    desc: "Lightweight, sweat-resistant, and built for motion. Your perfect companion for workouts and daily commutes.",
-    cardText: "BUILT TO MOVE WITH YOU, EVERY STEP.",
-    mainImage: "https://images.unsplash.com/photo-1511300636408-a63a89df3482?q=80&w=2000&auto=format&fit=crop",
-    cardImage: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=800&auto=format&fit=crop",
+    titleLines: ["PRODUCT", "LAUNCH", "EXPERIENCE"],
+    desc: "A product launch experience that transforms a reveal into a story, generating coverage and anticipation.",
+    cardText: "THE MOMENT BEFORE THE MARKET KNOWS.",
+    mainImage: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=2000&auto=format&fit=crop",
+    cardImage: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=800&auto=format&fit=crop",
     thumbnails: [
-      "https://images.unsplash.com/photo-1484704849700-f032a568e944?q=80&w=400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?q=80&w=400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=400&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?q=80&w=400&auto=format&fit=crop"
+    ]
+  },
+  {
+    id: 4,
+    titleLines: ["LARGE SCALE", "PUBLIC", "EVENTS"],
+    desc: "Multi-thousand audience events requiring military-grade logistics and multi-vendor coordination.",
+    cardText: "THOUSANDS. ONE EXPERIENCE. ZERO COMPROMISE.",
+    mainImage: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=2000&auto=format&fit=crop",
+    cardImage: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=800&auto=format&fit=crop",
+    thumbnails: [
+      "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1470229722913-7c092bb4ace4?q=80&w=400&auto=format&fit=crop"
+    ]
+  },
+  {
+    id: 5,
+    titleLines: ["AWARD", "NIGHTS &", "GALAS"],
+    desc: "An award night where every visual and moment is calibrated to make the honoured feel honoured.",
+    cardText: "THE ROOM REMEMBERS EVERYTHING.",
+    mainImage: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=2000&auto=format&fit=crop",
+    cardImage: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=800&auto=format&fit=crop",
+    thumbnails: [
+      "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=400&auto=format&fit=crop"
+    ]
+  },
+  {
+    id: 6,
+    titleLines: ["SPIRITUAL", "& CULTURAL", "EXPERIENCE"],
+    desc: "Spiritual and cultural experiences that honour tradition while engineering participation and flow.",
+    cardText: "DEVOTION DESIGNED WITH PRECISION.",
+    mainImage: "https://images.unsplash.com/photo-1540036666873-19597793d5f9?q=80&w=2000&auto=format&fit=crop",
+    cardImage: "https://images.unsplash.com/photo-1540036666873-19597793d5f9?q=80&w=800&auto=format&fit=crop",
+    thumbnails: [
+      "https://images.unsplash.com/photo-1540036666873-19597793d5f9?q=80&w=400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=400&auto=format&fit=crop"
+    ]
+  },
+  {
+    id: 7,
+    titleLines: ["EXPERIENCE", "INNOVATION", "CERA LAB"],
+    desc: "Interactive and AI-powered experience assets — tested at CERA LAB™ and deployed to create new memories.",
+    cardText: "AI. ROBOTICS. HUMAN EXPERIENCE.",
+    mainImage: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2000&auto=format&fit=crop",
+    cardImage: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=800&auto=format&fit=crop",
+    thumbnails: [
+      "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1531297172864-f655e840d026?q=80&w=400&auto=format&fit=crop"
     ]
   }
 ];
